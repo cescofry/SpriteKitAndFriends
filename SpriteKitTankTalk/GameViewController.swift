@@ -27,15 +27,16 @@ class GameViewController: UIViewController {
     
     func nextScene() {
         self.index++
-        self.toIndex(self.index)
+        self.presentCode()
     }
     
     func previousScene() {
         self.index--
-        self.toIndex(self.index)
+        self.presentCode()
     }
     
-    private func toIndex(index: Int) {
+    func loadCurrentScene(){
+    
         self.scene = GameSceneGenerator.fromIndex(index)
         
         if let scene = self.scene  {
@@ -52,7 +53,6 @@ class GameViewController: UIViewController {
             
             skView.presentScene(scene)
             scene.nextScene = nextScene
-            scene.previousScene = previousScene
         }
     }
     
@@ -82,12 +82,14 @@ class GameViewController: UIViewController {
         return true
     }
     
-    @IBAction func codeAction(sender: AnyObject?) {
-        if let btn = sender as? UIBarButtonItem {
-            let vc = CodeViewController.fromUIBArButtonItem(btn)
+    func presentCode() {
+        if let sceneDescription = self.scene?.sceneDescription {
+            let vc = CodeViewController.inNavigationController(sceneDescription.code, dismissBlock: loadCurrentScene)
             self.presentViewController(vc, animated: true, completion: { () -> Void in
-                vc.code = self.scene!.code
             })
+        }
+        else {
+            loadCurrentScene()
         }
     }
 }

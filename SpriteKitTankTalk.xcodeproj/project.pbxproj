@@ -119,8 +119,8 @@
 				9B19ECCB1B8DF43300552D11 /* View Controllers */,
 				9B1737241B8DD5C00033BEAD /* scenes */,
 				A5013B0E1B8D9F5500AD3B6C /* GameSceneGenerator.swift */,
-				A5013AE81B8D9EB600AD3B6C /* Supporting Files */,
 				9B19ECCC1B8E184D00552D11 /* Character.swift */,
+				A5013AE81B8D9EB600AD3B6C /* Supporting Files */,
 			);
 			path = SpriteKitTankTalk;
 			sourceTree = "<group>";

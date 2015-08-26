@@ -11,54 +11,22 @@
 			<string>Scene and Nodes</string>
 			<key>code</key>
 			<string>Explain what is a scene and what are nodes and the varius kind of nodes</string>
+			<key>actions</key>
+			<array>
+				<string>Hello and welcome to SpriteKit 101</string>
+				<string>I am a node and so is the label up here
+We sit on top of a scene, which is our world</string>
+			</array>
 		</dict>
 		<dict>
 			<key>title</key>
-			<string>Actions and Sprites</string>
+			<string>Actions</string>
 			<key>code</key>
-			<string>Explain actions and how to apply a walking sprite</string>
-		</dict>
-		<dict>
-			<key>title</key>
-			<string>Collisions</string>
-			<key>code</key>
-			<string>Explain collisions</string>
-		</dict>
-		<dict>
-			<key>title</key>
-			<string>Physic Body</string>
-			<key>code</key>
-			<string>Explain physic body and how gravity is affected</string>
-		</dict>
-		<dict>
-			<key>title</key>
-			<string>Minmax Strategist</string>
-			<key>code</key>
-			<string>What a strategist is and how to implement it</string>
-		</dict>
-		<dict>
-			<key>title</key>
-			<string>Pathfinding</string>
-			<key>code</key>
-			<string>Put obstacles on the scene and make the user dodge them</string>
-		</dict>
-		<dict>
-			<key>title</key>
-			<string>Agents</string>
-			<key>code</key>
-			<string>Expalin agents</string>
-		</dict>
-		<dict>
-			<key>title</key>
-			<string>Rules</string>
-			<key>code</key>
-			<string>Explain Rules</string>
-		</dict>
-		<dict>
-			<key>title</key>
-			<string>Thank you</string>
-			<key>code</key>
-			<string>@cescofry</string>
+			<string>Explain what is a scene and what are nodes and the varius kind of nodes</string>
+			<key>actions</key>
+			<array>
+				<string>That was weird, Let&apos;s create an action to move in the direction of the tap position</string>
+			</array>
 		</dict>
 	</array>
 </dict>

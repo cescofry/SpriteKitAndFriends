@@ -32,9 +32,7 @@ struct GameSceneGenerator {
         if let scene = scene {
             
             let realIndex = index - 1
-            let sceneConfig = Config.sharedConfig().scenes[realIndex]
-            scene.title.text = sceneConfig.title
-            scene.code = sceneConfig.code
+            scene.sceneDescription = Config.sharedConfig().scenes[realIndex]
             
             switch index {
             case 1: scene.setUp1()
@@ -60,12 +58,13 @@ struct Config {
     static func sharedConfig() -> Config! {
         let configDict = plistDictionary()
         let isDebug = configDict["isDebug"]!.boolValue!
-        let scenesR = configDict["scenes"] as! [[String : String]]
+        let scenesR = configDict["scenes"] as! [[String : AnyObject]]
         let scenes = scenesR.map({ (dictionary) -> SceneDescription in
-            let title = dictionary["title"]!
-            let codeString = dictionary["code"]!
+            let title = dictionary["title"] as! String
+            let codeString = dictionary["code"] as! String
             let codeAttributed = NSAttributedString(htmlString: codeString)
-            return SceneDescription(title: title, code: codeAttributed!)
+            let actions = dictionary["actions"] as! [String]
+            return SceneDescription(title: title, code: codeAttributed!, actions: actions)
         })
         
         return Config(isDebug: isDebug, scenes: scenes)
@@ -89,6 +88,7 @@ extension NSAttributedString {
 struct SceneDescription {
     let title : String
     let code : NSAttributedString
+    let actions : [String]
 }
 
 

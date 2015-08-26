@@ -11,11 +11,27 @@ import SpriteKit
 class GameScene: SKScene {
     
     var nextScene: (()->())?
-    var previousScene: (()->())?
-    var code : NSAttributedString?
+    
+    var sceneDescription: SceneDescription? {
+        didSet {
+            if let sceneD = sceneDescription {
+                self.title.text = sceneD.title
+            }
+        }
+    }
     
     var character: Character {
-        return self.childNodeWithName("character") as! Character
+        if let character = self.childNodeWithName("character") as? Character {
+            return character
+        }
+        
+        let character = Character(imageNamed: "slice01.png")
+        character.name = "character"
+        character.setScale(0.5)
+        character.position = self.view!.center
+        self.addChild(character)
+        
+        return character
     }
     
     var title:  SKLabelNode {
@@ -31,6 +47,11 @@ class GameScene: SKScene {
     }
     
     override func didMoveToView(view: SKView) {
+        self.character.position = CGPoint(x: -50.0, y: self.view!.center.y) // lazy loading
+        let startPosition = CGPoint(x: 80.0, y: self.view!.center.y)
+        self.character.runToPosition(startPosition, completion: { () -> () in
+            // run action 1
+        })
     }
     
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
@@ -48,15 +69,9 @@ class GameScene: SKScene {
     }
     
     func checkForPortals() {
-        
         if isCharacterOnNode(self.nextPortal) {
             if let nextScene = self.nextScene {
                 nextScene()
-            }
-        }
-        else if isCharacterOnNode(self.previousPortal) {
-            if let previousScene = self.previousScene {
-                previousScene()
             }
         }
     }
@@ -74,6 +89,7 @@ class GameScene: SKScene {
 
 extension GameScene {
     func setUp1() {
+        
     }
 }
 

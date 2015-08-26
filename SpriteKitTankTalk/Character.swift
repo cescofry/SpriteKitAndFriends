@@ -28,23 +28,27 @@ class Character: SKSpriteNode {
     
     func runToPosition(position: CGPoint, completion: (()->())?) {
 
-        // rotate
         let radiants = self.position.radiantsToPoint(position)
-        let rotate = SKAction.rotateByAngle(radiants, duration:1)
-        self.runAction(rotate)
-        
-        // move
+        let direction = Direction.fromRadiants(radiants)
         let duration = NSTimeInterval(self.position.distanceToPoint(position) / 200)
-        let move = SKAction.moveTo(position, duration: duration)
-        self.runAction(move, completion: completion)
         
+        println("rad : \(radiansToDegrees(radiants))")
         
         // run textures
-        let direction = Direction.fromRadiants(radiants)
         let runAction = SKAction.animateWithTextures(self.runAtlasses[direction]!, timePerFrame: 0.05)
-        self.runAction(runAction, completion: { () -> Void in
+        self.runAction(SKAction.repeatActionForever(runAction), withKey: "runTexture")
+
+        // move
+        let move = SKAction.moveTo(position, duration: duration)
+        self.runAction(move, completion: { () -> Void in
+            self.removeActionForKey("runTexture")
             self.rest(direction)
+            if let completion = completion {
+                completion()
+            }
         })
+        
+        
     }
     
     func rest(direction: Direction) {
@@ -85,7 +89,14 @@ extension Direction {
     }
     
     static func fromRadiants(radiants : CGFloat) -> Direction {
+        
         return .Front
+//        
+//        switch radiants {
+//        case -0.8...0.8: return .Front
+//            case 0.81...
+//            
+//        }
     }
 }
 
@@ -145,6 +156,10 @@ extension CGPoint {
         let yD = point.y - self.y
         return sqrt(pow(xD, 2.0) + pow(yD, 2.0))
     }
+}
+
+func radiansToDegrees(angleRadians: CGFloat) -> CGFloat {
+    return CGFloat(Double(angleRadians) * 180.0 / M_PI)
 }
 
 

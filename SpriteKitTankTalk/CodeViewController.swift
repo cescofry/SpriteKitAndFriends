@@ -22,6 +22,8 @@ class CodeViewController : UIViewController {
         }
     }
     
+    var aboutToDismiss : (()->())?
+    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         
@@ -33,11 +35,24 @@ class CodeViewController : UIViewController {
     }
     
     
-    static func fromUIBArButtonItem(barButtonItem : UIBarButtonItem) -> CodeViewController {
-        let vc = CodeViewController(nibName: nil, bundle: nil)
-        vc.modalPresentationStyle = UIModalPresentationStyle.Popover
-        vc.popoverPresentationController!.barButtonItem = barButtonItem
+    static func inNavigationController(code: NSAttributedString, dismissBlock: (()->())?) -> UINavigationController {
         
-        return vc
+        let vc = CodeViewController(nibName: nil, bundle: nil)
+        vc.code = code
+        vc.aboutToDismiss = dismissBlock
+        let navVC = UINavigationController(rootViewController: vc)
+        navVC.modalPresentationStyle = UIModalPresentationStyle.PageSheet
+        
+        let closeBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Cancel, target: vc, action: Selector("dismiss"))
+        vc.navigationItem.rightBarButtonItem = closeBtn
+        return navVC
+    }
+    
+    func dismiss() {
+        self.dismissViewControllerAnimated(true, completion: { () -> Void in
+            if let aboutToDismiss = self.aboutToDismiss {
+                aboutToDismiss()
+            }
+        })
     }
 }
