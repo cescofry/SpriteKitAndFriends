@@ -9,31 +9,12 @@
 import UIKit
 import SpriteKit
 
-extension SKNode {
-    class func unarchiveFromFile(file : String) -> SKNode? {
-        if let path = NSBundle.mainBundle().pathForResource(file, ofType: "sks") {
-            var sceneData = NSData(contentsOfFile: path, options: .DataReadingMappedIfSafe, error: nil)!
-            var archiver = NSKeyedUnarchiver(forReadingWithData: sceneData)
-            
-            archiver.setClass(self.classForKeyedUnarchiver(), forClassName: "SKScene")
-            let scene = archiver.decodeObjectForKey(NSKeyedArchiveRootObjectKey) as! GameScene
-            archiver.finishDecoding()
-            return scene
-        } else {
-            return nil
-        }
-    }
-}
-
 class GameViewController: UIViewController {
 
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
 
-        
-        
-        
-        if let scene = GameSceneGenerator.fromIndex(0) {
+        if let scene = GameSceneGenerator.fromIndex(2) {
             // Configure the view.
             let skView = self.view as! SKView
             skView.showsFPS = true
@@ -68,5 +49,14 @@ class GameViewController: UIViewController {
 
     override func prefersStatusBarHidden() -> Bool {
         return true
+    }
+    
+    @IBAction func codeAction(sender: AnyObject?) {
+        if let btn = sender as? UIBarButtonItem {
+            let vc = CodeViewController.fromUIBArButtonItem(btn)
+            self.presentViewController(vc, animated: true, completion: { () -> Void in
+                vc.code = NSAttributedString(string: "This is a test\nwith lines\n\n multipme lines")
+            })
+        }
     }
 }

@@ -10,12 +10,15 @@ import SpriteKit
 
 class GameScene: SKScene {
     
-    var prepareScene : ((view : SKView) -> ())?
+    var character: SKSpriteNode {
+        return self.childNodeWithName("character") as! SKSpriteNode
+    }
+    
+    var title:  SKLabelNode {
+        return self.childNodeWithName("title") as! SKLabelNode
+    }
     
     override func didMoveToView(view: SKView) {
-        if let prepareScene = prepareScene {
-            prepareScene(view: view)
-        }
     }
     
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
@@ -24,17 +27,16 @@ class GameScene: SKScene {
         for touch in (touches as! Set<UITouch>) {
             let location = touch.locationInNode(self)
             
-            let sprite = SKSpriteNode(imageNamed:"Spaceship")
+            //let test = self.children.first!
+            //let sprite = self.childNodeWithName("test")
             
-            sprite.xScale = 0.5
-            sprite.yScale = 0.5
-            sprite.position = location
             
+            self.character
+            self.character.removeAllActions()
+            
+            self.character.position = location
             let action = SKAction.rotateByAngle(CGFloat(M_PI), duration:1)
-            
-            sprite.runAction(SKAction.repeatActionForever(action))
-            
-            self.addChild(sprite)
+            self.character.runAction(SKAction.repeatActionForever(action))            
         }
     }
    

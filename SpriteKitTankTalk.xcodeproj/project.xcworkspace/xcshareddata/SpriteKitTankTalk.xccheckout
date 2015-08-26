@@ -7,34 +7,46 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>52FEC97E-2E06-4826-8231-355F76589C5C</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>SpriteKitTankTalk</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>C6F4526546B4B12E617D8E7B32795E9BB51ADE24</key>
-		<string>iptx.org:prezel.git</string>
+		<key>18C6131BB033E3746A29A72AA86083EB9763EA9C</key>
+		<string>https://github.int.yammer.com/ffrison/Pegagus.git</string>
+		<key>A484F80C5008B1EE1B9D58352CE2199D13051DC0</key>
+		<string>/Users/ffrison/Dropbox/gitRepo/SpriteKitTankTalk.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>test/SpriteKitTankTalk/SpriteKitTankTalk.xcodeproj/project.xcworkspace</string>
+	<string>SpriteKitTankTalk.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>C6F4526546B4B12E617D8E7B32795E9BB51ADE24</key>
-		<string>../../../..</string>
+		<key>18C6131BB033E3746A29A72AA86083EB9763EA9C</key>
+		<string>../../..</string>
+		<key>A484F80C5008B1EE1B9D58352CE2199D13051DC0</key>
+		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>iptx.org:prezel.git</string>
+	<string>/Users/ffrison/Dropbox/gitRepo/SpriteKitTankTalk.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>C6F4526546B4B12E617D8E7B32795E9BB51ADE24</string>
+	<string>A484F80C5008B1EE1B9D58352CE2199D13051DC0</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>C6F4526546B4B12E617D8E7B32795E9BB51ADE24</string>
+			<string>18C6131BB033E3746A29A72AA86083EB9763EA9C</string>
 			<key>IDESourceControlWCCName</key>
-			<string>iPhoneApps</string>
+			<string></string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>A484F80C5008B1EE1B9D58352CE2199D13051DC0</string>
+			<key>IDESourceControlWCCName</key>
+			<string>SpriteKitTankTalk</string>
 		</dict>
 	</array>
 </dict>
