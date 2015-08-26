@@ -14,8 +14,7 @@
 			<key>actions</key>
 			<array>
 				<string>Hello and welcome to SpriteKit 101</string>
-				<string>I am a node and so is the label up here
-We sit on top of a scene, which is our world</string>
+				<string>I am a node and so is the label up here. We sit on top of a scene; which is our world</string>
 			</array>
 		</dict>
 		<dict>

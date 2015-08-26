@@ -7,15 +7,13 @@
 //
 
 import SpriteKit
-import AVFoundation
 
 class GameScene: SKScene {
     
     var nextScene: (()->())?
     var setup: (()->())?
     var currentActionIndex = 0
-    
-    let synth = AVSpeechSynthesizer()
+    var speechSynthesizer = SpeechSynthesizer()
     
     var sceneDescription: SceneDescription? {
         didSet {
@@ -66,17 +64,16 @@ class GameScene: SKScene {
     }
     
     func speakActionAndAdvance() {
-        if let action = self.sceneDescription?.actions[self.currentActionIndex] {
-            speakAction(action)
-            self.currentActionIndex++
+        let actions = self.sceneDescription?.actions
+        if let actions = actions {
+            if actions.count > self.currentActionIndex {
+                let action = actions[self.currentActionIndex]
+                speechSynthesizer.speakText(action, completion: { (cancelled) -> () in
+                    self.currentActionIndex++
+                    self.speakActionAndAdvance()
+                })
+            }
         }
-    }
-    
-    func speakAction(action: String) {
-        let utterance = AVSpeechUtterance(string: action)
-        utterance.pitchMultiplier = 0.9
-        utterance.rate = 0.3
-        synth.speakUtterance(utterance)
     }
     
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {

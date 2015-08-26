@@ -22,6 +22,7 @@
 		A5013AF91B8D9EB600AD3B6C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5013AF71B8D9EB600AD3B6C /* LaunchScreen.xib */; };
 		A5013B051B8D9EB600AD3B6C /* SpriteKitTankTalkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5013B041B8D9EB600AD3B6C /* SpriteKitTankTalkTests.swift */; };
 		A5013B0F1B8D9F5500AD3B6C /* GameSceneGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5013B0E1B8D9F5500AD3B6C /* GameSceneGenerator.swift */; };
+		A5013B131B8E821700AD3B6C /* SpeechSynthesizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5013B121B8E821700AD3B6C /* SpeechSynthesizer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		A5013B031B8D9EB600AD3B6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A5013B041B8D9EB600AD3B6C /* SpriteKitTankTalkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteKitTankTalkTests.swift; sourceTree = "<group>"; };
 		A5013B0E1B8D9F5500AD3B6C /* GameSceneGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameSceneGenerator.swift; sourceTree = "<group>"; };
+		A5013B121B8E821700AD3B6C /* SpeechSynthesizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechSynthesizer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 				9B1737241B8DD5C00033BEAD /* scenes */,
 				A5013B0E1B8D9F5500AD3B6C /* GameSceneGenerator.swift */,
 				9B19ECCC1B8E184D00552D11 /* Character.swift */,
+				A5013B121B8E821700AD3B6C /* SpeechSynthesizer.swift */,
 				A5013AE81B8D9EB600AD3B6C /* Supporting Files */,
 			);
 			path = SpriteKitTankTalk;
@@ -265,6 +268,7 @@
 				A5013B0F1B8D9F5500AD3B6C /* GameSceneGenerator.swift in Sources */,
 				9B19ECCD1B8E184D00552D11 /* Character.swift in Sources */,
 				9B19ECC81B8DDD7800552D11 /* CodeViewController.swift in Sources */,
+				A5013B131B8E821700AD3B6C /* SpeechSynthesizer.swift in Sources */,
 				A5013AEB1B8D9EB600AD3B6C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
