@@ -11,6 +11,7 @@ import SpriteKit
 class GameScene: SKScene {
     
     var nextSlide: (()->())?
+    var previousSlide: (()->())?
     var code : NSAttributedString?
     
     var character: SKSpriteNode {
@@ -19,6 +20,14 @@ class GameScene: SKScene {
     
     var title:  SKLabelNode {
         return self.childNodeWithName("title") as! SKLabelNode
+    }
+    
+    var nextPortal: SKSpriteNode {
+        return self.childNodeWithName("nextPortal") as! SKSpriteNode
+    }
+    
+    var previousPortal:  SKSpriteNode {
+        return self.childNodeWithName("previousPortal") as! SKSpriteNode
     }
     
     override func didMoveToView(view: SKView) {
@@ -39,14 +48,31 @@ class GameScene: SKScene {
             
             let move = SKAction.moveTo(location, duration: 2.0)
             self.character.runAction(move, completion: { () -> Void in
-                if let nextSlide = self.nextSlide {
-                    nextSlide()
-                }
+                self.checkForPortals()
             })
 
             let action = SKAction.rotateByAngle(CGFloat(M_PI), duration:1)
             self.character.runAction(SKAction.repeatActionForever(action))            
         }
+    }
+    
+    func checkForPortals() {
+        
+        if isCharacterOnNode(self.nextPortal) {
+            if let nextSlide = self.nextSlide {
+                nextSlide()
+            }
+        }
+        else if isCharacterOnNode(self.previousPortal) {
+            if let previousSlide = self.previousSlide {
+                previousSlide()
+            }
+        }
+    }
+    
+    private func isCharacterOnNode(node: SKNode) -> Bool {
+        let node = self.nodesAtPoint(self.character.position).filter({return $0.name == node.name!}).first as? SKNode
+        return node != nil
     }
    
     override func update(currentTime: CFTimeInterval) {

@@ -27,6 +27,15 @@ class GameViewController: UIViewController {
     
     func nextSlide() {
         self.index++
+        self.toIndex(self.index)
+    }
+    
+    func previousSlide() {
+        self.index--
+        self.toIndex(self.index)
+    }
+    
+    private func toIndex(index: Int) {
         self.scene = GameSceneGenerator.fromIndex(index)
         
         if let scene = self.scene  {
@@ -43,9 +52,8 @@ class GameViewController: UIViewController {
             
             skView.presentScene(scene)
             scene.nextSlide = nextSlide
+            scene.previousSlide = previousSlide
         }
-
-        
     }
     
     override func viewWillLayoutSubviews() {
