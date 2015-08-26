@@ -10,6 +10,8 @@ import SpriteKit
 
 class GameScene: SKScene {
     
+    var nextSlide: (()->())?
+    
     var character: SKSpriteNode {
         return self.childNodeWithName("character") as! SKSpriteNode
     }
@@ -34,7 +36,13 @@ class GameScene: SKScene {
             self.character
             self.character.removeAllActions()
             
-            self.character.position = location
+            let move = SKAction.moveTo(location, duration: 2.0)
+            self.character.runAction(move, completion: { () -> Void in
+                if let nextSlide = self.nextSlide {
+                    nextSlide()
+                }
+            })
+
             let action = SKAction.rotateByAngle(CGFloat(M_PI), duration:1)
             self.character.runAction(SKAction.repeatActionForever(action))            
         }
