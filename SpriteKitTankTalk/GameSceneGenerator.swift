@@ -62,6 +62,8 @@ struct GameSceneGenerator {
 }
 
 
+typealias GenericDictionary = [String: AnyObject]
+
 struct Config {
     let isDebug : Bool
     let levels : [Level]
@@ -70,13 +72,8 @@ struct Config {
         let configDict = plistDictionary()
         let isDebug = configDict["isDebug"]!.boolValue!
         
-        let levelsRaw = configDict["levels"] as! NSArray
-        
-        var levels = [Level]()
-        
-        for dictionary in levelsRaw {
-            levels.append(Level.fromDictionary(dictionary as! NSDictionary))
-        }
+        let levelsRaw = configDict["levels"] as! [GenericDictionary]
+        let levels = levelsRaw.map({Level.fromDictionary($0)})
         
         return Config(isDebug: isDebug, levels: levels)
     }
@@ -91,15 +88,9 @@ struct Config {
 struct Level {
     let nodes : [Node]
     
-    static func fromDictionary(dictionary: NSDictionary) -> Level {
-        let nodesRaw = dictionary["nodes"] as! NSArray
-        var nodes = [Node]()
-        
-        
-        for dictionary in nodesRaw {
-            nodes.append(Node.fromDictionary(dictionary as! NSDictionary))
-        }
-        
+    static func fromDictionary(dictionary: GenericDictionary) -> Level {
+        let nodesRaw = dictionary["nodes"] as! [GenericDictionary]
+        let nodes = nodesRaw.map({Node.fromDictionary($0)})
         return Level(nodes: nodes)
     }
 }
@@ -110,7 +101,7 @@ struct Node {
     let type: NodeType
     let value: String
     
-    static func fromDictionary(dictionary: NSDictionary) -> Node {
+    static func fromDictionary(dictionary: GenericDictionary) -> Node {
         let startPosition = positionFromString(dictionary["startPosition"] as? String)
         let endPosition = positionFromString(dictionary["endPosition"] as? String)
         
