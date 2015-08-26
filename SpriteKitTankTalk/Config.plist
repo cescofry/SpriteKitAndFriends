@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>isDebug</key>
+	<true/>
+	<key>scenes</key>
+	<array>
+		<dict>
+			<key>title</key>
+			<string>First Slide</string>
+			<key>code</key>
+			<string>&lt;div&gt;some hTML &lt;i&gt;italic&lt;/i&gt; &lt;b&gt;bold&lt;/b&gt; for first slide&lt;/div&gt; </string>
+		</dict>
+		<dict>
+			<key>title</key>
+			<string>Physics</string>
+			<key>code</key>
+			<string>&lt;div&gt;some hTML &lt;i&gt;italic&lt;/i&gt; &lt;b&gt;bold&lt;/b&gt; code for physics&lt;/div&gt; </string>
+		</dict>
+		<dict>
+			<key>title</key>
+			<string>Third Slide</string>
+			<key>code</key>
+			<string>&lt;div&gt;some hTML &lt;i&gt;italic&lt;/i&gt; &lt;b&gt;bold&lt;/b&gt;third slide code&lt;/div&gt; </string>
+		</dict>
+	</array>
+</dict>
+</plist>

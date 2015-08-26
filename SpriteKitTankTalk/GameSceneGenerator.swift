@@ -30,8 +30,23 @@ struct GameSceneGenerator {
         let config = Config.sharedConfig()
         let scene = GameScene.unarchiveFromFile("GameScene\(index)") as? GameScene
         if let scene = scene {
-            scene.title.text = "Title for slide"
+            
+            let realIndex = index - 1
+            let sceneConfig = Config.sharedConfig().scenes[realIndex]
+            scene.title.text = sceneConfig.title
+            scene.code = sceneConfig.code
+            
+            switch index {
+            case 1: scene.setUp1()
+            case 2: scene.setUp2()
+            case 3: scene.setUp3()
+            default:
+                scene.title.text = "This scene has not been implemented yet"
+            }
+            
         }
+        
+        
         return scene
     }
 }
@@ -40,12 +55,20 @@ typealias GenericDictionary = [String: AnyObject]
 
 struct Config {
     let isDebug : Bool
-    
+    let scenes : [SceneDescription]
+        
     static func sharedConfig() -> Config! {
         let configDict = plistDictionary()
         let isDebug = configDict["isDebug"]!.boolValue!
+        let scenesR = configDict["scenes"] as! [[String : String]]
+        let scenes = scenesR.map({ (dictionary) -> SceneDescription in
+            let title = dictionary["title"]!
+            let codeString = dictionary["code"]!
+            let codeAttributed = NSAttributedString(htmlString: codeString)
+            return SceneDescription(title: title, code: codeAttributed!)
+        })
         
-        return Config(isDebug: isDebug)
+        return Config(isDebug: isDebug, scenes: scenes)
     }
     
     private static func plistDictionary() -> NSDictionary {
@@ -53,6 +76,19 @@ struct Config {
         let path = NSBundle.mainBundle().pathForResource("Config", ofType: "plist")!
         return NSDictionary(contentsOfFile: path)!
     }
+}
+
+extension NSAttributedString {
+    convenience init?(htmlString: String) {
+        let data = htmlString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
+        var error : NSError?
+        self.init(data: data!, options: nil, documentAttributes: nil, error: &error)
+    }
+}
+
+struct SceneDescription {
+    let title : String
+    let code : NSAttributedString
 }
 
 

@@ -12,16 +12,29 @@ import SpriteKit
 class GameViewController: UIViewController {
 
     var index = 0
+    var scene : GameScene?
+    
+    var isDebug : Bool? {
+        didSet {
+            let skView = self.view as! SKView
+            
+            let debug = isDebug != nil ? isDebug! : false
+            skView.showsFPS = debug
+            skView.showsNodeCount = debug
+            skView.showsPhysics = debug
+        }
+    }
     
     func nextSlide() {
         self.index++
+        self.scene = GameSceneGenerator.fromIndex(index)
         
-        if let scene = GameSceneGenerator.fromIndex(index) {
+        if let scene = self.scene  {
             // Configure the view.
-            let skView = self.view as! SKView
-            skView.showsFPS = true
-            skView.showsNodeCount = true
             
+            self.isDebug = Config.sharedConfig().isDebug
+ 
+            let skView = self.view as! SKView
             /* Sprite Kit applies additional optimizations to improve rendering performance */
             skView.ignoresSiblingOrder = true
             
@@ -29,7 +42,6 @@ class GameViewController: UIViewController {
             scene.scaleMode = .AspectFill
             
             skView.presentScene(scene)
-            
             scene.nextSlide = nextSlide
         }
 
@@ -66,7 +78,7 @@ class GameViewController: UIViewController {
         if let btn = sender as? UIBarButtonItem {
             let vc = CodeViewController.fromUIBArButtonItem(btn)
             self.presentViewController(vc, animated: true, completion: { () -> Void in
-                vc.code = NSAttributedString(string: "This is a test\nwith lines\n\n multipme lines")
+                vc.code = self.scene!.code
             })
         }
     }

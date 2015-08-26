@@ -11,6 +11,7 @@ import SpriteKit
 class GameScene: SKScene {
     
     var nextSlide: (()->())?
+    var code : NSAttributedString?
     
     var character: SKSpriteNode {
         return self.childNodeWithName("character") as! SKSpriteNode
@@ -50,5 +51,31 @@ class GameScene: SKScene {
    
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
+    }
+}
+
+
+extension GameScene {
+    func setUp1() {
+    }
+}
+
+extension GameScene {
+    func setUp2() {
+        
+        self.physicsWorld.gravity = CGVector(dx: 0, dy: -1)
+
+        let characterPhysic = SKPhysicsBody(rectangleOfSize: self.character.size)
+        self.character.physicsBody = characterPhysic
+    }
+}
+
+extension GameScene {
+    func setUp3() {
+        self.physicsWorld.gravity = CGVector(dx: 0, dy: -1)
+        
+        let characterPhysic = SKPhysicsBody(rectangleOfSize: self.character.size)
+        characterPhysic.friction = 0.01
+        self.character.physicsBody = characterPhysic
     }
 }
