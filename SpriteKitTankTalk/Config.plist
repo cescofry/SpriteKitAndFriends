@@ -8,21 +8,57 @@
 	<array>
 		<dict>
 			<key>title</key>
-			<string>First Slide</string>
+			<string>Scene and Nodes</string>
 			<key>code</key>
-			<string>&lt;div&gt;some hTML &lt;i&gt;italic&lt;/i&gt; &lt;b&gt;bold&lt;/b&gt; for first slide&lt;/div&gt; </string>
+			<string>Explain what is a scene and what are nodes and the varius kind of nodes</string>
 		</dict>
 		<dict>
 			<key>title</key>
-			<string>Physics</string>
+			<string>Actions and Sprites</string>
 			<key>code</key>
-			<string>&lt;div&gt;some hTML &lt;i&gt;italic&lt;/i&gt; &lt;b&gt;bold&lt;/b&gt; code for physics&lt;/div&gt; </string>
+			<string>Explain actions and how to apply a walking sprite</string>
 		</dict>
 		<dict>
 			<key>title</key>
-			<string>Third Slide</string>
+			<string>Collisions</string>
 			<key>code</key>
-			<string>&lt;div&gt;some hTML &lt;i&gt;italic&lt;/i&gt; &lt;b&gt;bold&lt;/b&gt;third slide code&lt;/div&gt; </string>
+			<string>Explain collisions</string>
+		</dict>
+		<dict>
+			<key>title</key>
+			<string>Physic Body</string>
+			<key>code</key>
+			<string>Explain physic body and how gravity is affected</string>
+		</dict>
+		<dict>
+			<key>title</key>
+			<string>Minmax Strategist</string>
+			<key>code</key>
+			<string>What a strategist is and how to implement it</string>
+		</dict>
+		<dict>
+			<key>title</key>
+			<string>Pathfinding</string>
+			<key>code</key>
+			<string>Put obstacles on the scene and make the user dodge them</string>
+		</dict>
+		<dict>
+			<key>title</key>
+			<string>Agents</string>
+			<key>code</key>
+			<string>Expalin agents</string>
+		</dict>
+		<dict>
+			<key>title</key>
+			<string>Rules</string>
+			<key>code</key>
+			<string>Explain Rules</string>
+		</dict>
+		<dict>
+			<key>title</key>
+			<string>Thank you</string>
+			<key>code</key>
+			<string>@cescofry</string>
 		</dict>
 	</array>
 </dict>
