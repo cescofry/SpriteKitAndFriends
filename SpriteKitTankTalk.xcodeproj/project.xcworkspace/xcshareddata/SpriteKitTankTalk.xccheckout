@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>52FEC97E-2E06-4826-8231-355F76589C5C</string>
+	<key>IDESourceControlProjectName</key>
+	<string>project</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>C6F4526546B4B12E617D8E7B32795E9BB51ADE24</key>
+		<string>iptx.org:prezel.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>test/SpriteKitTankTalk/SpriteKitTankTalk.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>C6F4526546B4B12E617D8E7B32795E9BB51ADE24</key>
+		<string>../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>iptx.org:prezel.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>C6F4526546B4B12E617D8E7B32795E9BB51ADE24</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>C6F4526546B4B12E617D8E7B32795E9BB51ADE24</string>
+			<key>IDESourceControlWCCName</key>
+			<string>iPhoneApps</string>
+		</dict>
+	</array>
+</dict>
+</plist>
