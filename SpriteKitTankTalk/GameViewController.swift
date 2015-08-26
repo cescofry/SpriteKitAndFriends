@@ -25,12 +25,12 @@ class GameViewController: UIViewController {
         }
     }
     
-    func nextSlide() {
+    func nextScene() {
         self.index++
         self.toIndex(self.index)
     }
     
-    func previousSlide() {
+    func previousScene() {
         self.index--
         self.toIndex(self.index)
     }
@@ -51,14 +51,14 @@ class GameViewController: UIViewController {
             scene.scaleMode = .AspectFill
             
             skView.presentScene(scene)
-            scene.nextSlide = nextSlide
-            scene.previousSlide = previousSlide
+            scene.nextScene = nextScene
+            scene.previousScene = previousScene
         }
     }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        nextSlide()
+        nextScene()
     }
 
     override func shouldAutorotate() -> Bool {

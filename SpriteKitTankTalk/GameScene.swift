@@ -10,12 +10,12 @@ import SpriteKit
 
 class GameScene: SKScene {
     
-    var nextSlide: (()->())?
-    var previousSlide: (()->())?
+    var nextScene: (()->())?
+    var previousScene: (()->())?
     var code : NSAttributedString?
     
-    var character: SKSpriteNode {
-        return self.childNodeWithName("character") as! SKSpriteNode
+    var character: Character {
+        return self.childNodeWithName("character") as! Character
     }
     
     var title:  SKLabelNode {
@@ -39,33 +39,24 @@ class GameScene: SKScene {
         for touch in (touches as! Set<UITouch>) {
             let location = touch.locationInNode(self)
             
-            //let test = self.children.first!
-            //let sprite = self.childNodeWithName("test")
-            
-            
-            self.character
             self.character.removeAllActions()
-            
-            let move = SKAction.moveTo(location, duration: 2.0)
-            self.character.runAction(move, completion: { () -> Void in
+        
+            self.character.runToPosition(location, completion: { () -> () in
                 self.checkForPortals()
             })
-
-            let action = SKAction.rotateByAngle(CGFloat(M_PI), duration:1)
-            self.character.runAction(SKAction.repeatActionForever(action))            
         }
     }
     
     func checkForPortals() {
         
         if isCharacterOnNode(self.nextPortal) {
-            if let nextSlide = self.nextSlide {
-                nextSlide()
+            if let nextScene = self.nextScene {
+                nextScene()
             }
         }
         else if isCharacterOnNode(self.previousPortal) {
-            if let previousSlide = self.previousSlide {
-                previousSlide()
+            if let previousScene = self.previousScene {
+                previousScene()
             }
         }
     }

@@ -12,6 +12,8 @@
 		9B17372A1B8DD5C00033BEAD /* GameScene3.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9B1737271B8DD5C00033BEAD /* GameScene3.sks */; };
 		9B19ECC81B8DDD7800552D11 /* CodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B19ECC71B8DDD7800552D11 /* CodeViewController.swift */; };
 		9B19ECCA1B8DF26800552D11 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9B19ECC91B8DF26800552D11 /* Config.plist */; };
+		9B19ECCD1B8E184D00552D11 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B19ECCC1B8E184D00552D11 /* Character.swift */; };
+		9B19ECCF1B8E1DDC00552D11 /* elf.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 9B19ECCE1B8E1DDC00552D11 /* elf.atlas */; };
 		A5013AEB1B8D9EB600AD3B6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5013AEA1B8D9EB600AD3B6C /* AppDelegate.swift */; };
 		A5013AEF1B8D9EB600AD3B6C /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5013AEE1B8D9EB600AD3B6C /* GameScene.swift */; };
 		A5013AF11B8D9EB600AD3B6C /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5013AF01B8D9EB600AD3B6C /* GameViewController.swift */; };
@@ -38,6 +40,8 @@
 		9B1737271B8DD5C00033BEAD /* GameScene3.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene3.sks; sourceTree = "<group>"; };
 		9B19ECC71B8DDD7800552D11 /* CodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodeViewController.swift; sourceTree = "<group>"; };
 		9B19ECC91B8DF26800552D11 /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
+		9B19ECCC1B8E184D00552D11 /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		9B19ECCE1B8E1DDC00552D11 /* elf.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = elf.atlas; path = _etc/elf/elf.atlas; sourceTree = SOURCE_ROOT; };
 		A5013AE51B8D9EB600AD3B6C /* SpriteKitTankTalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpriteKitTankTalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5013AE91B8D9EB600AD3B6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A5013AEA1B8D9EB600AD3B6C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -114,11 +118,9 @@
 			children = (
 				9B19ECCB1B8DF43300552D11 /* View Controllers */,
 				9B1737241B8DD5C00033BEAD /* scenes */,
-				A5013AF21B8D9EB600AD3B6C /* Main.storyboard */,
-				A5013AF51B8D9EB600AD3B6C /* Images.xcassets */,
-				A5013AF71B8D9EB600AD3B6C /* LaunchScreen.xib */,
 				A5013B0E1B8D9F5500AD3B6C /* GameSceneGenerator.swift */,
 				A5013AE81B8D9EB600AD3B6C /* Supporting Files */,
+				9B19ECCC1B8E184D00552D11 /* Character.swift */,
 			);
 			path = SpriteKitTankTalk;
 			sourceTree = "<group>";
@@ -126,6 +128,10 @@
 		A5013AE81B8D9EB600AD3B6C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9B19ECCE1B8E1DDC00552D11 /* elf.atlas */,
+				A5013AF21B8D9EB600AD3B6C /* Main.storyboard */,
+				A5013AF51B8D9EB600AD3B6C /* Images.xcassets */,
+				A5013AF71B8D9EB600AD3B6C /* LaunchScreen.xib */,
 				9B19ECC91B8DF26800552D11 /* Config.plist */,
 				A5013AE91B8D9EB600AD3B6C /* Info.plist */,
 			);
@@ -232,6 +238,7 @@
 				A5013AF91B8D9EB600AD3B6C /* LaunchScreen.xib in Resources */,
 				A5013AF61B8D9EB600AD3B6C /* Images.xcassets in Resources */,
 				9B1737281B8DD5C00033BEAD /* GameScene1.sks in Resources */,
+				9B19ECCF1B8E1DDC00552D11 /* elf.atlas in Resources */,
 				9B17372A1B8DD5C00033BEAD /* GameScene3.sks in Resources */,
 				A5013AF41B8D9EB600AD3B6C /* Main.storyboard in Resources */,
 				9B1737291B8DD5C00033BEAD /* GameScene2.sks in Resources */,
@@ -256,6 +263,7 @@
 				A5013AEF1B8D9EB600AD3B6C /* GameScene.swift in Sources */,
 				A5013AF11B8D9EB600AD3B6C /* GameViewController.swift in Sources */,
 				A5013B0F1B8D9F5500AD3B6C /* GameSceneGenerator.swift in Sources */,
+				9B19ECCD1B8E184D00552D11 /* Character.swift in Sources */,
 				9B19ECC81B8DDD7800552D11 /* CodeViewController.swift in Sources */,
 				A5013AEB1B8D9EB600AD3B6C /* AppDelegate.swift in Sources */,
 			);
