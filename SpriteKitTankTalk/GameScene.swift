@@ -11,6 +11,7 @@ import SpriteKit
 class GameScene: SKScene {
     
     var nextScene: (()->())?
+    var setup: (()->())?
     
     var sceneDescription: SceneDescription? {
         didSet {
@@ -47,6 +48,11 @@ class GameScene: SKScene {
     }
     
     override func didMoveToView(view: SKView) {
+        
+        if let setup = self.setup {
+            setup()
+        }
+        
         self.character.position = CGPoint(x: -50.0, y: self.view!.center.y) // lazy loading
         let startPosition = CGPoint(x: 80.0, y: self.view!.center.y)
         self.character.runToPosition(startPosition, completion: { () -> () in

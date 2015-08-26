@@ -35,9 +35,9 @@ struct GameSceneGenerator {
             scene.sceneDescription = Config.sharedConfig().scenes[realIndex]
             
             switch index {
-            case 1: scene.setUp1()
-            case 2: scene.setUp2()
-            case 3: scene.setUp3()
+            case 1: scene.setup = scene.setUp1
+            case 2: scene.setup = scene.setUp2
+            case 3: scene.setup = scene.setUp3
             default:
                 scene.title.text = "This scene has not been implemented yet"
             }
