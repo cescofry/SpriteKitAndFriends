@@ -7,11 +7,15 @@
 //
 
 import SpriteKit
+import AVFoundation
 
 class GameScene: SKScene {
     
     var nextScene: (()->())?
     var setup: (()->())?
+    var currentActionIndex = 0
+    
+    let synth = AVSpeechSynthesizer()
     
     var sceneDescription: SceneDescription? {
         didSet {
@@ -57,7 +61,22 @@ class GameScene: SKScene {
         let startPosition = CGPoint(x: 80.0, y: self.view!.center.y)
         self.character.runToPosition(startPosition, completion: { () -> () in
             // run action 1
+            self.speakActionAndAdvance()
         })
+    }
+    
+    func speakActionAndAdvance() {
+        if let action = self.sceneDescription?.actions[self.currentActionIndex] {
+            speakAction(action)
+            self.currentActionIndex++
+        }
+    }
+    
+    func speakAction(action: String) {
+        let utterance = AVSpeechUtterance(string: action)
+        utterance.pitchMultiplier = 0.9
+        utterance.rate = 0.3
+        synth.speakUtterance(utterance)
     }
     
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
