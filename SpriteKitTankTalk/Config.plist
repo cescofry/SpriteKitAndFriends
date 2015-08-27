@@ -12,7 +12,47 @@
 			<key>title</key>
 			<string>Scene and Nodes</string>
 			<key>code</key>
-			<string>Explain what is a scene and what are nodes and the varius kind of nodes</string>
+			<string>&lt;div class=&quot;highlight highlight-swift&quot;&gt;&lt;pre&gt;&lt;span class=&quot;pl-k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;someExternalFramework&lt;/span&gt;
+
+&lt;span class=&quot;pl-k&quot;&gt;class&lt;/span&gt; FooViewController &lt;span class=&quot;pl-k&quot;&gt;:&lt;/span&gt; UIViewController, FoobarDelegate {
+    &lt;span class=&quot;pl-k&quot;&gt;let&lt;/span&gt; foo: Foo
+
+    &lt;span class=&quot;pl-k&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;let&lt;/span&gt; fooStringConstant &lt;span class=&quot;pl-k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;pl-s&quot;&gt;&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;FooConstant&lt;span class=&quot;pl-pds&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;
+    &lt;span class=&quot;pl-k&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;let&lt;/span&gt; floatConstant     &lt;span class=&quot;pl-k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;pl-c1&quot;&gt;1234&lt;/span&gt;&lt;span class=&quot;pl-k&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;pl-c1&quot;&gt;5&lt;/span&gt;
+
+    &lt;span class=&quot;pl-c&quot;&gt;//MARK: LifeCycle&lt;/span&gt;
+
+    &lt;span class=&quot;pl-c&quot;&gt;//Custom initializers go here&lt;/span&gt;
+
+    &lt;span class=&quot;pl-c&quot;&gt;//MARK: View LifeCycle&lt;/span&gt;
+
+    &lt;span class=&quot;pl-k&quot;&gt;override&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;pl-en&quot;&gt;viewDidLoad&lt;/span&gt;() {
+        &lt;span class=&quot;pl-k&quot;&gt;super&lt;/span&gt;&lt;span class=&quot;pl-k&quot;&gt;.&lt;/span&gt;viewDidLoad()
+        &lt;span class=&quot;pl-c&quot;&gt;// ...&lt;/span&gt;
+    }
+
+    &lt;span class=&quot;pl-c&quot;&gt;//MARK: Layout&lt;/span&gt;
+    &lt;span class=&quot;pl-k&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;pl-en&quot;&gt;makeViewConstaints&lt;/span&gt;() {
+        &lt;span class=&quot;pl-c&quot;&gt;// ...&lt;/span&gt;
+    }
+
+    &lt;span class=&quot;pl-c&quot;&gt;//MARK: User Interaction&lt;/span&gt;
+
+    &lt;span class=&quot;pl-k&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;pl-en&quot;&gt;foobarButtonTapped&lt;/span&gt; () {
+        &lt;span class=&quot;pl-c&quot;&gt;// ...&lt;/span&gt;
+    }
+
+    &lt;span class=&quot;pl-c&quot;&gt;//MARK:FoobarDelegate&lt;/span&gt;
+    &lt;span class=&quot;pl-k&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;pl-en&quot;&gt;foobar&lt;/span&gt;(foobar: Foobar &lt;span class=&quot;pl-smi&quot;&gt;didSomethingWithFoo&lt;/span&gt; foo: Foo) {
+        &lt;span class=&quot;pl-c&quot;&gt;// ...&lt;/span&gt;
+    }
+
+    &lt;span class=&quot;pl-c&quot;&gt;//MARK: Additional Helpers&lt;/span&gt;
+    &lt;span class=&quot;pl-k&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;pl-k&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;pl-en&quot;&gt;displayNameForFoo&lt;/span&gt;(foo: Foo) {
+        &lt;span class=&quot;pl-c&quot;&gt;// ...&lt;/span&gt;
+    }
+}
+&lt;/pre&gt;&lt;/div&gt;</string>
 			<key>actions</key>
 			<array>
 				<string>Hello and welcome to SpriteKit 101</string>

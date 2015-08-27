@@ -23,9 +23,8 @@ struct Config {
         let scenes = scenesR.map({ (dictionary) -> SceneDescription in
             let title = dictionary["title"] as! String
             let codeString = dictionary["code"] as! String
-            let codeAttributed = NSAttributedString(htmlString: codeString)
             let actions = dictionary["actions"] as! [String]
-            return SceneDescription(title: title, code: codeAttributed!, actions: actions)
+            return SceneDescription(title: title, code: codeString, actions: actions)
         })
         
         return Config(isDebug: isDebug, speakText: speakText, scenes: scenes)
@@ -38,16 +37,8 @@ struct Config {
     }
 }
 
-extension NSAttributedString {
-    convenience init?(htmlString: String) {
-        let data = htmlString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
-        var error : NSError?
-        self.init(data: data!, options: nil, documentAttributes: nil, error: &error)
-    }
-}
-
 struct SceneDescription {
     let title : String
-    let code : NSAttributedString
+    let code : String
     let actions : [String]
 }

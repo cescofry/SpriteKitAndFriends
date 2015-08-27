@@ -7,38 +7,34 @@
 //
 
 import UIKit
+import WebKit
 
 class CodeViewController : UIViewController {
 
-    var code : NSAttributedString? {
+    var html : String? {
         didSet {
-            if let code = code {
-                let frame = CGRectInset(self.view.bounds, 10, 10)
-                let label = UILabel(frame: frame)
-                label.numberOfLines = 0
-                label.attributedText = code
-                self.view.addSubview(label)
+            if let html = html {
+                self.webView.loadHTMLString(html, baseURL: nil)
             }
         }
     }
     
+    var webView =  WKWebView(frame: CGRectZero)
+    
     var aboutToDismiss : (()->())?
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        
+    override func viewDidLoad() {
+        super.viewDidLoad()
         self.view.backgroundColor = UIColor.lightTextColor()
-    }
-
-    required init(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        
+        self.webView.frame = self.view.bounds
+        self.view.addSubview(self.webView)
     }
     
-    
-    static func inNavigationController(code: NSAttributedString, dismissBlock: (()->())?) -> UINavigationController {
+    static func inNavigationController(html: String, dismissBlock: (()->())?) -> UINavigationController {
         
         let vc = CodeViewController(nibName: nil, bundle: nil)
-        vc.code = code
+        vc.html = html
         vc.aboutToDismiss = dismissBlock
         let navVC = UINavigationController(rootViewController: vc)
         navVC.modalPresentationStyle = UIModalPresentationStyle.PageSheet
