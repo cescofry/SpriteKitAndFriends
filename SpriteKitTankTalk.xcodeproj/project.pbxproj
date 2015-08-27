@@ -14,6 +14,7 @@
 		9B19ECCA1B8DF26800552D11 /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9B19ECC91B8DF26800552D11 /* Config.plist */; };
 		9B19ECCD1B8E184D00552D11 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B19ECCC1B8E184D00552D11 /* Character.swift */; };
 		9B19ECCF1B8E1DDC00552D11 /* elf.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 9B19ECCE1B8E1DDC00552D11 /* elf.atlas */; };
+		9B19ECD11B8F3F8100552D11 /* GameExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B19ECD01B8F3F8100552D11 /* GameExtensions.swift */; };
 		A5013AEB1B8D9EB600AD3B6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5013AEA1B8D9EB600AD3B6C /* AppDelegate.swift */; };
 		A5013AEF1B8D9EB600AD3B6C /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5013AEE1B8D9EB600AD3B6C /* GameScene.swift */; };
 		A5013AF11B8D9EB600AD3B6C /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5013AF01B8D9EB600AD3B6C /* GameViewController.swift */; };
@@ -45,6 +46,7 @@
 		9B19ECC91B8DF26800552D11 /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
 		9B19ECCC1B8E184D00552D11 /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		9B19ECCE1B8E1DDC00552D11 /* elf.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = elf.atlas; path = _etc/elf/elf.atlas; sourceTree = SOURCE_ROOT; };
+		9B19ECD01B8F3F8100552D11 /* GameExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameExtensions.swift; sourceTree = "<group>"; };
 		A5013AE51B8D9EB600AD3B6C /* SpriteKitTankTalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpriteKitTankTalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5013AE91B8D9EB600AD3B6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A5013AEA1B8D9EB600AD3B6C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 				A5013AF01B8D9EB600AD3B6C /* GameViewController.swift */,
 				9B19ECC71B8DDD7800552D11 /* CodeViewController.swift */,
 				A5013AEE1B8D9EB600AD3B6C /* GameScene.swift */,
+				9B19ECD01B8F3F8100552D11 /* GameExtensions.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 				A5B0FF701B8EF7A100BA9584 /* Config.swift in Sources */,
 				A5013B131B8E821700AD3B6C /* SpeechSynthesizer.swift in Sources */,
 				A5013AEB1B8D9EB600AD3B6C /* AppDelegate.swift in Sources */,
+				9B19ECD11B8F3F8100552D11 /* GameExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

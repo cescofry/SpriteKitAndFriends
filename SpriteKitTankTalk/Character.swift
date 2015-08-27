@@ -33,8 +33,6 @@ class Character: SKSpriteNode {
         let direction = Direction.fromRadiants(radiants)
         let duration = NSTimeInterval(self.position.distanceToPoint(position) / 200)
         
-        println("rad : \(radiansToDegrees(radiants))")
-        
         // run textures
         let runAction = SKAction.animateWithTextures(self.runAtlasses[direction]!, timePerFrame: 0.05)
         self.runAction(SKAction.repeatActionForever(runAction), withKey: "runTexture")
@@ -98,6 +96,42 @@ extension Direction {
 //            case 0.81...
 //            
 //        }
+    }
+}
+
+
+
+struct PhysicBody {
+    
+    static func physicsForNode(node: SKSpriteNode) -> SKPhysicsBody {
+        let physic = SKPhysicsBody(circleOfRadius: node.size.width / 2.2)
+        physic.dynamic = true
+        
+        if let name = node.name {
+            switch name {
+            case "character":
+                physic.categoryBitMask = 0x1 << 0
+                physic.contactTestBitMask = 0x1 << 1
+                physic.collisionBitMask = 0x1 << 1
+            case "actionBox":
+                physic.categoryBitMask = 0x1 << 1
+                physic.contactTestBitMask = 0x1 << 0
+                physic.collisionBitMask = 0x1 << 0
+            case "portal":
+                physic.categoryBitMask = 0x1 << 2
+                physic.contactTestBitMask = 0x1 << 0
+                physic.collisionBitMask = 0x1 << 0
+            default:
+                physic.categoryBitMask = 0x1 << 8
+                physic.contactTestBitMask = 0x1 << 0
+                physic.collisionBitMask = 0x1 << 0
+            }
+        }
+        
+        physic.dynamic = true
+        physic.affectedByGravity = false
+        
+        return physic
     }
 }
 

@@ -8,12 +8,46 @@
 
 import SpriteKit
 
-class GameScene: SKScene {
+enum NodeType {
+    case Character, ActionBox, Portal, Other
+    
+    static func fromString(string : String) -> NodeType {
+        switch string {
+        case "character": return .Character
+        case "actionBox": return .ActionBox
+        case "portal": return .Portal
+        default: return .Other
+        }
+    }
+    
+    func toString() -> String {
+        switch self {
+        case .Character: return "character"
+        case .ActionBox: return "actionBox"
+        case .Portal: return "portal"
+        default: return "other"
+        }
+    }
+}
+
+extension SKScene {
+    func childNodeFromType(type: NodeType) -> SKNode? {
+        if (type == .Other) {
+            return nil
+        }
+        
+        return self.childNodeWithName(type.toString())
+    }
+}
+
+typealias DidContactBlock = (nodes: [NodeType : SKNode])->()
+
+class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var nextScene: (()->())?
     var setup: (()->())?
     
-    var action: (()->())?
+    var didContact: DidContactBlock?
     
     var currentActionIndex = 0
     var speechSynthesizer = SpeechSynthesizer()
@@ -27,13 +61,14 @@ class GameScene: SKScene {
     }
     
     var character: Character {
-        if let character = self.childNodeWithName("character") as? Character {
+        if let character = self.childNodeFromType(.Character) as? Character {
             return character
         }
         
         let character = Character(imageNamed: "slice01.png")
         character.name = "character"
         character.setScale(0.5)
+        character.zPosition = 99.0
         character.position = self.view!.center
         self.addChild(character)
         
@@ -47,22 +82,18 @@ class GameScene: SKScene {
     }
     
     var nextPortal: SKSpriteNode {
-        return self.childNodeWithName("nextPortal") as! SKSpriteNode
+        return self.childNodeFromType(.Portal) as! SKSpriteNode
     }
     
     var actionBox:  SKSpriteNode? {
-        return self.childNodeWithName("actionBox") as? SKSpriteNode
+        return self.childNodeFromType(.ActionBox) as? SKSpriteNode
     }
     
     override func didMoveToView(view: SKView) {
         
-        runToPosition = { (position: CGPoint, completion: (()->())?) in
-            self.character.runToPosition(position, completion: { () -> () in
-                if let completion = completion {
-                    completion()
-                }
-            })
-        }
+        setDefaultPhysicBodies()
+        
+        setDefaultActions()
         
         self.character.position = CGPoint(x: -50.0, y: self.view!.center.y) // lazy loading
         let startPosition = CGPoint(x: 80.0, y: self.view!.center.y)
@@ -73,6 +104,31 @@ class GameScene: SKScene {
         
         if let setup = self.setup {
             setup()
+        }
+    }
+    
+    private func setDefaultActions() {
+        runToPosition = { (position: CGPoint, completion: (()->())?) in
+            self.character.runToPosition(position, completion: { () -> () in
+                if let completion = completion {
+                    completion()
+                }
+            })
+        }
+        
+        didContact = { (nodes: [NodeType : SKNode]) in
+            
+        }
+    }
+    
+    private func setDefaultPhysicBodies() {
+        self.physicsWorld.contactDelegate = self
+        
+        self.character.physicsBody = PhysicBody.physicsForNode(self.character)
+        self.nextPortal.physicsBody = PhysicBody.physicsForNode(self.nextPortal)
+        self.nextPortal.physicsBody!.dynamic = false
+        if let _ = self.actionBox {
+            self.actionBox!.physicsBody = PhysicBody.physicsForNode(self.actionBox!)
         }
     }
     
@@ -89,6 +145,10 @@ class GameScene: SKScene {
         }
     }
     
+    func popActionNode(node : SKSpriteNode) {
+        node.removeFromParent()
+    }
+    
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         /* Called when a touch begins */
         
@@ -99,99 +159,56 @@ class GameScene: SKScene {
         
             if let runToPosition = self.runToPosition {
                 runToPosition(position: location, completion: { () -> () in
-                    self.checkForPortals()
+                    //
                 })
             }
         }
     }
     
-    func checkForPortals() {
-        if isCharacterOnNode(self.nextPortal) {
-            if let nextScene = self.nextScene {
-                nextScene()
-            }
-        }
-        else if let actionBox = self.actionBox {
-            if isCharacterOnNode(actionBox) {
-                if let action = action {
-                    action()
-                }
-            }
-        }
-    }
-    
-    private func isCharacterOnNode(node: SKNode) -> Bool {
-        if let name = node.name {
-            let allNodes = self.nodesAtPoint(self.character.position)
-            let nodes = allNodes.filter({ (aNode: AnyObject) in
-                if let anSKNode = aNode as? SKNode  {
-                    if let skName = anSKNode.name {
-                        return skName == name
-                    }
-                }
-                
-                return false
-            })
-            return (nodes.count > 0 && nodes.first as? SKNode != nil)
-        }
-        
-        return false
-    }
-   
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
     }
-}
-
-
-extension GameScene {
-    func setUp1() {
-        runToPosition = { (position: CGPoint, completion: (()->())?) in
-            self.character.position = position
-            
-            if let completion = completion {
-                Dispatch.after(0.5, block: completion)
+    
+    private func nodesOutOfContact(contact: SKPhysicsContact) -> [NodeType : SKNode] {
+        let nodeA = contact.bodyA.node
+        let nodeB = contact.bodyB.node
+        
+        var others = [NodeType : SKNode]()
+        if let nodeA = nodeA {
+            if let name = nodeA.name {
+                let type = NodeType.fromString(name)
+                if type != .Other {
+                    others[type] = nodeA
+                }
+            }
+        }
+        
+        if let nodeB = nodeB {
+            if let name = nodeB.name {
+                let type = NodeType.fromString(name)
+                if type != .Other {
+                    others[type] = nodeB
+                }
+            }
+        }
+        return others
+    }
+    
+    func didBeginContact(contact: SKPhysicsContact) {
+        
+        let nodes = nodesOutOfContact(contact)
+        
+        if let contactFunc = self.didContact {
+            contactFunc(nodes: nodes)
+        }
+        
+        if let _ = nodes[.Character] {
+            if let portal = nodes[.Portal] {
+                if let nextScene = nextScene {
+                    nextScene()
+                }
             }
         }
     }
-    func action1() {
-        
-    }
 }
 
-extension GameScene {
-    func setUp2() {
-        self.action = action2
-    }
-    
-    func action2() {
-        self.physicsWorld.gravity = CGVector(dx: 0, dy: -1)
-        
-        let characterPhysic = SKPhysicsBody(rectangleOfSize: self.character.size)
-        self.character.physicsBody = characterPhysic
-        
-        
-        Dispatch.after(4.0, block: { () -> () in
-            if let nextScene = self.nextScene {
-                nextScene()
-            }
-        })
-        
-    }
-}
-
-extension GameScene {
-    func setUp3() {
-        self.character.removeAllActions()
-        self.physicsWorld.gravity = CGVector(dx: 0, dy: -1)
-        
-        let characterPhysic = SKPhysicsBody(rectangleOfSize: self.character.size)
-        characterPhysic.friction = 0.01
-        self.character.physicsBody = characterPhysic
-        self.character.position = CGPoint(x: self.view!.center.x, y: self.view!.bounds.size.height + 50)
-    }
-    
-    func action3() {
-        
-    }
-}
