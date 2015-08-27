@@ -100,6 +100,28 @@ extension Direction {
 }
 
 
+enum NodeType {
+    case Character, ActionBox, Portal, Other
+    
+    static func fromString(string : String) -> NodeType {
+        switch string {
+        case "character": return .Character
+        case "actionBox": return .ActionBox
+        case "portal": return .Portal
+        default: return .Other
+        }
+    }
+    
+    func toString() -> String {
+        switch self {
+        case .Character: return "character"
+        case .ActionBox: return "actionBox"
+        case .Portal: return "portal"
+        default: return "other"
+        }
+    }
+}
+
 
 struct PhysicBody {
     

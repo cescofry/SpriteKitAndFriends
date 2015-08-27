@@ -8,28 +8,6 @@
 
 import SpriteKit
 
-enum NodeType {
-    case Character, ActionBox, Portal, Other
-    
-    static func fromString(string : String) -> NodeType {
-        switch string {
-        case "character": return .Character
-        case "actionBox": return .ActionBox
-        case "portal": return .Portal
-        default: return .Other
-        }
-    }
-    
-    func toString() -> String {
-        switch self {
-        case .Character: return "character"
-        case .ActionBox: return "actionBox"
-        case .Portal: return "portal"
-        default: return "other"
-        }
-    }
-}
-
 extension SKScene {
     func childNodeFromType(type: NodeType) -> SKNode? {
         if (type == .Other) {
@@ -127,8 +105,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.character.physicsBody = PhysicBody.physicsForNode(self.character)
         self.nextPortal.physicsBody = PhysicBody.physicsForNode(self.nextPortal)
         self.nextPortal.physicsBody!.dynamic = false
-        if let _ = self.actionBox {
-            self.actionBox!.physicsBody = PhysicBody.physicsForNode(self.actionBox!)
+        if let actionBox = self.actionBox {
+            actionBox.physicsBody = PhysicBody.physicsForNode(self.actionBox!)
+            actionBox.physicsBody!.dynamic = false
+            
         }
     }
     
@@ -146,7 +126,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func popActionNode(node : SKSpriteNode) {
-        node.removeFromParent()
+        
+        let shrink = SKAction.scaleBy(0.2, duration: 0.3)
+        node.runAction(shrink)
+        
+        let fade = SKAction.fadeAlphaTo(0.0, duration: 0.3)
+        node.runAction(fade, completion: { () -> Void in
+            node.removeFromParent()
+        })
+        
     }
     
     func portalAnimation(completion:(()->())?) {
