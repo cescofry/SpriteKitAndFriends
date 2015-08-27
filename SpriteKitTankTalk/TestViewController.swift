@@ -51,7 +51,8 @@ class TestViewController: UIViewController {
     // Physics
     
     func addPhysicsToNode(node: SKSpriteNode)  {
-        let physics = SKPhysicsBody(circleOfRadius: (node.size.width / 2.0))
+        let radius = node.size.width / 2.0
+        let physics = SKPhysicsBody(circleOfRadius: radius)
         physics.dynamic = false
         physics.friction = 0.2
         physics.restitution = 0.2
@@ -66,7 +67,8 @@ class TestViewController: UIViewController {
     func addGravity(scene: SKScene, node: SKSpriteNode)  {
         scene.physicsWorld.gravity = CGVector(dx: 0.0, dy: -1.0)
         
-        let physics = SKPhysicsBody(circleOfRadius: (node.size.width / 2.0))
+        let radius = node.size.width / 2.0
+        let physics = SKPhysicsBody(circleOfRadius: radius)
         //...
         
         physics.affectedByGravity = true

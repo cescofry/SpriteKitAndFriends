@@ -20,6 +20,10 @@
 		9B19ECDA1B8F5F0600552D11 /* source_1.html in Resources */ = {isa = PBXBuildFile; fileRef = 9B19ECD71B8F5F0600552D11 /* source_1.html */; };
 		9B19ECDB1B8F5F0600552D11 /* source_2.html in Resources */ = {isa = PBXBuildFile; fileRef = 9B19ECD81B8F5F0600552D11 /* source_2.html */; };
 		9B19ECDC1B8F5F0600552D11 /* source_3.html in Resources */ = {isa = PBXBuildFile; fileRef = 9B19ECD91B8F5F0600552D11 /* source_3.html */; };
+		9B19ECDE1B8F6E2800552D11 /* GameScene4.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9B19ECDD1B8F6E2800552D11 /* GameScene4.sks */; };
+		9B19ECE01B8F707400552D11 /* source_4.html in Resources */ = {isa = PBXBuildFile; fileRef = 9B19ECDF1B8F707400552D11 /* source_4.html */; };
+		9B19ECE21B8F729E00552D11 /* GameScene5.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9B19ECE11B8F729E00552D11 /* GameScene5.sks */; };
+		9B19ECE41B8F735900552D11 /* source_5.html in Resources */ = {isa = PBXBuildFile; fileRef = 9B19ECE31B8F735900552D11 /* source_5.html */; };
 		A5013AEB1B8D9EB600AD3B6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5013AEA1B8D9EB600AD3B6C /* AppDelegate.swift */; };
 		A5013AEF1B8D9EB600AD3B6C /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5013AEE1B8D9EB600AD3B6C /* GameScene.swift */; };
 		A5013AF11B8D9EB600AD3B6C /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5013AF01B8D9EB600AD3B6C /* GameViewController.swift */; };
@@ -57,6 +61,10 @@
 		9B19ECD71B8F5F0600552D11 /* source_1.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = source_1.html; sourceTree = "<group>"; };
 		9B19ECD81B8F5F0600552D11 /* source_2.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = source_2.html; sourceTree = "<group>"; };
 		9B19ECD91B8F5F0600552D11 /* source_3.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = source_3.html; sourceTree = "<group>"; };
+		9B19ECDD1B8F6E2800552D11 /* GameScene4.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene4.sks; sourceTree = "<group>"; };
+		9B19ECDF1B8F707400552D11 /* source_4.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = source_4.html; sourceTree = "<group>"; };
+		9B19ECE11B8F729E00552D11 /* GameScene5.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene5.sks; sourceTree = "<group>"; };
+		9B19ECE31B8F735900552D11 /* source_5.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = source_5.html; sourceTree = "<group>"; };
 		A5013AE51B8D9EB600AD3B6C /* SpriteKitTankTalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpriteKitTankTalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5013AE91B8D9EB600AD3B6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A5013AEA1B8D9EB600AD3B6C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -95,6 +103,8 @@
 		9B1737241B8DD5C00033BEAD /* scenes */ = {
 			isa = PBXGroup;
 			children = (
+				9B19ECE11B8F729E00552D11 /* GameScene5.sks */,
+				9B19ECDD1B8F6E2800552D11 /* GameScene4.sks */,
 				9B1737251B8DD5C00033BEAD /* GameScene1.sks */,
 				9B1737261B8DD5C00033BEAD /* GameScene2.sks */,
 				9B1737271B8DD5C00033BEAD /* GameScene3.sks */,
@@ -119,6 +129,8 @@
 		9B19ECD61B8F5F0600552D11 /* html */ = {
 			isa = PBXGroup;
 			children = (
+				9B19ECE31B8F735900552D11 /* source_5.html */,
+				9B19ECDF1B8F707400552D11 /* source_4.html */,
 				9B19ECD71B8F5F0600552D11 /* source_1.html */,
 				9B19ECD81B8F5F0600552D11 /* source_2.html */,
 				9B19ECD91B8F5F0600552D11 /* source_3.html */,
@@ -280,6 +292,10 @@
 				A5013AF41B8D9EB600AD3B6C /* Main.storyboard in Resources */,
 				9B19ECDB1B8F5F0600552D11 /* source_2.html in Resources */,
 				9B1737291B8DD5C00033BEAD /* GameScene2.sks in Resources */,
+				9B19ECE01B8F707400552D11 /* source_4.html in Resources */,
+				9B19ECE21B8F729E00552D11 /* GameScene5.sks in Resources */,
+				9B19ECE41B8F735900552D11 /* source_5.html in Resources */,
+				9B19ECDE1B8F6E2800552D11 /* GameScene4.sks in Resources */,
 				9B19ECCA1B8DF26800552D11 /* Config.plist in Resources */,
 				9B19ECDA1B8F5F0600552D11 /* source_1.html in Resources */,
 			);

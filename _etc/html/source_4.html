@@ -1,0 +1,15 @@
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%; font-size: 200%">    <span style="color: #333333">//</span> <span style="color: #333399; font-weight: bold">Physics</span>
+    
+    func addPhysicsToNode(node<span style="color: #333399; font-weight: bold">:</span> <span style="color: #333399; font-weight: bold">SKSpriteNode</span>)  {
+    <span style="color: #008800; font-weight: bold">let</span> radius <span style="color: #000000; font-weight: bold">=</span> node<span style="color: #333333">.</span>size<span style="color: #333333">.</span>width <span style="color: #333333">/</span> <span style="color: #6600EE; font-weight: bold">2.0</span>)
+    <span style="color: #008800; font-weight: bold">let</span> physics <span style="color: #000000; font-weight: bold">=</span> <span style="color: #333399; font-weight: bold">SKPhysicsBody</span>(circleOfRadius<span style="color: #333399; font-weight: bold">:</span> radius)
+    physics<span style="color: #333333">.</span>dynamic <span style="color: #000000; font-weight: bold">=</span> false
+    physics<span style="color: #333333">.</span>friction <span style="color: #000000; font-weight: bold">=</span> <span style="color: #6600EE; font-weight: bold">0.2</span>
+    physics<span style="color: #333333">.</span>restitution <span style="color: #000000; font-weight: bold">=</span> <span style="color: #6600EE; font-weight: bold">0.2</span>
+    physics<span style="color: #333333">.</span>mass <span style="color: #000000; font-weight: bold">=</span> <span style="color: #6600EE; font-weight: bold">10.0</span>
+    physics<span style="color: #333333">.</span>density <span style="color: #000000; font-weight: bold">=</span> <span style="color: #6600EE; font-weight: bold">1.0</span>
+    
+    node<span style="color: #333333">.</span>physicsBody <span style="color: #000000; font-weight: bold">=</span> physics
+    }
+</pre></div>
+
