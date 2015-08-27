@@ -167,11 +167,41 @@ extension GameScene {
         characterPhysic.friction = 0.01
         characterPhysic.affectedByGravity = true
         self.character.physicsBody = characterPhysic
-        self.character.position = CGPoint(x: self.view!.center.x, y: self.view!.bounds.size.height + 50)
     }
     
     func didContact6(nodes: [NodeType : SKNode]) {
         //
+    }
+}
+
+extension GameScene {
+    func setUp7() {
+        self.didContact = didContact7
+        
+        self.physicsWorld.gravity = CGVector(dx: 0.0, dy: -5.0)
+        
+        let characterPhysic = self.character.physicsBody!
+        characterPhysic.friction = 0.01
+        characterPhysic.affectedByGravity = true
+        self.character.physicsBody = characterPhysic
+    }
+    
+    func didContact7(nodes: [NodeType : SKNode]) {
+        if let actionBox = nodes[.ActionBox] as? SKSpriteNode {
+            
+            let cat = SKSpriteNode(imageNamed: "action_enemy")
+            cat.position = self.character.position
+            cat.physicsBody = PhysicBody.physicsForNode(actionBox)
+            self.addChild(cat)
+            
+            let emitter = SKEmitterNode()
+            cat.addChild(emitter)
+            
+            
+            
+            self.popActionNode(actionBox)
+        }
+
     }
 }
 

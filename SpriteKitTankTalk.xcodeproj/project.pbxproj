@@ -35,6 +35,8 @@
 		A5013B131B8E821700AD3B6C /* SpeechSynthesizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5013B121B8E821700AD3B6C /* SpeechSynthesizer.swift */; };
 		A57418371B8FC92800A79A78 /* source_6.html in Resources */ = {isa = PBXBuildFile; fileRef = A57418361B8FC92800A79A78 /* source_6.html */; };
 		A57418391B8FC98400A79A78 /* GameScene6.sks in Resources */ = {isa = PBXBuildFile; fileRef = A57418381B8FC98400A79A78 /* GameScene6.sks */; };
+		A574183D1B8FD2BB00A79A78 /* source_7.html in Resources */ = {isa = PBXBuildFile; fileRef = A574183C1B8FD2BB00A79A78 /* source_7.html */; };
+		A574183F1B8FD33300A79A78 /* GameScene7.sks in Resources */ = {isa = PBXBuildFile; fileRef = A574183E1B8FD33300A79A78 /* GameScene7.sks */; };
 		A5B0FF701B8EF7A100BA9584 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B0FF6F1B8EF7A100BA9584 /* Config.swift */; };
 		A5B0FF721B8EFD8700BA9584 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B0FF711B8EFD8700BA9584 /* Extensions.swift */; };
 /* End PBXBuildFile section */
@@ -82,6 +84,8 @@
 		A5013B121B8E821700AD3B6C /* SpeechSynthesizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechSynthesizer.swift; sourceTree = "<group>"; };
 		A57418361B8FC92800A79A78 /* source_6.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = source_6.html; sourceTree = "<group>"; };
 		A57418381B8FC98400A79A78 /* GameScene6.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene6.sks; sourceTree = "<group>"; };
+		A574183C1B8FD2BB00A79A78 /* source_7.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = source_7.html; sourceTree = "<group>"; };
+		A574183E1B8FD33300A79A78 /* GameScene7.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene7.sks; sourceTree = "<group>"; };
 		A5B0FF6F1B8EF7A100BA9584 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		A5B0FF711B8EFD8700BA9584 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -107,6 +111,7 @@
 		9B1737241B8DD5C00033BEAD /* scenes */ = {
 			isa = PBXGroup;
 			children = (
+				A574183E1B8FD33300A79A78 /* GameScene7.sks */,
 				A57418381B8FC98400A79A78 /* GameScene6.sks */,
 				9B19ECE11B8F729E00552D11 /* GameScene5.sks */,
 				9B19ECDD1B8F6E2800552D11 /* GameScene4.sks */,
@@ -134,6 +139,7 @@
 		9B19ECD61B8F5F0600552D11 /* html */ = {
 			isa = PBXGroup;
 			children = (
+				A574183C1B8FD2BB00A79A78 /* source_7.html */,
 				A57418361B8FC92800A79A78 /* source_6.html */,
 				9B19ECE31B8F735900552D11 /* source_5.html */,
 				9B19ECDF1B8F707400552D11 /* source_4.html */,
@@ -289,7 +295,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A574183D1B8FD2BB00A79A78 /* source_7.html in Resources */,
 				A5013AF91B8D9EB600AD3B6C /* LaunchScreen.xib in Resources */,
+				A574183F1B8FD33300A79A78 /* GameScene7.sks in Resources */,
 				A57418391B8FC98400A79A78 /* GameScene6.sks in Resources */,
 				A5013AF61B8D9EB600AD3B6C /* Images.xcassets in Resources */,
 				9B1737281B8DD5C00033BEAD /* GameScene1.sks in Resources */,

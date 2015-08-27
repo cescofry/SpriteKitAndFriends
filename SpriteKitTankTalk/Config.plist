@@ -5,7 +5,7 @@
 	<key>isDebug</key>
 	<true/>
 	<key>speakText</key>
-	<true/>
+	<false/>
 	<key>scenes</key>
 	<array>
 		<dict>
@@ -62,6 +62,14 @@
 			<key>actions</key>
 			<array>
 				<string>ahhhhh</string>
+			</array>
+		</dict>
+		<dict>
+			<key>title</key>
+			<string>Emitters</string>
+			<key>actions</key>
+			<array>
+				<string>What would it be a demo withput cats.</string>
 			</array>
 		</dict>
 	</array>
