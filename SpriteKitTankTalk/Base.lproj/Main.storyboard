@@ -18,9 +18,9 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="xLd-tS-zo2">
-                        <barButtonItem key="rightBarButtonItem" title="Code" id="uAk-LQ-w2w">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="uAk-LQ-w2w">
                             <connections>
-                                <action selector="codeAction:" destination="BV1-FR-VrT" id="bDJ-N0-6gu"/>
+                                <action selector="optionsAction:" destination="BV1-FR-VrT" id="KyC-ok-cVG"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

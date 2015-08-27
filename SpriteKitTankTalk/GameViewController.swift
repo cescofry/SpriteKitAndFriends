@@ -92,4 +92,21 @@ class GameViewController: UIViewController {
             loadCurrentScene()
         }
     }
+    
+    @IBAction func optionsAction(sender: AnyObject?) {
+        if let btn = sender as? UIBarButtonItem {
+            let navVC = OptionsViewController.fromNavigationBarButton(btn)
+            if let optionsVC = navVC.optionsViewController() {
+                optionsVC.currentIndex = self.index
+                optionsVC.didSelectIndex = {(index: Int) in
+                    self.index = index
+                    self.loadCurrentScene()
+                }
+                
+            }
+            
+            
+            self.presentViewController(navVC, animated: true, completion: nil)
+        }
+    }
 }
