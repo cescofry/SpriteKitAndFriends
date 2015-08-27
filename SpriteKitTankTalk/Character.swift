@@ -18,6 +18,7 @@ class Character: SKSpriteNode {
         self.restAtlasses = Textures.forRest()
         self.runAtlasses = Textures.forRun()
         super.init(texture: texture, color: color, size: size)
+        self.rest(.Front)
     }
 
     required init?(coder aDecoder: NSCoder) {
