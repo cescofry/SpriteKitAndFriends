@@ -25,14 +25,14 @@ class GameViewController: UIViewController {
         }
     }
     
-    func nextScene() {
+    func nextScene(showCode: Bool) {
         self.index++
-        self.presentCode()
-    }
-    
-    func previousScene() {
-        self.index--
-        self.presentCode()
+        if showCode {
+            self.presentCode()
+        }
+        else {
+            loadCurrentScene()
+        }
     }
     
     func loadCurrentScene(){
@@ -58,7 +58,7 @@ class GameViewController: UIViewController {
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        nextScene()
+        nextScene(false)
     }
 
     override func shouldAutorotate() -> Bool {

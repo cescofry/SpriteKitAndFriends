@@ -143,6 +143,11 @@ extension GameScene {
                 }
             }
             
+            Dispatch.after(2.0, block: { () -> () in
+                if let nextScene = self.nextScene {
+                    self.nextScene!(showCode: false)
+                }
+            })
         }
     }
 }
@@ -151,8 +156,7 @@ extension GameScene {
 extension GameScene {
     func setUp6() {
         self.didContact = didContact6
-        
-        self.entranceAnimation = nil
+        self.shouldRunEntranceAnimation = false
         
         self.physicsWorld.gravity = CGVector(dx: 0.0, dy: -5.0)
         

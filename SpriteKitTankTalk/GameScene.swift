@@ -22,10 +22,9 @@ typealias DidContactBlock = (nodes: [NodeType : SKNode])->()
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
-    var nextScene: (()->())?
+    var nextScene: ((showCode: Bool)->())?
     var setup: (()->())?
-    var entranceAnimation: (()->())?
-    
+    var shouldRunEntranceAnimation = true
     var didContact: DidContactBlock?
     
     var currentActionIndex = 0
@@ -77,7 +76,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             setup()
         }
         
-        if let entranceAnimation = entranceAnimation {
+        if shouldRunEntranceAnimation {
             entranceAnimation()
         }
     }
@@ -93,16 +92,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         didContact = { (nodes: [NodeType : SKNode]) in
             
-        }
-        
-        entranceAnimation = {() in
-            self.character.position = CGPoint(x: -50.0, y: self.view!.center.y)
-            let startPosition = CGPoint(x: 80.0, y: self.view!.center.y)
-            
-            self.runToPosition!(position: startPosition, completion: { () -> () in
-                // run action 1
-                self.speakActionAndAdvance()
-            })
         }
     }
     
@@ -130,6 +119,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 })
             }
         }
+    }
+    
+    func entranceAnimation(){
+        self.character.position = CGPoint(x: -50.0, y: self.view!.center.y)
+        let startPosition = CGPoint(x: 80.0, y: self.view!.center.y)
+        
+        self.runToPosition!(position: startPosition, completion: { () -> () in
+            self.speakActionAndAdvance()
+        })
     }
     
     func popActionNode(node : SKSpriteNode) {
@@ -217,7 +215,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     portalAnimation({ () -> () in
                         self.character.removeFromParent()
                         Dispatch.after(0.5, block: { () -> () in
-                            nextScene()
+                            nextScene(showCode: true)
                         })
                     })
                 }
