@@ -40,6 +40,7 @@ struct GameSceneGenerator {
             case 3: scene.setup = scene.setUp3
             case 4: scene.setup = scene.setUp4
             case 5: scene.setup = scene.setUp5
+            case 6: scene.setup = scene.setUp6
             default:
                 scene.title.text = "This scene has not been implemented yet"
             }

@@ -86,7 +86,7 @@ class GameViewController: UIViewController {
         if let sceneDescription = self.scene?.sceneDescription {
             let vc = CodeViewController.inNavigationController(sceneDescription.code, dismissBlock: loadCurrentScene)
             self.presentViewController(vc, animated: true, completion: { () -> Void in
-                self.loadCurrentScene()
+                //
             })
         }
         else {

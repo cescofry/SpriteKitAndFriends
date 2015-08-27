@@ -120,10 +120,7 @@ extension GameScene {
 
 extension GameScene {
     func setUp5() {
-        
         self.didContact = didContact5
-        
-        self.character.removeAllActions()
         
         let characterPhysic = self.character.physicsBody!
         characterPhysic.friction = 0.01
@@ -136,7 +133,7 @@ extension GameScene {
             self.popActionNode(actionBox)
             
             self.character.physicsBody!.affectedByGravity = true
-            self.physicsWorld.gravity = CGVector(dx: 0.0, dy: -1.0)
+            self.physicsWorld.gravity = CGVector(dx: 0.0, dy: -5.0)
             
             if let allChildren = self.children as? [SKNode] {
                 for child in allChildren {
@@ -153,35 +150,24 @@ extension GameScene {
 
 extension GameScene {
     func setUp6() {
-        
         self.didContact = didContact6
         
+        self.entranceAnimation = nil
+        
+        self.physicsWorld.gravity = CGVector(dx: 0.0, dy: -5.0)
+        
         self.character.removeAllActions()
-        self.physicsWorld.gravity = CGVector(dx: 0, dy: -1)
+        self.character.position = CGPoint(x: 700.0, y: self.size.height + 50)
         
         let characterPhysic = self.character.physicsBody!
         characterPhysic.friction = 0.01
+        characterPhysic.affectedByGravity = true
         self.character.physicsBody = characterPhysic
         self.character.position = CGPoint(x: self.view!.center.x, y: self.view!.bounds.size.height + 50)
     }
     
     func didContact6(nodes: [NodeType : SKNode]) {
-        if let actionBox = nodes[.ActionBox] as? SKSpriteNode {
-            self.popActionNode(actionBox)
-            
-            
-            self.character.physicsBody!.affectedByGravity = true
-            self.physicsWorld.gravity = CGVector(dx: 0, dy: -1)
-            
-            Dispatch.after(4.0, block: { () -> () in
-                if let nextScene = self.nextScene {
-                    nextScene()
-                }
-            })
-            
-            self.character.physicsBody!.affectedByGravity = true
-            self.physicsWorld.gravity = CGVector(dx: 0, dy: -1)
-        }
+        //
     }
 }
 

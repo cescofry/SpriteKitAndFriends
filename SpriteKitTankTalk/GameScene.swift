@@ -24,6 +24,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var nextScene: (()->())?
     var setup: (()->())?
+    var entranceAnimation: (()->())?
     
     var didContact: DidContactBlock?
     
@@ -70,18 +71,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func didMoveToView(view: SKView) {
         
         setDefaultPhysicBodies()
-        
         setDefaultActions()
-        
-        self.character.position = CGPoint(x: -50.0, y: self.view!.center.y) // lazy loading
-        let startPosition = CGPoint(x: 80.0, y: self.view!.center.y)
-        self.character.runToPosition(startPosition, completion: { () -> () in
-            // run action 1
-            self.speakActionAndAdvance()
-        })
         
         if let setup = self.setup {
             setup()
+        }
+        
+        if let entranceAnimation = entranceAnimation {
+            entranceAnimation()
         }
     }
     
@@ -96,6 +93,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         didContact = { (nodes: [NodeType : SKNode]) in
             
+        }
+        
+        entranceAnimation = {() in
+            self.character.position = CGPoint(x: -50.0, y: self.view!.center.y)
+            let startPosition = CGPoint(x: 80.0, y: self.view!.center.y)
+            
+            self.runToPosition!(position: startPosition, completion: { () -> () in
+                // run action 1
+                self.speakActionAndAdvance()
+            })
         }
     }
     

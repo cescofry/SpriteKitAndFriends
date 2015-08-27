@@ -5,7 +5,7 @@
 	<key>isDebug</key>
 	<true/>
 	<key>speakText</key>
-	<false/>
+	<true/>
 	<key>scenes</key>
 	<array>
 		<dict>
@@ -54,6 +54,14 @@
 			<array>
 				<string>The scene itself has a physic body and a body gravity</string>
 				<string>That will effect all the objects in differnt ways based on their characteristics</string>
+			</array>
+		</dict>
+		<dict>
+			<key>title</key>
+			<string> ... more Gravity</string>
+			<key>actions</key>
+			<array>
+				<string>ahhhhh</string>
 			</array>
 		</dict>
 	</array>
