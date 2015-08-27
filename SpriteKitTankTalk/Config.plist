@@ -4,6 +4,8 @@
 <dict>
 	<key>isDebug</key>
 	<true/>
+	<key>speakText</key>
+	<false/>
 	<key>scenes</key>
 	<array>
 		<dict>
@@ -20,6 +22,16 @@
 		<dict>
 			<key>title</key>
 			<string>Actions</string>
+			<key>code</key>
+			<string>Explain what is a scene and what are nodes and the varius kind of nodes</string>
+			<key>actions</key>
+			<array>
+				<string>That was weird, Let&apos;s create an action to move in the direction of the tap position</string>
+			</array>
+		</dict>
+		<dict>
+			<key>title</key>
+			<string>Gravity</string>
 			<key>code</key>
 			<string>Explain what is a scene and what are nodes and the varius kind of nodes</string>
 			<key>actions</key>

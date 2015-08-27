@@ -12,6 +12,9 @@ class GameScene: SKScene {
     
     var nextScene: (()->())?
     var setup: (()->())?
+    
+    var action: (()->())?
+    
     var currentActionIndex = 0
     var speechSynthesizer = SpeechSynthesizer()
     
@@ -45,15 +48,11 @@ class GameScene: SKScene {
         return self.childNodeWithName("nextPortal") as! SKSpriteNode
     }
     
-    var previousPortal:  SKSpriteNode {
-        return self.childNodeWithName("previousPortal") as! SKSpriteNode
+    var actionBox:  SKSpriteNode? {
+        return self.childNodeWithName("actionBox") as? SKSpriteNode
     }
     
     override func didMoveToView(view: SKView) {
-        
-        if let setup = self.setup {
-            setup()
-        }
         
         self.character.position = CGPoint(x: -50.0, y: self.view!.center.y) // lazy loading
         let startPosition = CGPoint(x: 80.0, y: self.view!.center.y)
@@ -61,6 +60,10 @@ class GameScene: SKScene {
             // run action 1
             self.speakActionAndAdvance()
         })
+        
+        if let setup = self.setup {
+            setup()
+        }
     }
     
     func speakActionAndAdvance() {
@@ -96,11 +99,31 @@ class GameScene: SKScene {
                 nextScene()
             }
         }
+        else if let actionBox = self.actionBox {
+            if isCharacterOnNode(actionBox) {
+                if let action = action {
+                    action()
+                }
+            }
+        }
     }
     
     private func isCharacterOnNode(node: SKNode) -> Bool {
-        let node = self.nodesAtPoint(self.character.position).filter({return $0.name == node.name!}).first as? SKNode
-        return node != nil
+        if let name = node.name {
+            let allNodes = self.nodesAtPoint(self.character.position)
+            let nodes = allNodes.filter({ (aNode: AnyObject) in
+                if let anSKNode = aNode as? SKNode  {
+                    if let skName = anSKNode.name {
+                        return skName == name
+                    }
+                }
+                
+                return false
+            })
+            return (nodes.count > 0 && nodes.first as? SKNode != nil)
+        }
+        
+        return false
     }
    
     override func update(currentTime: CFTimeInterval) {
@@ -113,24 +136,44 @@ extension GameScene {
     func setUp1() {
         
     }
+    func action1() {
+        
+    }
 }
 
 extension GameScene {
     func setUp2() {
-        
+        self.action = action2
+    }
+    
+    func action2() {
         self.physicsWorld.gravity = CGVector(dx: 0, dy: -1)
-
+        
         let characterPhysic = SKPhysicsBody(rectangleOfSize: self.character.size)
         self.character.physicsBody = characterPhysic
+        
+        
+        Dispatch.after(4.0, block: { () -> () in
+            if let nextScene = self.nextScene {
+                nextScene()
+            }
+        })
+        
     }
 }
 
 extension GameScene {
     func setUp3() {
+        self.character.removeAllActions()
         self.physicsWorld.gravity = CGVector(dx: 0, dy: -1)
         
         let characterPhysic = SKPhysicsBody(rectangleOfSize: self.character.size)
         characterPhysic.friction = 0.01
         self.character.physicsBody = characterPhysic
+        self.character.position = CGPoint(x: self.view!.center.x, y: self.view!.bounds.size.height + 50)
+    }
+    
+    func action3() {
+        
     }
 }

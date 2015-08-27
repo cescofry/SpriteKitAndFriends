@@ -141,25 +141,3 @@ private let runLeft     = 21...30
 private let runBack     = 31...40
 private let runRight    = 41...50
 
-
-
-extension CGPoint {
-    func radiantsToPoint(point: CGPoint) -> CGFloat {
-        let xD = Float(self.x - point.x)
-        let yD = Float(point.y - self.y)
-        let radiants = CGFloat(atan2f(xD, yD))
-        return radiants
-    }
-    
-    func distanceToPoint(point: CGPoint) -> CGFloat {
-        let xD = self.x - point.x
-        let yD = point.y - self.y
-        return sqrt(pow(xD, 2.0) + pow(yD, 2.0))
-    }
-}
-
-func radiansToDegrees(angleRadians: CGFloat) -> CGFloat {
-    return CGFloat(Double(angleRadians) * 180.0 / M_PI)
-}
-
-

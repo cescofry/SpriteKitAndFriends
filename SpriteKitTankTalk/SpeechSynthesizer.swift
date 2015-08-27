@@ -12,8 +12,17 @@ import AVFoundation
 class SpeechSynthesizer : NSObject, AVSpeechSynthesizerDelegate {
     private let synth = AVSpeechSynthesizer()
     private var completion: ((cancelled: Bool)->())?
+    private let speakText = Config.sharedConfig().speakText
     
     func speakText(text: String, completion:((cancelled: Bool)->())?) {
+        
+        if !speakText {
+            if let completion = completion {
+                completion(cancelled: true)
+            }
+            return
+        }
+        
         synth.delegate = self
         self.completion = completion
         let utterance = AVSpeechUtterance(string: text)
