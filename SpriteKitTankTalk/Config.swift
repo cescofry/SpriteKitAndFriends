@@ -20,9 +20,13 @@ struct Config {
         let isDebug = configDict["isDebug"]!.boolValue!
         let speakText = configDict["speakText"]!.boolValue!
         let scenesR = configDict["scenes"] as! [[String : AnyObject]]
+        
+        var index = 0
         let scenes = scenesR.map({ (dictionary) -> SceneDescription in
             let title = dictionary["title"] as! String
-            let codeString = dictionary["code"] as! String
+            
+            index++
+            let codeString = self.codeForIndex(index)
             let actions = dictionary["actions"] as! [String]
             return SceneDescription(title: title, code: codeString, actions: actions)
         })
@@ -34,6 +38,11 @@ struct Config {
         var myDict: NSDictionary?
         let path = NSBundle.mainBundle().pathForResource("Config", ofType: "plist")!
         return NSDictionary(contentsOfFile: path)!
+    }
+    
+    private static func codeForIndex(index: Int) -> String {
+        let path = NSBundle.mainBundle().pathForResource("source_\(index)", ofType: "html")!
+        return NSString(contentsOfFile: path, encoding: NSUTF8StringEncoding, error: nil) as! String
     }
 }
 

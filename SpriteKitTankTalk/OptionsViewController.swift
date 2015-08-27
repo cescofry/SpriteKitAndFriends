@@ -14,7 +14,11 @@ class OptionsViewController : UITableViewController {
     var didSelectIndex : ((index: Int)->())?
     var currentIndex : Int? {
         didSet {
-            self.tableView.selectRowAtIndexPath(NSIndexPath(forRow: (currentIndex! - 1), inSection: 0), animated: true, scrollPosition: UITableViewScrollPosition.Middle)
+            if let currentIndex = currentIndex {
+                if (currentIndex - 1) < self.titles.count {
+                    self.tableView.selectRowAtIndexPath(NSIndexPath(forRow: (currentIndex - 1), inSection: 0), animated: true, scrollPosition: UITableViewScrollPosition.Middle)
+                }
+            }
         }
     }
     

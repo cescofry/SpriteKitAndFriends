@@ -17,6 +17,9 @@
 		9B19ECD11B8F3F8100552D11 /* GameExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B19ECD01B8F3F8100552D11 /* GameExtensions.swift */; };
 		9B19ECD31B8F4EDC00552D11 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B19ECD21B8F4EDC00552D11 /* TestViewController.swift */; };
 		9B19ECD51B8F575500552D11 /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B19ECD41B8F575500552D11 /* OptionsViewController.swift */; };
+		9B19ECDA1B8F5F0600552D11 /* source_1.html in Resources */ = {isa = PBXBuildFile; fileRef = 9B19ECD71B8F5F0600552D11 /* source_1.html */; };
+		9B19ECDB1B8F5F0600552D11 /* source_2.html in Resources */ = {isa = PBXBuildFile; fileRef = 9B19ECD81B8F5F0600552D11 /* source_2.html */; };
+		9B19ECDC1B8F5F0600552D11 /* source_3.html in Resources */ = {isa = PBXBuildFile; fileRef = 9B19ECD91B8F5F0600552D11 /* source_3.html */; };
 		A5013AEB1B8D9EB600AD3B6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5013AEA1B8D9EB600AD3B6C /* AppDelegate.swift */; };
 		A5013AEF1B8D9EB600AD3B6C /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5013AEE1B8D9EB600AD3B6C /* GameScene.swift */; };
 		A5013AF11B8D9EB600AD3B6C /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5013AF01B8D9EB600AD3B6C /* GameViewController.swift */; };
@@ -51,6 +54,9 @@
 		9B19ECD01B8F3F8100552D11 /* GameExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameExtensions.swift; sourceTree = "<group>"; };
 		9B19ECD21B8F4EDC00552D11 /* TestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		9B19ECD41B8F575500552D11 /* OptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
+		9B19ECD71B8F5F0600552D11 /* source_1.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = source_1.html; sourceTree = "<group>"; };
+		9B19ECD81B8F5F0600552D11 /* source_2.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = source_2.html; sourceTree = "<group>"; };
+		9B19ECD91B8F5F0600552D11 /* source_3.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = source_3.html; sourceTree = "<group>"; };
 		A5013AE51B8D9EB600AD3B6C /* SpriteKitTankTalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpriteKitTankTalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5013AE91B8D9EB600AD3B6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A5013AEA1B8D9EB600AD3B6C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -110,6 +116,17 @@
 			name = "View Controllers";
 			sourceTree = "<group>";
 		};
+		9B19ECD61B8F5F0600552D11 /* html */ = {
+			isa = PBXGroup;
+			children = (
+				9B19ECD71B8F5F0600552D11 /* source_1.html */,
+				9B19ECD81B8F5F0600552D11 /* source_2.html */,
+				9B19ECD91B8F5F0600552D11 /* source_3.html */,
+			);
+			name = html;
+			path = _etc/html;
+			sourceTree = SOURCE_ROOT;
+		};
 		A5013ADC1B8D9EB600AD3B6C = {
 			isa = PBXGroup;
 			children = (
@@ -146,6 +163,7 @@
 		A5013AE81B8D9EB600AD3B6C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9B19ECD61B8F5F0600552D11 /* html */,
 				9B19ECCE1B8E1DDC00552D11 /* elf.atlas */,
 				A5013AF21B8D9EB600AD3B6C /* Main.storyboard */,
 				A5013AF51B8D9EB600AD3B6C /* Images.xcassets */,
@@ -258,9 +276,12 @@
 				9B1737281B8DD5C00033BEAD /* GameScene1.sks in Resources */,
 				9B19ECCF1B8E1DDC00552D11 /* elf.atlas in Resources */,
 				9B17372A1B8DD5C00033BEAD /* GameScene3.sks in Resources */,
+				9B19ECDC1B8F5F0600552D11 /* source_3.html in Resources */,
 				A5013AF41B8D9EB600AD3B6C /* Main.storyboard in Resources */,
+				9B19ECDB1B8F5F0600552D11 /* source_2.html in Resources */,
 				9B1737291B8DD5C00033BEAD /* GameScene2.sks in Resources */,
 				9B19ECCA1B8DF26800552D11 /* Config.plist in Resources */,
+				9B19ECDA1B8F5F0600552D11 /* source_1.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

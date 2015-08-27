@@ -1,0 +1,16 @@
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">    <span style="color: #888888">// Sprite textures</span>
+    
+    func <span style="color: #0066BB; font-weight: bold">addSpritesToNode</span>(node<span style="color: #333333">:</span> SKSpriteNode) {
+        var textures <span style="color: #333333">=</span> [SKTexture]()
+        <span style="color: #008800; font-weight: bold">for</span> i in <span style="color: #6600EE; font-weight: bold">1.</span>.<span style="color: #6600EE; font-weight: bold">.10</span> {
+            let name <span style="color: #333333">=</span> NSString(format<span style="color: #333333">:</span> <span style="background-color: #fff0f0">&quot;slice%.2d&quot;</span>, i) as String
+            let texture <span style="color: #333333">=</span> SKTexture(imageNamed<span style="color: #333333">:</span> name)
+            textures.append(texture)
+        }
+        
+        let spriteAction <span style="color: #333333">=</span> SKAction.animateWithTextures(textures, timePerFrame<span style="color: #333333">:</span> <span style="color: #6600EE; font-weight: bold">0.05</span>)
+        node.runAction(SKAction.repeatActionForever(spriteAction), withKey<span style="color: #333333">:</span> <span style="background-color: #fff0f0">&quot;spriteActionKey&quot;</span>)
+    }
+</pre></div>
+
+
