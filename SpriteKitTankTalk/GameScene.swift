@@ -40,6 +40,8 @@ class GameScene: SKScene {
         return character
     }
     
+    var runToPosition : ((position: CGPoint, completion: (()->())?) -> ())?
+    
     var title:  SKLabelNode {
         return self.childNodeWithName("title") as! SKLabelNode
     }
@@ -53,6 +55,14 @@ class GameScene: SKScene {
     }
     
     override func didMoveToView(view: SKView) {
+        
+        runToPosition = { (position: CGPoint, completion: (()->())?) in
+            self.character.runToPosition(position, completion: { () -> () in
+                if let completion = completion {
+                    completion()
+                }
+            })
+        }
         
         self.character.position = CGPoint(x: -50.0, y: self.view!.center.y) // lazy loading
         let startPosition = CGPoint(x: 80.0, y: self.view!.center.y)
@@ -87,9 +97,11 @@ class GameScene: SKScene {
             
             self.character.removeAllActions()
         
-            self.character.runToPosition(location, completion: { () -> () in
-                self.checkForPortals()
-            })
+            if let runToPosition = self.runToPosition {
+                runToPosition(position: location, completion: { () -> () in
+                    self.checkForPortals()
+                })
+            }
         }
     }
     
@@ -134,7 +146,13 @@ class GameScene: SKScene {
 
 extension GameScene {
     func setUp1() {
-        
+        runToPosition = { (position: CGPoint, completion: (()->())?) in
+            self.character.position = position
+            
+            if let completion = completion {
+                Dispatch.after(0.5, block: completion)
+            }
+        }
     }
     func action1() {
         
