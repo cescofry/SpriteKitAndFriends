@@ -50,14 +50,27 @@ class TestViewController: UIViewController {
     
     // Physics
     
-    func addPhysicsToNode(scene: SKScene, node: SKSpriteNode)  {
+    func addPhysicsToNode(node: SKSpriteNode)  {
+        let physics = SKPhysicsBody(circleOfRadius: (node.size.width / 2.0))
+        physics.dynamic = false
+        physics.friction = 0.2
+        physics.restitution = 0.2
+        physics.mass = 10.0
+        physics.density = 1.0
         
+        node.physicsBody = physics
     }
     
     // Gravity
     
-    func addGravityToNode(scene: SKScene, node: SKSpriteNode)  {
+    func addGravity(scene: SKScene, node: SKSpriteNode)  {
+        scene.physicsWorld.gravity = CGVector(dx: 0.0, dy: -1.0)
         
+        let physics = SKPhysicsBody(circleOfRadius: (node.size.width / 2.0))
+        //...
+        
+        physics.affectedByGravity = true
+        physics.dynamic = true
     }
     
     // Path Finding

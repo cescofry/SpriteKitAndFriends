@@ -28,22 +28,25 @@ extension GameScene {
 extension GameScene {
     func setUp2() {
         self.didContact = didContact2
+        
+        self.physicsWorld.gravity = CGVector(dx: 0, dy: 0)
     }
     
     func didContact2(nodes: [NodeType : SKNode]) {
         
         if let actionBox = nodes[.ActionBox] as? SKSpriteNode {
             self.popActionNode(actionBox)
+            
+            self.character.physicsBody!.affectedByGravity = true
+            self.physicsWorld.gravity = CGVector(dx: 0, dy: -1)
+            
+            Dispatch.after(4.0, block: { () -> () in
+                if let nextScene = self.nextScene {
+                    nextScene()
+                }
+            })
         }
         
-        self.character.physicsBody!.affectedByGravity = true
-        self.physicsWorld.gravity = CGVector(dx: 0, dy: -1)
-        
-        Dispatch.after(4.0, block: { () -> () in
-            if let nextScene = self.nextScene {
-                nextScene()
-            }
-        })
         
     }
 }
