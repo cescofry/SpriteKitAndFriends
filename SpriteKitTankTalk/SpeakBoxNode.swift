@@ -77,13 +77,10 @@ class SpeakBoxController {
     }
     
     private func didEndShowingText(text: String) {
-        print("T: \(text)")
         Dispatch.after(1.0) { () -> () in
             guard let currentText = self.text else {
                 return
             }
-            
-            print("C: \(currentText)\n same: \(currentText == text)")
             
             if currentText == text {
                 self.speakBox.removeFromParent()
