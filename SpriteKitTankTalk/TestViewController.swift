@@ -16,8 +16,8 @@ class TestViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         
         let scene = SKScene(size: self.view.bounds.size)
-        
-        let node = SKSpriteNode(color: UIColor.redColor(), size: CGSize(width: 50.0, height: 50.0))
+        let size = CGSize(width: 50.0, height: 50.0)
+        let node = SKSpriteNode(color: UIColor.redColor(), size: size)
         node.position = CGPoint(x: 100.0, y: 100.0)
         
         scene.addChild(node)
@@ -45,7 +45,7 @@ class TestViewController: UIViewController {
         }
         
         let spriteAction = SKAction.animateWithTextures(textures, timePerFrame: 0.05)
-        node.runAction(SKAction.repeatActionForever(spriteAction), withKey: "spriteActionKey")
+        node.runAction(SKAction.repeatActionForever(spriteAction))
     }
     
     // Physics
@@ -83,7 +83,8 @@ class TestViewController: UIViewController {
         physics.restitution = 0.9 // bouncing
         
         
-        physics.applyForce(CGVector(dx: 20.0, dy: -30.0)) // remember inverted coordinates
+        physics.applyForce(CGVector(dx: 20.0, dy: -30.0))
+        // remember inverted coordinates
         
         node.physicsBody = physics
     }
@@ -92,10 +93,11 @@ class TestViewController: UIViewController {
     
     func addEmitterToNode(node : SKNode) {
         // Create a new File of type Spritekit Partle File name Fire.
-        let emitterPath: String = NSBundle.mainBundle().pathForResource("Fire", ofType: "sks")!
-        let emitterNode = NSKeyedUnarchiver.unarchiveObjectWithFile(emitterPath) as! SKEmitterNode
+        let bundle = NSBundle.mainBundle()
+        let emitterPath: String = bundle.pathForResource("Fire", ofType: "sks")!
+        let emitterNode = NSKeyedUnarchiver.unarchiveObjectWithFile(emitterPath)
         
-        node.addChild(emitterNode)
+        node.addChild(emitterNode as! SKEmitterNode)
     }
     
     // Path Finding
