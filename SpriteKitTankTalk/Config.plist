@@ -5,7 +5,7 @@
 	<key>isDebug</key>
 	<true/>
 	<key>speakText</key>
-	<false/>
+	<true/>
 	<key>scenes</key>
 	<array>
 		<dict>
@@ -24,7 +24,6 @@
 			<key>actions</key>
 			<array>
 				<string>That was weird.</string>
-				<string>Speaking of weird. I matalking using a A V Speech Synthesizer. Isn&apos;t that cool?</string>
 				<string>Let&apos;s create an action so I can move freely</string>
 			</array>
 		</dict>
@@ -42,7 +41,7 @@
 			<string>Physics</string>
 			<key>actions</key>
 			<array>
-				<string>Ohh, Booty! Actually those are just other nodes.</string>
+				<string>Nice; threasures! Actually those are just other nodes.</string>
 				<string>They have a physic body with properties that describe them</string>
 				<string>Also they are set as dynamic, which means they interact with each other</string>
 			</array>
@@ -53,7 +52,7 @@
 			<key>actions</key>
 			<array>
 				<string>The scene itself has a physic body and a body gravity</string>
-				<string>That will effect all the objects in differnt ways based on their characteristics</string>
+				<string>That will effect all the objects in different ways based on their characteristics</string>
 			</array>
 		</dict>
 		<dict>
@@ -70,7 +69,7 @@
 			<key>actions</key>
 			<array>
 				<string>What would it be a demo withput cats.</string>
-				<string>Amaizing beasts, they fly pretty well you know. And they bounce as well!</string>
+				<string>Amaizing beasts; they fly pretty well, you know? And they bounce as well!</string>
 			</array>
 		</dict>
 		<dict>
@@ -78,8 +77,8 @@
 			<string>Emitters</string>
 			<key>actions</key>
 			<array>
-				<string>Enough with gravity for now.</string>
-				<string>How about some fire!</string>
+				<string>Enough with gravity for now. What about some piro!</string>
+				<string>We can create fires using emitters</string>
 			</array>
 		</dict>
 		<dict>
@@ -93,12 +92,9 @@
 		</dict>
 		<dict>
 			<key>title</key>
-			<string>Strategist</string>
+			<string>Speak</string>
 			<key>actions</key>
-			<array>
-				<string>I love 4 in row</string>
-				<string>I wonder if the AI is smart enough</string>
-			</array>
+			<array/>
 		</dict>
 	</array>
 </dict>

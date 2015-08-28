@@ -121,7 +121,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if let actions = actions {
             if actions.count > self.currentActionIndex {
                 let action = actions[self.currentActionIndex]
-                speechSynthesizer.speakText(action, completion: { (cancelled) -> () in
+                speechSynthesizer.speakText(action, completion: { (cancelled, text) -> () in
                     self.currentActionIndex++
                     self.speakActionAndAdvance()
                 })

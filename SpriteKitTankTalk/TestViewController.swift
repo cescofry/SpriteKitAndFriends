@@ -13,8 +13,14 @@ class TestViewController: UIViewController {
     
     // SKScene and SKNode
     
+    override func viewDidLoad() {
+        let speechSynthesizer = SpeechSynthesizer().runDemo { (cancelled) -> () in
+            //nil
+        }
+    }
+    
     override func viewDidAppear(animated: Bool) {
-        
+        /*
         let scene = SKScene(size: self.view.bounds.size)
         let size = CGSize(width: 50.0, height: 50.0)
         let node = SKSpriteNode(color: UIColor.redColor(), size: size)
@@ -24,7 +30,7 @@ class TestViewController: UIViewController {
         
         let skView = self.view as! SKView
         skView.presentScene(scene)
-
+*/
     }
     
     // SKAction

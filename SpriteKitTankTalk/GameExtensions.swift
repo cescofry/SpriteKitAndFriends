@@ -279,12 +279,18 @@ extension GameScene : GKAgentDelegate {
 }
 
 extension GameScene {
-    func setUp_() {
-        self.didContact = didContact_
+    func setUp10() {
+        self.didContact = didContact10
     }
     
-    func didContact_(nodes: [NodeType : SKNode]) {
-
+    func didContact10(nodes: [NodeType : SKNode]) {
+        if let actionBox = nodes[.ActionBox] as? SKSpriteNode {
+            self.popActionNode(actionBox)
+            
+            self.speechSynthesizer.runDemo({ (cancelled, text) -> () in
+                print(text)
+            })
+        }
     }
     
 }
