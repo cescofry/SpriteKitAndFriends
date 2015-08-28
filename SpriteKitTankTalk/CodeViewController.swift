@@ -28,7 +28,7 @@ class CodeViewController : UIViewController {
         self.view.backgroundColor = UIColor.lightTextColor()
         
         self.webView.frame = self.view.bounds
-        self.webView.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight
+        self.webView.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight]
         self.view.addSubview(self.webView)
     }
     

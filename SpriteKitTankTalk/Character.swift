@@ -14,7 +14,7 @@ class Character: SKSpriteNode {
     private var restAtlasses : [Direction: [SKTexture]]
     private var runAtlasses : [Direction: [SKTexture]]
     
-    override init(texture: SKTexture!, color: UIColor!, size: CGSize) {
+    override init(texture: SKTexture?, color: UIColor, size: CGSize) {
         self.restAtlasses = Textures.forRest()
         self.runAtlasses = Textures.forRun()
         super.init(texture: texture, color: color, size: size)
@@ -146,6 +146,7 @@ struct PhysicBody {
         physic.usesPreciseCollisionDetection = false
         physic.dynamic = true
         physic.allowsRotation = false
+        physic.affectedByGravity = false
         
         switch type {
         case .Character:

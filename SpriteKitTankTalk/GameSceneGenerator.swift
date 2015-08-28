@@ -12,8 +12,8 @@ import SpriteKit
 extension SKNode {
     class func unarchiveFromFile(file : String) -> SKNode? {
         if let path = NSBundle.mainBundle().pathForResource(file, ofType: "sks") {
-            var sceneData = NSData(contentsOfFile: path, options: .DataReadingMappedIfSafe, error: nil)!
-            var archiver = NSKeyedUnarchiver(forReadingWithData: sceneData)
+            let sceneData = try! NSData(contentsOfFile: path, options: .DataReadingMappedIfSafe)
+            let archiver = NSKeyedUnarchiver(forReadingWithData: sceneData)
             
             archiver.setClass(self.classForKeyedUnarchiver(), forClassName: "SKScene")
             let scene = archiver.decodeObjectForKey(NSKeyedArchiveRootObjectKey) as! GameScene
@@ -32,7 +32,7 @@ struct GameSceneGenerator {
         if let scene = scene {
             
             let realIndex = index - 1
-            scene.sceneDescription = Config.sharedConfig().scenes[realIndex]
+            scene.sceneDescription = config.scenes[realIndex]
             
             switch index {
             case 1: scene.setup = scene.setUp1
@@ -81,7 +81,7 @@ struct LocationGenerator {
         return randomLocation(size: sceneSize, span: outSpan, position: position)
     }
     
-    private func randomLocation(#size: CGSize, span: CGFloat, position: Position) -> CGPoint {
+    private func randomLocation(size size: CGSize, span: CGFloat, position: Position) -> CGPoint {
         
         var location = CGPoint(
             x: CGFloat(arc4random()) % size.width,

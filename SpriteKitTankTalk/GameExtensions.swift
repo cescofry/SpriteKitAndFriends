@@ -135,11 +135,9 @@ extension GameScene {
             self.character.physicsBody!.affectedByGravity = true
             self.physicsWorld.gravity = CGVector(dx: 0.0, dy: -5.0)
             
-            if let allChildren = self.children as? [SKNode] {
-                for child in allChildren {
-                    if (child.name == nil && child.physicsBody != nil) {
-                        child.physicsBody!.affectedByGravity = true
-                    }
+            for child in self.children {
+                if (child.name == nil && child.physicsBody != nil) {
+                    child.physicsBody!.affectedByGravity = true
                 }
             }
             

@@ -31,13 +31,13 @@ class SpeechSynthesizer : NSObject, AVSpeechSynthesizerDelegate {
         synth.speakUtterance(utterance)
     }
     
-    func speechSynthesizer(synthesizer: AVSpeechSynthesizer!, didFinishSpeechUtterance utterance: AVSpeechUtterance!) {
+    func speechSynthesizer(synthesizer: AVSpeechSynthesizer, didFinishSpeechUtterance utterance: AVSpeechUtterance) {
         if let completion = completion {
             completion(cancelled: false)
         }
     }
     
-    func speechSynthesizer(synthesizer: AVSpeechSynthesizer!, didCancelSpeechUtterance utterance: AVSpeechUtterance!) {
+    func speechSynthesizer(synthesizer: AVSpeechSynthesizer, didCancelSpeechUtterance utterance: AVSpeechUtterance) {
         if let completion = completion {
             completion(cancelled: true)
         }

@@ -155,14 +155,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let spin = SKAction.rotateByAngle(CGFloat(M_PI), duration: 0.5)
         self.character.runAction(spin)
         let fade = SKAction.fadeAlphaTo(0.0, duration: 0.5)
-        self.character.runAction(fade, completion: completion)
+        if let completion = completion {
+            self.character.runAction(fade, completion: completion)
+        }
+        else {
+            self.character.runAction(fade)
+        }
         
     }
     
-    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         /* Called when a touch begins */
         
-        for touch in (touches as! Set<UITouch>) {
+        for touch in (touches ) {
             let location = touch.locationInNode(self)
             
             self.character.removeAllActions()
@@ -213,7 +218,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         if let _ = nodes[.Character] {
-            if let portal = nodes[.Portal] {
+            if let _ = nodes[.Portal] {
                 if let nextScene = nextScene {
                     portalAnimation({ () -> () in
                         self.character.removeFromParent()
