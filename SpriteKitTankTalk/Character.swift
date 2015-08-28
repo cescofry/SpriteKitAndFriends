@@ -146,6 +146,7 @@ struct PhysicBody {
                 physic.categoryBitMask = 0x1 << 0
                 physic.contactTestBitMask = 0x1 << 1
                 physic.collisionBitMask = 0x1 << 1
+                physic.allowsRotation = false
             case "actionBox":
                 physic.categoryBitMask = 0x1 << 1
                 physic.contactTestBitMask = 0x1 << 0
