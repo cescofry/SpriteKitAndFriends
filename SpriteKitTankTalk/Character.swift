@@ -101,13 +101,14 @@ extension Direction {
 
 
 enum NodeType {
-    case Character, ActionBox, Portal, Other
+    case Character, ActionBox, Portal, Cat, Other
     
     static func fromString(string : String) -> NodeType {
         switch string {
         case "character": return .Character
         case "actionBox": return .ActionBox
         case "portal": return .Portal
+        case "cat": return .Cat
         default: return .Other
         }
     }
@@ -117,6 +118,7 @@ enum NodeType {
         case .Character: return "character"
         case .ActionBox: return "actionBox"
         case .Portal: return "portal"
+        case .Cat: return "cat"
         default: return "other"
         }
     }
@@ -126,7 +128,16 @@ enum NodeType {
 struct PhysicBody {
     
     static func physicsForNode(node: SKSpriteNode) -> SKPhysicsBody {
-        let physic = SKPhysicsBody(circleOfRadius: node.size.width / 2.2)
+        var physic : SKPhysicsBody
+        if let texture = node.texture {
+            let scaleTransoform = CGAffineTransformMakeScale(1.0 / node.xScale, 1.0 / node.yScale)
+            let size = CGSizeApplyAffineTransform(node.size, scaleTransoform)
+            physic = SKPhysicsBody(texture: texture, size: size)
+        }
+        else {
+            physic = SKPhysicsBody(circleOfRadius: node.size.width / 2.2)
+            
+        }
         physic.dynamic = true
         
         if let name = node.name {
@@ -141,6 +152,10 @@ struct PhysicBody {
                 physic.collisionBitMask = 0x1 << 0
             case "portal":
                 physic.categoryBitMask = 0x1 << 2
+                physic.contactTestBitMask = 0x1 << 0
+                physic.collisionBitMask = 0x1 << 0
+            case "cat":
+                physic.categoryBitMask = 0x1 << 3
                 physic.contactTestBitMask = 0x1 << 0
                 physic.collisionBitMask = 0x1 << 0
             default:

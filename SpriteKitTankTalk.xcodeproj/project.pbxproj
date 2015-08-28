@@ -37,6 +37,8 @@
 		A57418391B8FC98400A79A78 /* GameScene6.sks in Resources */ = {isa = PBXBuildFile; fileRef = A57418381B8FC98400A79A78 /* GameScene6.sks */; };
 		A574183D1B8FD2BB00A79A78 /* source_7.html in Resources */ = {isa = PBXBuildFile; fileRef = A574183C1B8FD2BB00A79A78 /* source_7.html */; };
 		A574183F1B8FD33300A79A78 /* GameScene7.sks in Resources */ = {isa = PBXBuildFile; fileRef = A574183E1B8FD33300A79A78 /* GameScene7.sks */; };
+		A57418421B9049DC00A79A78 /* Fire.sks in Resources */ = {isa = PBXBuildFile; fileRef = A57418401B9049DC00A79A78 /* Fire.sks */; };
+		A57418431B9049DC00A79A78 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = A57418411B9049DC00A79A78 /* spark.png */; };
 		A5B0FF701B8EF7A100BA9584 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B0FF6F1B8EF7A100BA9584 /* Config.swift */; };
 		A5B0FF721B8EFD8700BA9584 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B0FF711B8EFD8700BA9584 /* Extensions.swift */; };
 /* End PBXBuildFile section */
@@ -86,6 +88,8 @@
 		A57418381B8FC98400A79A78 /* GameScene6.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene6.sks; sourceTree = "<group>"; };
 		A574183C1B8FD2BB00A79A78 /* source_7.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = source_7.html; sourceTree = "<group>"; };
 		A574183E1B8FD33300A79A78 /* GameScene7.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene7.sks; sourceTree = "<group>"; };
+		A57418401B9049DC00A79A78 /* Fire.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Fire.sks; path = _etc/Fire.sks; sourceTree = SOURCE_ROOT; };
+		A57418411B9049DC00A79A78 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = spark.png; path = _etc/spark.png; sourceTree = SOURCE_ROOT; };
 		A5B0FF6F1B8EF7A100BA9584 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		A5B0FF711B8EFD8700BA9584 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -194,6 +198,8 @@
 				A5013AF71B8D9EB600AD3B6C /* LaunchScreen.xib */,
 				9B19ECC91B8DF26800552D11 /* Config.plist */,
 				A5013AE91B8D9EB600AD3B6C /* Info.plist */,
+				A57418401B9049DC00A79A78 /* Fire.sks */,
+				A57418411B9049DC00A79A78 /* spark.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -305,9 +311,11 @@
 				9B17372A1B8DD5C00033BEAD /* GameScene3.sks in Resources */,
 				9B19ECDC1B8F5F0600552D11 /* source_3.html in Resources */,
 				A57418371B8FC92800A79A78 /* source_6.html in Resources */,
+				A57418431B9049DC00A79A78 /* spark.png in Resources */,
 				A5013AF41B8D9EB600AD3B6C /* Main.storyboard in Resources */,
 				9B19ECDB1B8F5F0600552D11 /* source_2.html in Resources */,
 				9B1737291B8DD5C00033BEAD /* GameScene2.sks in Resources */,
+				A57418421B9049DC00A79A78 /* Fire.sks in Resources */,
 				9B19ECE01B8F707400552D11 /* source_4.html in Resources */,
 				9B19ECE21B8F729E00552D11 /* GameScene5.sks in Resources */,
 				9B19ECE41B8F735900552D11 /* source_5.html in Resources */,

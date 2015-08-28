@@ -145,6 +145,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func portalAnimation(completion:(()->())?) {
+        self.character.physicsBody = nil
         
         let center = self.nextPortal.position
         self.character.removeAllActions()

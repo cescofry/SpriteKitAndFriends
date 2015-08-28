@@ -188,20 +188,52 @@ extension GameScene {
     
     func didContact7(nodes: [NodeType : SKNode]) {
         if let actionBox = nodes[.ActionBox] as? SKSpriteNode {
-            
-            let cat = SKSpriteNode(imageNamed: "action_enemy")
-            cat.position = self.character.position
-            cat.physicsBody = PhysicBody.physicsForNode(actionBox)
-            self.addChild(cat)
-            
-            let emitter = SKEmitterNode()
-            cat.addChild(emitter)
-            
-            
-            
             self.popActionNode(actionBox)
+            
+            
+            for i in 0...5 {
+                let delay = Double(i) * 0.3
+                Dispatch.after(delay, block: { () -> () in
+                    let cat = self.cat()
+                    cat.addChild(self.catEmitter())
+                    
+                    self.addChild(cat)
+                    let dx = CGFloat(arc4random()%30) * -1.0
+                    let dy = CGFloat(arc4random()%30) + 20
+                    let vector = CGVector(dx: dx, dy: dy)
+                    
+                    cat.physicsBody!.applyImpulse(vector)
+                })
+                
+            }
         }
+        
+    }
+    
+    func cat() -> SKNode {
+        let cat = SKSpriteNode(imageNamed: "cat")
+        cat.position = CGPointApplyAffineTransform(self.character.position, CGAffineTransformMakeTranslation(-60, 60))
+        cat.setScale(0.2)
+        
+        // Physic body
+        let physicBody = PhysicBody.physicsForNode(cat)
+        physicBody.friction = 0.1
+        physicBody.affectedByGravity = true
+        physicBody.restitution = 0.7
+        physicBody.dynamic = true
+        cat.physicsBody = physicBody
+        
+        return cat
+    }
+    
+    func catEmitter() -> SKEmitterNode{
+        // emitter
+        let emitterPath: String = NSBundle.mainBundle().pathForResource("Fire", ofType: "sks")!
+        let emitterNode = NSKeyedUnarchiver.unarchiveObjectWithFile(emitterPath) as! SKEmitterNode
+        emitterNode.name = NodeType.Cat.toString()
+        emitterNode.setScale(2.5)
 
+        return emitterNode
     }
 }
 
