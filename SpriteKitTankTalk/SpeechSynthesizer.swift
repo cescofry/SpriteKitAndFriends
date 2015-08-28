@@ -12,10 +12,10 @@ import AVFoundation
 class SpeechSynthesizer : NSObject, AVSpeechSynthesizerDelegate {
     private let synth = AVSpeechSynthesizer()
     private var completion: ((cancelled: Bool, text: String)->())?
-    private var sratSpeakingText:((text: String)->())?
+    private var willStart:((text: String)->())?
     private let speakText = Config.sharedConfig().speakText
     
-    func speakText(text: String, completion:((cancelled: Bool, text: String)->())?) {
+    func speakText(text: String, willStart: ((text: String)->())?, completion:((cancelled: Bool, text: String)->())?) {
         
         if !speakText {
             if let completion = completion {
@@ -26,6 +26,7 @@ class SpeechSynthesizer : NSObject, AVSpeechSynthesizerDelegate {
         
         synth.delegate = self
         self.completion = completion
+        self.willStart = willStart
         let utterance = AVSpeechUtterance(string: text)
         synth.speakUtterance(utterance)
     }
@@ -43,8 +44,8 @@ class SpeechSynthesizer : NSObject, AVSpeechSynthesizerDelegate {
     }
     
     func speechSynthesizer(synthesizer: AVSpeechSynthesizer, didStartSpeechUtterance utterance: AVSpeechUtterance) {
-        if let sratSpeakingText = sratSpeakingText {
-            sratSpeakingText(text: utterance.speechString)
+        if let willStart = willStart {
+            willStart(text: utterance.speechString)
         }
     }
     
@@ -79,7 +80,6 @@ extension SpeechSynthesizer {
         entries.append(entryFromString("y españoles también", pitch: nil, rate: nil, language: "es-ES"))
         entries.append(entryFromString("Ordinare una pizza in italiano", pitch: nil, rate: nil, language: "it-IT"))
         entries.append(entryFromString("要求一个中国翻译", pitch: nil, rate: nil, language: "zh-CN"))
-        entries.append(entryFromString("My voice can change gender", pitch: nil, rate: nil, language: nil))
         entries.append(entryFromString("go down", pitch: 0.5, rate: nil, language: nil))
         entries.append(entryFromString("and then up again", pitch: 2.0, rate: nil, language: nil))
         entries.append(entryFromString("slowing", pitch: nil, rate: 0.2, language: nil))
@@ -91,7 +91,7 @@ extension SpeechSynthesizer {
     
     
     
-    func runDemo(completion:((cancelled: Bool, text: String)->())?) {
+    func runDemo(willStart willStart: ((text: String)->())?, completion:((cancelled: Bool, text: String)->())?) {
         
         if !speakText {
             if let completion = completion {
@@ -100,8 +100,10 @@ extension SpeechSynthesizer {
             return
         }
         
+        synth.pauseSpeakingAtBoundary(.Word)
         synth.delegate = self
         self.completion = completion
+        self.willStart = willStart
         
         let entries = demoScript()
         

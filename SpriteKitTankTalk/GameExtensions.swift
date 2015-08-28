@@ -287,8 +287,8 @@ extension GameScene {
         if let actionBox = nodes[.ActionBox] as? SKSpriteNode {
             self.popActionNode(actionBox)
             
-            self.speechSynthesizer.runDemo({ (cancelled, text) -> () in
-                print(text)
+            self.speakBoxController.runDemo({ (cancelled, text) -> () in
+                //
             })
         }
     }

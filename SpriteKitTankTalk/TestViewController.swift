@@ -14,9 +14,9 @@ class TestViewController: UIViewController {
     // SKScene and SKNode
     
     override func viewDidLoad() {
-        let speechSynthesizer = SpeechSynthesizer().runDemo { (cancelled) -> () in
-            //nil
-        }
+//        let speechSynthesizer = SpeechSynthesizer().runDemo { (cancelled) -> () in
+//            //nil
+//        }
     }
     
     override func viewDidAppear(animated: Bool) {

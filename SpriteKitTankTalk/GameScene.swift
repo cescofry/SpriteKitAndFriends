@@ -34,9 +34,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var setup: (()->())?
     var shouldRunEntranceAnimation = true
     var didContact: DidContactBlock?
+    var speakBoxController: SpeakBoxController!
     
     var currentActionIndex = 0
-    var speechSynthesizer = SpeechSynthesizer()
     
     var sceneDescription: SceneDescription? {
         didSet {
@@ -74,11 +74,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var actionBox:  SKSpriteNode? {
         return self.childNodeFromType(.ActionBox) as? SKSpriteNode
     }
-    
+
     override func didMoveToView(view: SKView) {
         
         setDefaultPhysicBodies()
         setDefaultActions()
+        self.speakBoxController = SpeakBoxController(scene: self)
         
         if let setup = self.setup {
             setup()
@@ -121,7 +122,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if let actions = actions {
             if actions.count > self.currentActionIndex {
                 let action = actions[self.currentActionIndex]
-                speechSynthesizer.speakText(action, completion: { (cancelled, text) -> () in
+                speakBoxController.speakText(action, willStart: nil, completion: { (cancelled, text) -> () in
                     self.currentActionIndex++
                     self.speakActionAndAdvance()
                 })

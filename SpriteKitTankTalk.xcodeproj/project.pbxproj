@@ -26,6 +26,7 @@
 		9B19ECE41B8F735900552D11 /* source_5.html in Resources */ = {isa = PBXBuildFile; fileRef = 9B19ECE31B8F735900552D11 /* source_5.html */; };
 		9B19ECE61B9073DF00552D11 /* GameScene8.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9B19ECE51B9073DF00552D11 /* GameScene8.sks */; };
 		9B19ECE81B9073ED00552D11 /* source_8.html in Resources */ = {isa = PBXBuildFile; fileRef = 9B19ECE71B9073ED00552D11 /* source_8.html */; };
+		9B93C6601B90BBAA0059E555 /* SpeakBoxNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B93C65F1B90BBAA0059E555 /* SpeakBoxNode.swift */; settings = {ASSET_TAGS = (); }; };
 		9B945DA21B90893A009094AE /* source_9.html in Resources */ = {isa = PBXBuildFile; fileRef = 9B945DA01B90893A009094AE /* source_9.html */; };
 		9B945DA31B90893A009094AE /* source_10.html in Resources */ = {isa = PBXBuildFile; fileRef = 9B945DA11B90893A009094AE /* source_10.html */; };
 		9B945DA61B908956009094AE /* GameScene9.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9B945DA41B908956009094AE /* GameScene9.sks */; };
@@ -79,6 +80,7 @@
 		9B19ECE31B8F735900552D11 /* source_5.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = source_5.html; sourceTree = "<group>"; };
 		9B19ECE51B9073DF00552D11 /* GameScene8.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene8.sks; sourceTree = "<group>"; };
 		9B19ECE71B9073ED00552D11 /* source_8.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = source_8.html; sourceTree = "<group>"; };
+		9B93C65F1B90BBAA0059E555 /* SpeakBoxNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakBoxNode.swift; sourceTree = "<group>"; };
 		9B945DA01B90893A009094AE /* source_9.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = source_9.html; sourceTree = "<group>"; };
 		9B945DA11B90893A009094AE /* source_10.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = source_10.html; sourceTree = "<group>"; };
 		9B945DA41B908956009094AE /* GameScene9.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene9.sks; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				9B19ECD01B8F3F8100552D11 /* GameExtensions.swift */,
 				9B19ECD21B8F4EDC00552D11 /* TestViewController.swift */,
 				9B19ECD41B8F575500552D11 /* OptionsViewController.swift */,
+				9B93C65F1B90BBAA0059E555 /* SpeakBoxNode.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -367,6 +370,7 @@
 			files = (
 				A5013AEF1B8D9EB600AD3B6C /* GameScene.swift in Sources */,
 				A5B0FF721B8EFD8700BA9584 /* Extensions.swift in Sources */,
+				9B93C6601B90BBAA0059E555 /* SpeakBoxNode.swift in Sources */,
 				9B19ECD31B8F4EDC00552D11 /* TestViewController.swift in Sources */,
 				A5013AF11B8D9EB600AD3B6C /* GameViewController.swift in Sources */,
 				A5013B0F1B8D9F5500AD3B6C /* GameSceneGenerator.swift in Sources */,

@@ -45,8 +45,6 @@ class Character: SKSpriteNode {
                 completion()
             }
         })
-        
-        
     }
     
     func rest(direction: Direction) {
