@@ -32,6 +32,8 @@ class TestViewController: UIViewController {
     func addActionToNode(node: SKSpriteNode) {
         let position = CGPoint(x: 50.0, y: 40.0)
         let move = SKAction.moveTo(position, duration: 1.0)
+        
+        node.runAction(move)
     }
     
     // Sprite textures

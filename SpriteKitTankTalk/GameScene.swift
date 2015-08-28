@@ -16,6 +16,14 @@ extension SKScene {
         
         return self.childNodeWithName(type.toString())
     }
+    
+    func childrenFromType(type: NodeType) -> [SKNode] {
+        if (type == .Other) {
+            return [SKNode]()
+        }
+        
+        return self.children.filter({$0.name != nil && $0.name == type.toString()})
+    }
 }
 
 typealias DidContactBlock = (nodes: [NodeType : SKNode])->()

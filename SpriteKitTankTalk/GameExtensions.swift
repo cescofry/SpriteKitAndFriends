@@ -8,6 +8,7 @@
 
 import UIKit
 import SpriteKit
+import GameKit
 
 
 extension GameScene {
@@ -263,3 +264,27 @@ extension GameScene {
     }
 }
 
+extension GameScene : GKAgentDelegate {
+    
+    func setUp9() {
+        self.didContact = didContact9
+        
+
+    }
+    
+    func didContact9(nodes: [NodeType : SKNode]) {
+        
+    }
+    
+}
+
+extension GameScene {
+    func setUp_() {
+        self.didContact = didContact_
+    }
+    
+    func didContact_(nodes: [NodeType : SKNode]) {
+
+    }
+    
+}

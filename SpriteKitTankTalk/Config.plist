@@ -82,6 +82,24 @@
 				<string>How about some fire!</string>
 			</array>
 		</dict>
+		<dict>
+			<key>title</key>
+			<string>Path Finding</string>
+			<key>actions</key>
+			<array>
+				<string>Ouh a maze!</string>
+				<string>a pathfinding algorithm should help me get over it</string>
+			</array>
+		</dict>
+		<dict>
+			<key>title</key>
+			<string>Strategist</string>
+			<key>actions</key>
+			<array>
+				<string>I love 4 in row</string>
+				<string>I wonder if the AI is smart enough</string>
+			</array>
+		</dict>
 	</array>
 </dict>
 </plist>

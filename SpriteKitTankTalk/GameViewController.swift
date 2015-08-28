@@ -11,7 +11,7 @@ import SpriteKit
 
 class GameViewController: UIViewController {
 
-    var index = 7
+    var index = 8
     var scene : GameScene?
     
     var isDebug : Bool? {

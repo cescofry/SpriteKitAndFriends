@@ -7,16 +7,16 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>52FEC97E-2E06-4826-8231-355F76589C5C</string>
 	<key>IDESourceControlProjectName</key>
-	<string>SpriteKitTankTalk</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>18C6131BB033E3746A29A72AA86083EB9763EA9C</key>
-		<string>iptx.org:prezel.git</string>
+		<string>https://github.int.yammer.com/ffrison/Pegagus.git</string>
 		<key>A484F80C5008B1EE1B9D58352CE2199D13051DC0</key>
-		<string>/Users/cescofry/Dropbox/gitRepo/SpriteKitTankTalk.git/</string>
+		<string>/Users/ffrison/Dropbox/gitRepo/SpriteKitTankTalk.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>SpriteKitTankTalk.xcodeproj</string>
+	<string>SpriteKitTankTalk.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>18C6131BB033E3746A29A72AA86083EB9763EA9C</key>
@@ -25,7 +25,7 @@
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>/Users/cescofry/Dropbox/gitRepo/SpriteKitTankTalk.git/</string>
+	<string>/Users/ffrison/Dropbox/gitRepo/SpriteKitTankTalk.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>

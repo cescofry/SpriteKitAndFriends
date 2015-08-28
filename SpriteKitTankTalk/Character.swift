@@ -101,7 +101,7 @@ extension Direction {
 
 
 enum NodeType {
-    case Character, ActionBox, Portal, Cat, Other
+    case Character, ActionBox, Portal, Cat, Wall, Other
     
     static func fromString(string : String) -> NodeType {
         switch string {
@@ -109,6 +109,7 @@ enum NodeType {
         case "actionBox": return .ActionBox
         case "portal": return .Portal
         case "cat": return .Cat
+        case "wall": return .Wall
         default: return .Other
         }
     }
@@ -119,6 +120,7 @@ enum NodeType {
         case .ActionBox: return "actionBox"
         case .Portal: return "portal"
         case .Cat: return "cat"
+        case .Wall: return "wall"
         default: return "other"
         }
     }
@@ -166,6 +168,10 @@ struct PhysicBody {
             physic.contactTestBitMask = 0x1 << 0
             physic.collisionBitMask = 0x1 << 0
             physic.allowsRotation = true
+        case .Wall:
+            physic.categoryBitMask = 0x1 << 4
+            physic.contactTestBitMask = 0x1 << 0
+            physic.collisionBitMask = 0x1 << 0
         default:
             physic.categoryBitMask = 0x1 << 8
             physic.contactTestBitMask = 0x1 << 0
