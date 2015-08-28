@@ -66,10 +66,20 @@
 		</dict>
 		<dict>
 			<key>title</key>
-			<string>Emitters</string>
+			<string>And More Gravity Again</string>
 			<key>actions</key>
 			<array>
 				<string>What would it be a demo withput cats.</string>
+				<string>Amaizing beasts, they fly pretty well you know. And they bounce as well!</string>
+			</array>
+		</dict>
+		<dict>
+			<key>title</key>
+			<string>Emitters</string>
+			<key>actions</key>
+			<array>
+				<string>Enough with gravity for now.</string>
+				<string>How about some fire!</string>
 			</array>
 		</dict>
 	</array>

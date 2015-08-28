@@ -10,19 +10,19 @@
 	<string>SpriteKitTankTalk</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
+		<key>18C6131BB033E3746A29A72AA86083EB9763EA9C</key>
+		<string>iptx.org:prezel.git</string>
 		<key>A484F80C5008B1EE1B9D58352CE2199D13051DC0</key>
 		<string>/Users/cescofry/Dropbox/gitRepo/SpriteKitTankTalk.git/</string>
-		<key>C6F4526546B4B12E617D8E7B32795E9BB51ADE24</key>
-		<string>iptx.org:prezel.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>SpriteKitTankTalk.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
+		<key>18C6131BB033E3746A29A72AA86083EB9763EA9C</key>
+		<string>../../..</string>
 		<key>A484F80C5008B1EE1B9D58352CE2199D13051DC0</key>
 		<string>../..</string>
-		<key>C6F4526546B4B12E617D8E7B32795E9BB51ADE24</key>
-		<string>../../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>/Users/cescofry/Dropbox/gitRepo/SpriteKitTankTalk.git/</string>
@@ -36,9 +36,9 @@
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>C6F4526546B4B12E617D8E7B32795E9BB51ADE24</string>
+			<string>18C6131BB033E3746A29A72AA86083EB9763EA9C</string>
 			<key>IDESourceControlWCCName</key>
-			<string>..</string>
+			<string></string>
 		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>

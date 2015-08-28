@@ -128,46 +128,49 @@ enum NodeType {
 struct PhysicBody {
     
     static func physicsForNode(node: SKSpriteNode) -> SKPhysicsBody {
+        
+        let name = (node.name != nil) ? node.name! : "other"
+        let type = NodeType.fromString(name)
         var physic : SKPhysicsBody
-        if let texture = node.texture {
-            let scaleTransoform = CGAffineTransformMakeScale(1.0 / node.xScale, 1.0 / node.yScale)
-            let size = CGSizeApplyAffineTransform(node.size, scaleTransoform)
-            physic = SKPhysicsBody(texture: texture, size: size)
+        
+        if type == .Cat {
+            physic = SKPhysicsBody(circleOfRadius: node.size.width / 2.2)
+        }
+        else if let texture = node.texture {
+            physic = SKPhysicsBody(texture: texture, size: node.size)
         }
         else {
-            physic = SKPhysicsBody(circleOfRadius: node.size.width / 2.2)
-            
-        }
-        physic.dynamic = true
-        
-        if let name = node.name {
-            switch name {
-            case "character":
-                physic.categoryBitMask = 0x1 << 0
-                physic.contactTestBitMask = 0x1 << 1
-                physic.collisionBitMask = 0x1 << 1
-                physic.allowsRotation = false
-            case "actionBox":
-                physic.categoryBitMask = 0x1 << 1
-                physic.contactTestBitMask = 0x1 << 0
-                physic.collisionBitMask = 0x1 << 0
-            case "portal":
-                physic.categoryBitMask = 0x1 << 2
-                physic.contactTestBitMask = 0x1 << 0
-                physic.collisionBitMask = 0x1 << 0
-            case "cat":
-                physic.categoryBitMask = 0x1 << 3
-                physic.contactTestBitMask = 0x1 << 0
-                physic.collisionBitMask = 0x1 << 0
-            default:
-                physic.categoryBitMask = 0x1 << 8
-                physic.contactTestBitMask = 0x1 << 0
-                physic.collisionBitMask = 0x1 << 0
-            }
+            physic = SKPhysicsBody(rectangleOfSize: node.size)
         }
         
+        physic.usesPreciseCollisionDetection = false
         physic.dynamic = true
-        physic.affectedByGravity = false
+        physic.allowsRotation = false
+        
+        switch type {
+        case .Character:
+            physic.categoryBitMask = 0x1 << 0
+            physic.contactTestBitMask = 0x1 << 1
+            physic.collisionBitMask = 0x1 << 1
+        case .ActionBox:
+            physic.categoryBitMask = 0x1 << 1
+            physic.contactTestBitMask = 0x1 << 0
+            physic.collisionBitMask = 0x1 << 0
+        case .Portal:
+            physic.categoryBitMask = 0x1 << 2
+            physic.contactTestBitMask = 0x1 << 0
+            physic.collisionBitMask = 0x1 << 0
+        case .Cat:
+            physic.categoryBitMask = 0x1 << 3
+            physic.contactTestBitMask = 0x1 << 0
+            physic.collisionBitMask = 0x1 << 0
+            physic.allowsRotation = true
+        default:
+            physic.categoryBitMask = 0x1 << 8
+            physic.contactTestBitMask = 0x1 << 0
+            physic.collisionBitMask = 0x1 << 0
+            physic.allowsRotation = true
+        }
         
         return physic
     }

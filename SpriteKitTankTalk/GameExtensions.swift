@@ -177,7 +177,7 @@ extension GameScene {
 extension GameScene {
     func setUp7() {
         self.didContact = didContact7
-        
+        self.character.position = CGPoint(x: 700.0, y: self.size.height - 150)
         self.physicsWorld.gravity = CGVector(dx: 0.0, dy: -5.0)
         
         let characterPhysic = self.character.physicsBody!
@@ -190,16 +190,14 @@ extension GameScene {
         if let actionBox = nodes[.ActionBox] as? SKSpriteNode {
             self.popActionNode(actionBox)
             
-            
             for i in 0...5 {
-                let delay = Double(i) * 0.3
+                let delay = Double(i) * 0.6
                 Dispatch.after(delay, block: { () -> () in
                     let cat = self.cat()
-                    cat.addChild(self.catEmitter())
                     
                     self.addChild(cat)
-                    let dx = CGFloat(arc4random()%30) * -1.0
-                    let dy = CGFloat(arc4random()%30) + 20
+                    let dx = (CGFloat(arc4random()%50) + 20) * -1.0
+                    let dy = CGFloat(arc4random()%50) + 40
                     let vector = CGVector(dx: dx, dy: dy)
                     
                     cat.physicsBody!.applyImpulse(vector)
@@ -207,32 +205,63 @@ extension GameScene {
                 
             }
         }
-        
     }
     
     func cat() -> SKNode {
         let cat = SKSpriteNode(imageNamed: "cat")
+        cat.name = NodeType.Cat.toString()
         cat.position = CGPointApplyAffineTransform(self.character.position, CGAffineTransformMakeTranslation(-60, 60))
-        cat.setScale(0.2)
+        cat.setScale(0.15)
+        cat.zRotation = CGFloat(Double(arc4random())%M_PI)
         
         // Physic body
         let physicBody = PhysicBody.physicsForNode(cat)
         physicBody.friction = 0.1
         physicBody.affectedByGravity = true
-        physicBody.restitution = 0.7
+        physicBody.restitution = 1.0
+        physicBody.mass = 0.15
         physicBody.dynamic = true
         cat.physicsBody = physicBody
         
         return cat
     }
+}
+
+extension GameScene {
+    func setUp8() {
+        self.didContact = didContact8
+        self.character.physicsBody!.affectedByGravity = false
+    }
     
-    func catEmitter() -> SKEmitterNode{
+    func didContact8(nodes: [NodeType : SKNode]) {
+        if let actionBox = nodes[.ActionBox] as? SKSpriteNode {
+            self.popActionNode(actionBox)
+            
+            let validSize = CGSizeApplyAffineTransform(self.size, CGAffineTransformMakeScale(0.8, 0.8))
+            
+            for i in 0...8 {
+                let delay = Double(i) * 0.3
+                Dispatch.after(delay, block: { () -> () in
+                    let fireEmitter = self.fireEmitter()
+                    
+                    let x = CGFloat(arc4random()%UInt32(validSize.width))
+                    let y = CGFloat(arc4random()%UInt32(validSize.height))
+                    fireEmitter.position = CGPoint(x: x, y: y)
+                    
+                    self.addChild(fireEmitter)
+                    
+                })
+                
+            }
+        }
+    }
+    
+    func fireEmitter() -> SKEmitterNode{
         // emitter
         let emitterPath: String = NSBundle.mainBundle().pathForResource("Fire", ofType: "sks")!
         let emitterNode = NSKeyedUnarchiver.unarchiveObjectWithFile(emitterPath) as! SKEmitterNode
-        emitterNode.name = NodeType.Cat.toString()
-        emitterNode.setScale(2.5)
-
+        emitterNode.setScale(0.8)
+        
         return emitterNode
     }
 }
