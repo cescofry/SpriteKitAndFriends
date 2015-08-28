@@ -26,7 +26,7 @@
 		9B19ECE41B8F735900552D11 /* source_5.html in Resources */ = {isa = PBXBuildFile; fileRef = 9B19ECE31B8F735900552D11 /* source_5.html */; };
 		9B19ECE61B9073DF00552D11 /* GameScene8.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9B19ECE51B9073DF00552D11 /* GameScene8.sks */; };
 		9B19ECE81B9073ED00552D11 /* source_8.html in Resources */ = {isa = PBXBuildFile; fileRef = 9B19ECE71B9073ED00552D11 /* source_8.html */; };
-		9B93C6601B90BBAA0059E555 /* SpeakBoxNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B93C65F1B90BBAA0059E555 /* SpeakBoxNode.swift */; settings = {ASSET_TAGS = (); }; };
+		9B93C6601B90BBAA0059E555 /* SpeakBoxNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B93C65F1B90BBAA0059E555 /* SpeakBoxNode.swift */; };
 		9B945DA21B90893A009094AE /* source_9.html in Resources */ = {isa = PBXBuildFile; fileRef = 9B945DA01B90893A009094AE /* source_9.html */; };
 		9B945DA31B90893A009094AE /* source_10.html in Resources */ = {isa = PBXBuildFile; fileRef = 9B945DA11B90893A009094AE /* source_10.html */; };
 		9B945DA61B908956009094AE /* GameScene9.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9B945DA41B908956009094AE /* GameScene9.sks */; };
@@ -203,8 +203,8 @@
 				9B19ECCC1B8E184D00552D11 /* Character.swift */,
 				A5013B121B8E821700AD3B6C /* SpeechSynthesizer.swift */,
 				A5B0FF6F1B8EF7A100BA9584 /* Config.swift */,
-				A5013AE81B8D9EB600AD3B6C /* Supporting Files */,
 				A5B0FF711B8EFD8700BA9584 /* Extensions.swift */,
+				A5013AE81B8D9EB600AD3B6C /* Supporting Files */,
 			);
 			path = SpriteKitTankTalk;
 			sourceTree = "<group>";
