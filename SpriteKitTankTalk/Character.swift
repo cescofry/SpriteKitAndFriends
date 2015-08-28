@@ -28,7 +28,6 @@ class Character: SKSpriteNode {
     
     
     func runToPosition(position: CGPoint, completion: (()->())?) {
-
         let radiants = self.position.radiantsToPoint(position)
         let direction = Direction.fromRadiants(radiants)
         let duration = NSTimeInterval(self.position.distanceToPoint(position) / 200)
@@ -41,7 +40,7 @@ class Character: SKSpriteNode {
         let move = SKAction.moveTo(position, duration: duration)
         self.runAction(move, completion: { () -> Void in
             self.removeActionForKey("runTexture")
-            self.rest(direction)
+            self.rest(.Front)
             if let completion = completion {
                 completion()
             }
@@ -89,14 +88,20 @@ extension Direction {
     
     static func fromRadiants(radiants : CGFloat) -> Direction {
         
-        return .Front
-//        
-//        switch radiants {
-//        case -0.8...0.8: return .Front
-//            case 0.81...
-//            
-//        }
+        if radiants < -0.8 && radiants > -2.4 {
+            return .Right
+        }
+        else if radiants > 0.8 && radiants < 2.4 {
+            return .Left
+        }
+        else if abs(radiants) > 1.5 {
+            return .Front
+        }
+        else {
+            return .Back
+        }
     }
+
 }
 
 
