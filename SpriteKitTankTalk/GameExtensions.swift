@@ -257,7 +257,6 @@ extension GameScene {
     }
     
     func fireEmitter() -> SKEmitterNode{
-        // emitter
         let emitterPath: String = NSBundle.mainBundle().pathForResource("Fire", ofType: "sks")!
         let emitterNode = NSKeyedUnarchiver.unarchiveObjectWithFile(emitterPath) as! SKEmitterNode
         emitterNode.setScale(0.8)

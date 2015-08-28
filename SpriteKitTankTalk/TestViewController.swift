@@ -55,9 +55,6 @@ class TestViewController: UIViewController {
         let physics = SKPhysicsBody(circleOfRadius: radius)
         physics.dynamic = false
         physics.friction = 0.2
-        physics.restitution = 0.2
-        physics.mass = 10.0
-        physics.density = 1.0
         
         node.physicsBody = physics
     }
@@ -73,6 +70,32 @@ class TestViewController: UIViewController {
         
         physics.affectedByGravity = true
         physics.dynamic = true
+    }
+    
+    // Gravity and Collisions
+    
+    func shootNodeWithPhysics(node: SKSpriteNode)  {
+        let radius = node.size.width / 2.0
+        let physics = SKPhysicsBody(circleOfRadius: radius)
+        physics.dynamic = false
+        physics.friction = 0.2
+        physics.mass = 1.2 // resistence to impulses
+        physics.restitution = 0.9 // bouncing
+        
+        
+        physics.applyForce(CGVector(dx: 20.0, dy: -30.0)) // remember inverted coordinates
+        
+        node.physicsBody = physics
+    }
+    
+    // Emitter
+    
+    func addEmitterToNode(node : SKNode) {
+        // Create a new File of type Spritekit Partle File name Fire.
+        let emitterPath: String = NSBundle.mainBundle().pathForResource("Fire", ofType: "sks")!
+        let emitterNode = NSKeyedUnarchiver.unarchiveObjectWithFile(emitterPath) as! SKEmitterNode
+        
+        node.addChild(emitterNode)
     }
     
     // Path Finding
