@@ -131,6 +131,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func popActionNode(node : SKSpriteNode) {
+        // avoid double collisions
+        node.physicsBody = nil
         
         let shrink = SKAction.scaleBy(0.2, duration: 0.3)
         node.runAction(shrink)

@@ -145,7 +145,7 @@ extension GameScene {
             
             Dispatch.after(2.0, block: { () -> () in
                 if let nextScene = self.nextScene {
-                    self.nextScene!(showCode: false)
+                    nextScene(showCode: false)
                 }
             })
         }
