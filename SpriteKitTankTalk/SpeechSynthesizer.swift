@@ -15,7 +15,12 @@ class SpeechSynthesizer : NSObject, AVSpeechSynthesizerDelegate {
     private var willStart:((text: String)->())?
     private let speakText = Config.sharedConfig().speakText
     
+    
     func speakText(text: String, willStart: ((text: String)->())?, completion:((cancelled: Bool, text: String)->())?) {
+        speakText(text, language: nil, willStart: willStart, completion: completion)
+    }
+    
+    func speakText(text: String, language: String?, willStart: ((text: String)->())?, completion:((cancelled: Bool, text: String)->())?) {
         
         if !speakText {
             if let completion = completion {
@@ -28,6 +33,12 @@ class SpeechSynthesizer : NSObject, AVSpeechSynthesizerDelegate {
         self.completion = completion
         self.willStart = willStart
         let utterance = AVSpeechUtterance(string: text)
+        
+        if let lang = language {
+            let voice = AVSpeechSynthesisVoice(language: lang)
+            utterance.voice = voice
+        }
+        
         synth.speakUtterance(utterance)
     }
     

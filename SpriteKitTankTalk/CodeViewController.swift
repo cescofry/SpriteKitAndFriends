@@ -51,7 +51,7 @@ class CodeViewController : UIViewController {
         super.viewDidAppear(animated)
         if let text = speakTextOutOfHTML() {
             self.speakBox.text = text
-            self.speechSynthesizer.speakText(text, willStart: nil, completion: nil)
+            self.speechSynthesizer.speakText(text, language: "en-GB", willStart: nil, completion: nil)
         }
     }
     

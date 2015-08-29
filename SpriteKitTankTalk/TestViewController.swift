@@ -8,6 +8,7 @@
 
 import UIKit
 import SpriteKit
+import AVFoundation
 
 class TestViewController: UIViewController {
     
@@ -57,6 +58,7 @@ class TestViewController: UIViewController {
         let move = SKAction.moveTo(position, duration: 1.0)
         
         node.runAction(move)
+        
     }
     
     // Sprite textures
@@ -69,8 +71,8 @@ class TestViewController: UIViewController {
             textures.append(texture)
         }
         
-        let spriteAction = SKAction.animateWithTextures(textures, timePerFrame: 0.05)
-        node.runAction(SKAction.repeatActionForever(spriteAction))
+        let sprite = SKAction.animateWithTextures(textures, timePerFrame: 0.05)
+        node.runAction(SKAction.repeatActionForever(sprite))
     }
     
     // Physics
@@ -97,15 +99,17 @@ class TestViewController: UIViewController {
         physics.dynamic = true
     }
     
-    // Gravity and Collisions
+    // Gravity and Inpulses
     
     func shootNodeWithPhysics(node: SKSpriteNode)  {
         let radius = node.size.width / 2.0
         let physics = SKPhysicsBody(circleOfRadius: radius)
         physics.dynamic = false
-        physics.friction = 0.2
         physics.mass = 1.2 // resistence to impulses
+        physics.density = 1.2
+        
         physics.restitution = 0.9 // bouncing
+        physics.friction = 0.2 // sliding
         
         
         physics.applyForce(CGVector(dx: 20.0, dy: -30.0))
@@ -114,15 +118,15 @@ class TestViewController: UIViewController {
         node.physicsBody = physics
     }
     
-    // Emitter
+    // Particle Emitter
     
     func addEmitterToNode(node : SKNode) {
         // Create a new File of type Spritekit Partle File name Fire.
         let bundle = NSBundle.mainBundle()
-        let emitterPath: String = bundle.pathForResource("Fire", ofType: "sks")!
-        let emitterNode = NSKeyedUnarchiver.unarchiveObjectWithFile(emitterPath)
+        let path: String = bundle.pathForResource("Fire", ofType: "sks")!
+        let emitter = NSKeyedUnarchiver.unarchiveObjectWithFile(path)
         
-        node.addChild(emitterNode as! SKEmitterNode)
+        node.addChild(emitter as! SKEmitterNode)
     }
     
     // Path Finding
@@ -137,5 +141,35 @@ class TestViewController: UIViewController {
         
     }
     
+
+    
+    
+
+    
+}
+
+// Speech Synthesizer
+
+import AVFoundation
+
+class Synth : NSObject, AVSpeechSynthesizerDelegate {
+    let synth = AVSpeechSynthesizer()
+    
+    func speakText(text : String) {
+        let utterance = AVSpeechUtterance(string: text)
+        utterance.rate = 0.5
+        utterance.pitchMultiplier = 1.0
+
+        let voice = AVSpeechSynthesisVoice(language: "fr-FR")
+        utterance.voice = voice
+
+        synth.delegate = self
+        synth.speakUtterance(utterance)
+    }
+    
+    func speechSynthesizer(synthesizer: AVSpeechSynthesizer,
+        didFinishSpeechUtterance utterance: AVSpeechUtterance) {
+        print("ended")
+    }
 }
 
