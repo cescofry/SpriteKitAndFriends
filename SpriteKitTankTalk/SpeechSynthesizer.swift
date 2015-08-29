@@ -31,6 +31,13 @@ class SpeechSynthesizer : NSObject, AVSpeechSynthesizerDelegate {
         synth.speakUtterance(utterance)
     }
     
+    func stopSpeaking() {
+        self.synth.stopSpeakingAtBoundary(.Word)
+    }
+    
+    
+    //MARK: - speechSynthesizer delegate -
+    
     func speechSynthesizer(synthesizer: AVSpeechSynthesizer, didFinishSpeechUtterance utterance: AVSpeechUtterance) {
         if let completion = completion {
             completion(cancelled: false, text: utterance.speechString)

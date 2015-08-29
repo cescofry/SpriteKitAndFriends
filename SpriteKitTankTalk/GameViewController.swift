@@ -84,7 +84,8 @@ class GameViewController: UIViewController {
     
     func presentCode() {
         if let sceneDescription = self.scene?.sceneDescription {
-            let vc = CodeViewController.inNavigationController(sceneDescription.code, dismissBlock: loadCurrentScene)
+            self.scene!.speakBoxController.speechSynthesizer.stopSpeaking()
+            let vc = CodeViewController.inNavigationController(sceneDescription.code, speechSynthesizer: self.scene!.speakBoxController.speechSynthesizer, dismissBlock: loadCurrentScene)
             self.presentViewController(vc, animated: true, completion: { () -> Void in
                 //
             })

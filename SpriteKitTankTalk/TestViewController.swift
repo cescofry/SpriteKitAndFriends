@@ -13,24 +13,41 @@ class TestViewController: UIViewController {
     
     // SKScene and SKNode
     
-    override func viewDidLoad() {
+//    override func viewDidLoad() {
 //        let speechSynthesizer = SpeechSynthesizer().runDemo { (cancelled) -> () in
 //            //nil
 //        }
+//    }
+    
+//    override func loadView() {
+//        self.view = SKView(frame: UIScreen.mainScreen().bounds)
+//    }
+    
+    
+    // SKScene and SKAction
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let scene = SKScene(size: self.view.bounds.size)
+        
+        // Not Needed if from Storyboard
+        self.view = SKView(frame: self.view.bounds)
+
+        let skView = self.view as! SKView
+        skView.presentScene(scene)
+        
+        addNodeToScene(scene)
     }
     
-    override func viewDidAppear(animated: Bool) {
-        /*
-        let scene = SKScene(size: self.view.bounds.size)
+    func addNodeToScene(scene : SKScene) {
+        
+        // Y Coordinate System inverted
         let size = CGSize(width: 50.0, height: 50.0)
         let node = SKSpriteNode(color: UIColor.redColor(), size: size)
         node.position = CGPoint(x: 100.0, y: 100.0)
         
         scene.addChild(node)
-        
-        let skView = self.view as! SKView
-        skView.presentScene(scene)
-*/
     }
     
     // SKAction
