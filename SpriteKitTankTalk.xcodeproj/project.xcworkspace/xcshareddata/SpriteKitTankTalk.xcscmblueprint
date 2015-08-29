@@ -5,12 +5,14 @@
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
     "A484F80C5008B1EE1B9D58352CE2199D13051DC0" : 0,
-    "18C6131BB033E3746A29A72AA86083EB9763EA9C" : 0
+    "18C6131BB033E3746A29A72AA86083EB9763EA9C" : 0,
+    "C6F4526546B4B12E617D8E7B32795E9BB51ADE24" : 0
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "52FEC97E-2E06-4826-8231-355F76589C5C",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
     "A484F80C5008B1EE1B9D58352CE2199D13051DC0" : "SpriteKitTankTalk",
-    "18C6131BB033E3746A29A72AA86083EB9763EA9C" : ""
+    "18C6131BB033E3746A29A72AA86083EB9763EA9C" : "",
+    "C6F4526546B4B12E617D8E7B32795E9BB51ADE24" : ".."
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "SpriteKitTankTalk",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
@@ -25,6 +27,11 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "\/Users\/cescofry\/Dropbox\/gitRepo\/SpriteKitTankTalk.git\/",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "A484F80C5008B1EE1B9D58352CE2199D13051DC0"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "iptx.org:prezel.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C6F4526546B4B12E617D8E7B32795E9BB51ADE24"
     }
   ]
 }

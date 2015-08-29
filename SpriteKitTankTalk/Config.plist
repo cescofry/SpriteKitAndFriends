@@ -74,11 +74,11 @@
 		</dict>
 		<dict>
 			<key>title</key>
-			<string>Emitters</string>
+			<string>Particle Emitters</string>
 			<key>actions</key>
 			<array>
 				<string>Enough with gravity for now. What about some piro!</string>
-				<string>We can create fires using emitters</string>
+				<string>We can create fires using particle emitters</string>
 			</array>
 		</dict>
 		<dict>
