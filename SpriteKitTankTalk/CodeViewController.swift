@@ -38,16 +38,21 @@ class CodeViewController : UIViewController {
         self.navigationItem.title = self.sceneDescription!.title
         
         let(speakLabelRect, webViewRect) = self.view.bounds.divide(120, fromEdge: CGRectEdge.MaxYEdge)
+        
+        // Webview
         self.webView.frame = webViewRect
         self.webView.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight]
         self.view.addSubview(self.webView)
         
+        // Speak Box
         self.speakBox.frame = speakLabelRect
         self.speakBox.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight]
         self.speakBox.numberOfLines = 0
         self.speakBox.backgroundColor = UIColor.blackColor()
         self.speakBox.textColor = UIColor.whiteColor()
         self.speakBox.font = UIFont.systemFontOfSize(20)
+        self.speakBox.textAlignment = .Center
+        
         self.view.addSubview(self.speakBox)
         
     }
