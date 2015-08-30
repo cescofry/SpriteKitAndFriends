@@ -15,7 +15,6 @@ class SpeechSynthesizer : NSObject, AVSpeechSynthesizerDelegate {
     private var willStart:((text: String)->())?
     private let speakText = Config.sharedConfig().speakText
     
-    
     func speakText(text: String, willStart: ((text: String)->())?, completion:((cancelled: Bool, text: String)->())?) {
         speakText(text, language: nil, willStart: willStart, completion: completion)
     }
@@ -34,16 +33,23 @@ class SpeechSynthesizer : NSObject, AVSpeechSynthesizerDelegate {
         self.willStart = willStart
         let utterance = AVSpeechUtterance(string: text)
         
-        if let lang = language {
-            let voice = AVSpeechSynthesisVoice(language: lang)
-            utterance.voice = voice
-        }
+        utterance.voice = self.voiceFromLanguage(language)
         
         synth.speakUtterance(utterance)
     }
     
     func stopSpeaking() {
         self.synth.stopSpeakingAtBoundary(.Word)
+    }
+    
+    
+    private func voiceFromLanguage(language: String?) -> AVSpeechSynthesisVoice? {
+        if let lang = language {
+            return AVSpeechSynthesisVoice(language: lang)
+        }
+        else {
+            return AVSpeechSynthesisVoice(language: "en-US")
+        }
     }
     
     
@@ -81,10 +87,7 @@ extension SpeechSynthesizer {
             utterance.rate = rate
         }
         
-        if let lang = language {
-            let voice = AVSpeechSynthesisVoice(language: lang)
-            utterance.voice = voice
-        }
+        utterance.voice = self.voiceFromLanguage(language)
         
         return utterance
     }
