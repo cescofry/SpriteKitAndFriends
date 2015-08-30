@@ -35,9 +35,7 @@ class CodeViewController : UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.lightTextColor()
         
-//        let webViewRect : UnsafeMutablePointer<CGRect>
-//        let speakLabelRect : UnsafeMutablePointer<CGRect>
-//        CGRectDivide(self.view.bounds, webViewRect, speakLabelRect, 80, CGRectEdge.MinYEdge)
+        self.navigationItem.title = self.sceneDescription!.title
         
         let(speakLabelRect, webViewRect) = self.view.bounds.divide(120, fromEdge: CGRectEdge.MaxYEdge)
         self.webView.frame = webViewRect
@@ -51,6 +49,7 @@ class CodeViewController : UIViewController {
         self.speakBox.textColor = UIColor.whiteColor()
         self.speakBox.font = UIFont.systemFontOfSize(20)
         self.view.addSubview(self.speakBox)
+        
     }
     
     override func viewDidAppear(animated: Bool) {
