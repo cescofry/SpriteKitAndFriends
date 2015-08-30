@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="sUT-0p-jWW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8187.4" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="K0a-4G-E1Y">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8151.3"/>
     </dependencies>
     <scenes>
         <!--Game View Controller-->
@@ -45,5 +45,52 @@
             </objects>
             <point key="canvasLocation" x="-667" y="-381"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="9I7-fZ-uVf">
+            <objects>
+                <viewController id="K0a-4G-E1Y" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="k6r-8M-SAv"/>
+                        <viewControllerLayoutGuide type="bottom" id="aSq-ub-cLC"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="V2W-OU-AAn">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="SpriteKit &amp; Friends" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="wHT-8m-tb7">
+                                <rect key="frame" x="67" y="20" width="441" height="43"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" image="icon_300" translatesAutoresizingMaskIntoConstraints="NO" id="a0n-qE-zmL">
+                                <rect key="frame" x="137" y="150" width="300" height="300"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jlv-hs-F30">
+                                <rect key="frame" x="283" y="540" width="34" height="30"/>
+                                <state key="normal" title="Start"/>
+                                <connections>
+                                    <segue destination="sUT-0p-jWW" kind="show" id="h0x-nd-5ya"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="jlv-hs-F30" firstAttribute="centerX" secondItem="V2W-OU-AAn" secondAttribute="centerX" id="LXv-gZ-ie5"/>
+                            <constraint firstItem="wHT-8m-tb7" firstAttribute="centerX" secondItem="V2W-OU-AAn" secondAttribute="centerX" id="Lnr-aI-BXZ"/>
+                            <constraint firstItem="aSq-ub-cLC" firstAttribute="top" secondItem="jlv-hs-F30" secondAttribute="bottom" constant="30" id="Nht-QM-hJt"/>
+                            <constraint firstItem="wHT-8m-tb7" firstAttribute="top" secondItem="k6r-8M-SAv" secondAttribute="bottom" id="bPy-yz-2KW"/>
+                            <constraint firstItem="a0n-qE-zmL" firstAttribute="centerX" secondItem="V2W-OU-AAn" secondAttribute="centerX" id="bpo-gk-B9R"/>
+                            <constraint firstItem="a0n-qE-zmL" firstAttribute="centerY" secondItem="V2W-OU-AAn" secondAttribute="centerY" id="zjD-bA-cNR"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uff-wK-Szj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-694" y="401"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="icon_300" width="300" height="300"/>
+    </resources>
 </document>

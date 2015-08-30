@@ -57,8 +57,9 @@ class GameViewController: UIViewController {
         }
     }
     
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+
         nextScene(false)
         self.audioController.playBackgroundMusic()
     }
