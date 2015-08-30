@@ -15,23 +15,35 @@ struct Config {
     let speakText : Bool
     let scenes : [SceneDescription]
     
+    private static var cachedSharedConfig : Config?
     static func sharedConfig() -> Config! {
+        
+        if let cachedSC = cachedSharedConfig {
+            return cachedSC
+        }
+        
         let configDict = plistDictionary()
         let isDebug = configDict["isDebug"]!.boolValue!
         let speakText = configDict["speakText"]!.boolValue!
-        let scenesR = configDict["scenes"] as! [[String : AnyObject]]
         
         var index = 0
-        let scenes = scenesR.map({ (dictionary) -> SceneDescription in
-            let title = dictionary["title"] as! String
-            
+        var stop = false
+        var scenes = [SceneDescription]()
+        while (!stop) {
             index++
-            let codeString = self.codeForIndex(index)
-            let actions = dictionary["actions"] as! [String]
-            return SceneDescription(title: title, code: codeString, actions: actions)
-        })
+            
+            guard let path = NSBundle.mainBundle().pathForResource("source_\(index)", ofType: "html"),
+                let scene = SceneDescription.fromCodePath(path)
+                else {
+                stop = true
+                continue
+            }
+            
+            scenes.append(scene)
+        }
         
-        return Config(isDebug: isDebug, speakText: speakText, scenes: scenes)
+        self.cachedSharedConfig = Config(isDebug: isDebug, speakText: speakText, scenes: scenes)
+        return self.cachedSharedConfig
     }
     
     private static func plistDictionary() -> NSDictionary {
@@ -47,6 +59,60 @@ struct Config {
 
 struct SceneDescription {
     let title : String
-    let code : String
+    let codePath : String
+    let code : [String]
     let actions : [String]
+    
+    var html : String? {
+        return SceneDescription.htmlFromPath(self.codePath)
+    }
+    
+    private static func htmlFromPath(path : String) -> String? {
+        return try? NSString(contentsOfFile: path, encoding: NSUTF8StringEncoding) as String
+    }
+    
+    static func fromCodePath(codePath: String) -> SceneDescription? {
+        guard let html = htmlFromPath(codePath),
+            let jsonDict = jsonConfigFromHTML(html)
+            else {
+            return nil
+        }
+        
+        guard let codeS  = jsonDict["code"],
+            let actionsS  = jsonDict["action"],
+            let title = jsonDict["title"]
+            else {
+                return nil
+        }
+        let code = codeS.componentsSeparatedByString(".")
+        let actions = actionsS.componentsSeparatedByString(".")
+        
+        return SceneDescription(title: title, codePath: codePath, code: code, actions: actions)
+
+    }
+    
+    private static func jsonConfigFromHTML(html : String) -> [String: String]? {
+        
+        let regEx = try? NSRegularExpression(pattern: "<script type=\"json\">(.+)</script>", options: [.CaseInsensitive, .DotMatchesLineSeparators])
+        let range = NSMakeRange(0, html.lengthOfBytesUsingEncoding(NSUTF8StringEncoding))
+        let findings = regEx!.matchesInString(html, options: NSMatchingOptions.ReportCompletion, range: range)
+        
+        if let first = findings.first {
+            let range = first.rangeAtIndex(1)
+            let json = (html as NSString).substringWithRange(range)
+            
+            if let data = json.dataUsingEncoding(NSUTF8StringEncoding) {
+                let jsonAnyObj = try? NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments)
+                return  jsonAnyObj as? [String : String]
+            }
+        
+        }
+
+        
+        return nil
+    }
+    
+
+    
+    
 }

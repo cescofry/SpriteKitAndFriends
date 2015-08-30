@@ -117,25 +117,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    func speakActionAndAdvance() {
-        let actions = self.sceneDescription?.actions
-        if let actions = actions {
-            if actions.count > self.currentActionIndex {
-                let action = actions[self.currentActionIndex]
-                speakBoxController.speakText(action, willStart: nil, completion: { (cancelled, text) -> () in
-                    self.currentActionIndex++
-                    self.speakActionAndAdvance()
-                })
-            }
-        }
-    }
-    
     func entranceAnimation(){
         self.character.position = CGPoint(x: -50.0, y: self.view!.center.y)
         let startPosition = CGPoint(x: 80.0, y: self.view!.center.y)
         
+        
         self.runToPosition!(position: startPosition, completion: { () -> () in
-            self.speakActionAndAdvance()
+            guard let actions = self.sceneDescription?.actions else {
+                return
+            }
+            self.speakBoxController.speakMultipleTextAndAdvance(actions, willStart: nil, completion: nil)
         })
     }
     

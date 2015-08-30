@@ -133,6 +133,8 @@ extension GameScene {
         if let actionBox = nodes[.ActionBox] as? SKSpriteNode {
             self.popActionNode(actionBox)
             
+            self.speakBoxController.speakText("Ahhhhhh!", willStart: nil, completion: nil)
+            
             self.character.physicsBody!.affectedByGravity = true
             self.physicsWorld.gravity = CGVector(dx: 0.0, dy: -5.0)
             
@@ -166,6 +168,9 @@ extension GameScene {
         characterPhysic.friction = 0.01
         characterPhysic.affectedByGravity = true
         self.character.physicsBody = characterPhysic
+        
+        
+        self.speakBoxController.speakText("Ahhhhhh!", willStart: nil, completion: nil)
     }
     
     func didContact6(nodes: [NodeType : SKNode]) {

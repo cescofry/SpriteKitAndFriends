@@ -11,6 +11,12 @@ import WebKit
 
 class CodeViewController : UIViewController {
 
+    var sceneDescription : SceneDescription? {
+        didSet {
+            self.html = sceneDescription!.html
+        }
+    }
+    
     var html : String? {
         didSet {
             if let html = html {
@@ -49,32 +55,26 @@ class CodeViewController : UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        if let text = speakTextOutOfHTML() {
-            self.speakBox.text = text
-            self.speechSynthesizer.speakText(text, language: "en-GB", willStart: nil, completion: nil)
-        }
-    }
-    
-    private func speakTextOutOfHTML() -> String? {
-        if let html = self.html {
-            let regEx = try? NSRegularExpression(pattern: "<!--SPEAK:(.+)-->", options: NSRegularExpressionOptions.CaseInsensitive)
-            let range = NSMakeRange(0, html.lengthOfBytesUsingEncoding(NSUTF8StringEncoding))
-            let findings = regEx!.matchesInString(html, options: NSMatchingOptions.ReportCompletion, range: range)
-            
-            if let first = findings.first {
-                let range = first.rangeAtIndex(1)
-                return (html as NSString).substringWithRange(range)
-            }
+        
+        guard let texts = self.sceneDescription?.code else {
+            return
         }
         
-        return nil
+        for text in texts {
+            
+            func willStart(text: String) {
+                self.speakBox.text = text
+            }
+            
+            self.speechSynthesizer.speakText(text, language: "en-GB", willStart: willStart, completion: nil)
+        }
     }
-    
-    static func inNavigationController(html: String, speechSynthesizer: SpeechSynthesizer, dismissBlock: (()->())?) -> UINavigationController {
+        
+    static func inNavigationController(sceneDescription: SceneDescription, speechSynthesizer: SpeechSynthesizer, dismissBlock: (()->())?) -> UINavigationController {
         
         let vc = CodeViewController(nibName: nil, bundle: nil)
         vc.speechSynthesizer = speechSynthesizer
-        vc.html = html
+        vc.sceneDescription = sceneDescription
         vc.aboutToDismiss = dismissBlock
         let navVC = UINavigationController(rootViewController: vc)
         navVC.modalPresentationStyle = UIModalPresentationStyle.PageSheet

@@ -56,6 +56,15 @@ class SpeakBoxController {
     
     var text : String?
     
+    
+    
+    func speakMultipleTextAndAdvance(texts: [String], willStart:((text: String)->())?, completion:((cancelled: Bool, text: String)->())?) {
+        
+        for text in texts {
+            self.speakText(text, willStart: willStart, completion: completion)
+        }
+    }
+    
     func speakText(text: String, willStart:((text: String)->())?, completion:((cancelled: Bool, text: String)->())?) {
         
         func willStart(text: String) {
