@@ -40,9 +40,9 @@ class SpeakBoxController {
             return speakBox
         }
         
-        let size = CGSize(width: self.scene.size.width - 40, height: 40)
+        let size = CGSize(width: self.scene.size.width - 40, height: 50)
         let speakBox = SpeakBoxNode(color: UIColor.darkTextColor(), size: size)
-        speakBox.position = CGPoint(x: (self.scene.size.width / 2.0), y: 60.0)
+        speakBox.position = CGPoint(x: (self.scene.size.width / 2.0), y: 70.0)
         speakBox.name = "speakBox"
         self.scene.addChild(speakBox)
         

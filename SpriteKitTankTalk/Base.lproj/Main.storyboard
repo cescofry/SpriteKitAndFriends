@@ -32,7 +32,7 @@
         <!--Navigation Controller-->
         <scene sceneID="cUd-RU-zoA">
             <objects>
-                <navigationController id="sUT-0p-jWW" sceneMemberID="viewController">
+                <navigationController modalTransitionStyle="crossDissolve" id="sUT-0p-jWW" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="mqI-LE-Lxm">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -48,7 +48,7 @@
         <!--View Controller-->
         <scene sceneID="9I7-fZ-uVf">
             <objects>
-                <viewController id="K0a-4G-E1Y" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="crossDissolve" id="K0a-4G-E1Y" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="k6r-8M-SAv"/>
                         <viewControllerLayoutGuide type="bottom" id="aSq-ub-cLC"/>
@@ -84,6 +84,7 @@
                             <constraint firstItem="a0n-qE-zmL" firstAttribute="centerY" secondItem="V2W-OU-AAn" secondAttribute="centerY" id="zjD-bA-cNR"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uff-wK-Szj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
