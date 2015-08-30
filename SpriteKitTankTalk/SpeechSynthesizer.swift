@@ -131,3 +131,35 @@ extension SpeechSynthesizer {
         
     }
 }
+
+class AudioController : NSObject, AVAudioPlayerDelegate {
+    
+    static func url() -> NSURL {
+        return NSBundle.mainBundle().URLForResource("8BitLoop", withExtension: "mp3")!
+    }
+    
+    let audioPlayer = try? AVAudioPlayer(contentsOfURL: AudioController.url())
+    
+    func playBackgroundMusic() {
+        if let player = self.audioPlayer {
+            player.volume = 0.3
+            player.play()
+            player.delegate = self
+        }
+    }
+    
+    func stopBackgroundMusic() {
+        if let player = self.audioPlayer {
+            player.stop()
+        }
+    }
+    
+    //MARK: Delegate
+    
+    @objc func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool) {
+        if flag {
+            player.play()
+        }
+    }
+    
+}

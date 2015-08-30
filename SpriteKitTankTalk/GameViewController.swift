@@ -13,6 +13,7 @@ class GameViewController: UIViewController {
 
     var index = 0
     var scene : GameScene?
+    let audioController = AudioController()
     
     var isDebug : Bool? {
         didSet {
@@ -59,6 +60,7 @@ class GameViewController: UIViewController {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         nextScene(false)
+        self.audioController.playBackgroundMusic()
     }
 
     override func shouldAutorotate() -> Bool {

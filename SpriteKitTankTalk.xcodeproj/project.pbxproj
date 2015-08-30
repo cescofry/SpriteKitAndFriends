@@ -27,6 +27,7 @@
 		9B19ECE61B9073DF00552D11 /* GameScene8.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9B19ECE51B9073DF00552D11 /* GameScene8.sks */; };
 		9B19ECE81B9073ED00552D11 /* source_8.html in Resources */ = {isa = PBXBuildFile; fileRef = 9B19ECE71B9073ED00552D11 /* source_8.html */; };
 		9B93C6601B90BBAA0059E555 /* SpeakBoxNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B93C65F1B90BBAA0059E555 /* SpeakBoxNode.swift */; };
+		9B93C6641B9360790059E555 /* 8BitLoop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9B93C6631B9360790059E555 /* 8BitLoop.mp3 */; settings = {ASSET_TAGS = (); }; };
 		9B945DA21B90893A009094AE /* source_9.html in Resources */ = {isa = PBXBuildFile; fileRef = 9B945DA01B90893A009094AE /* source_9.html */; };
 		9B945DA31B90893A009094AE /* source_10.html in Resources */ = {isa = PBXBuildFile; fileRef = 9B945DA11B90893A009094AE /* source_10.html */; };
 		9B945DA61B908956009094AE /* GameScene9.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9B945DA41B908956009094AE /* GameScene9.sks */; };
@@ -81,6 +82,7 @@
 		9B19ECE51B9073DF00552D11 /* GameScene8.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene8.sks; sourceTree = "<group>"; };
 		9B19ECE71B9073ED00552D11 /* source_8.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = source_8.html; sourceTree = "<group>"; };
 		9B93C65F1B90BBAA0059E555 /* SpeakBoxNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakBoxNode.swift; sourceTree = "<group>"; };
+		9B93C6631B9360790059E555 /* 8BitLoop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = 8BitLoop.mp3; path = _etc/8BitLoop.mp3; sourceTree = SOURCE_ROOT; };
 		9B945DA01B90893A009094AE /* source_9.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = source_9.html; sourceTree = "<group>"; };
 		9B945DA11B90893A009094AE /* source_10.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = source_10.html; sourceTree = "<group>"; };
 		9B945DA41B908956009094AE /* GameScene9.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene9.sks; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 		A5013AE81B8D9EB600AD3B6C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9B93C6631B9360790059E555 /* 8BitLoop.mp3 */,
 				9B19ECD61B8F5F0600552D11 /* html */,
 				9B19ECCE1B8E1DDC00552D11 /* elf.atlas */,
 				A5013AF21B8D9EB600AD3B6C /* Main.storyboard */,
@@ -343,6 +346,7 @@
 				9B1737291B8DD5C00033BEAD /* GameScene2.sks in Resources */,
 				A57418421B9049DC00A79A78 /* Fire.sks in Resources */,
 				9B945DA21B90893A009094AE /* source_9.html in Resources */,
+				9B93C6641B9360790059E555 /* 8BitLoop.mp3 in Resources */,
 				9B19ECE01B8F707400552D11 /* source_4.html in Resources */,
 				9B19ECE21B8F729E00552D11 /* GameScene5.sks in Resources */,
 				9B945DA71B908956009094AE /* GameScene10.sks in Resources */,
