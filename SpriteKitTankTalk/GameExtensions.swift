@@ -14,7 +14,9 @@ import GameKit
 extension GameScene {
     func setUp1() {
         runToPosition = { (position: CGPoint, completion: (()->())?) in
-            self.character.position = position
+            if let character = self.character {
+                character.position = position
+            }
             
             if let completion = completion {
                 Dispatch.after(0.5, block: completion)
@@ -47,12 +49,17 @@ extension GameScene {
         if let actionBox = nodes[.ActionBox] as? SKSpriteNode {
             self.popActionNode(actionBox)
 
+            
             runToPosition = { (position: CGPoint, completion: (()->())?) in
-                let duration = NSTimeInterval(self.character.position.distanceToPoint(position) / 200)
+                guard let character = self.character else {
+                    return
+                }
+                
+                let duration = NSTimeInterval(character.position.distanceToPoint(position) / 200)
                 
                 // move
                 let move = SKAction.moveTo(position, duration: duration)
-                self.character.runAction(move, completion: { () -> Void in
+                character.runAction(move, completion: { () -> Void in
                     if let completion = completion {
                         completion()
                     }
@@ -89,7 +96,11 @@ extension GameScene {
             self.popActionNode(actionBox)
             
             runToPosition = { (position: CGPoint, completion: (()->())?) in
-                self.character.runToPosition(position, completion: { () -> () in
+                
+                guard let character = self.character else {
+                    return
+                }
+                character.runToPosition(position, completion: { () -> () in
                     if let completion = completion {
                         completion()
                     }

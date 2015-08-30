@@ -46,19 +46,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    var character: Character {
-        if let character = self.childNodeFromType(.Character) as? Character {
-            return character
-        }
-        
-        let character = Character(imageNamed: "slice01.png")
-        character.name = "character"
-        character.setScale(0.5)
-        character.zPosition = 99.0
-        character.position = self.view!.center
-        self.addChild(character)
-        
-        return character
+    var character: Character! {
+        return self.childNodeFromType(.Character) as? Character
     }
     
     var runToPosition : ((position: CGPoint, completion: (()->())?) -> ())?
@@ -77,8 +66,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     override func didMoveToView(view: SKView) {
         
+        addCharacterToScene()
         setDefaultPhysicBodies()
         setDefaultActions()
+        
+        self.nextPortal.alpha = 0.0
+        checkPortalActivation()
+        
         self.speakBoxController = SpeakBoxController(scene: self)
         
         if let setup = self.setup {
@@ -90,9 +84,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    private func addCharacterToScene() {
+        let character = Character(imageNamed: "slice01.png")
+        character.name = NodeType.Character.toString()
+        character.setScale(0.5)
+        character.zPosition = 99.0
+        character.position = self.view!.center
+        self.addChild(character)
+    }
+    
     private func setDefaultActions() {
         runToPosition = { (position: CGPoint, completion: (()->())?) in
-            self.character.runToPosition(position, completion: { () -> () in
+            guard let character = self.character else {
+                return
+            }
+            
+            character.runToPosition(position, completion: { () -> () in
                 if let completion = completion {
                     completion()
                 }
@@ -130,6 +137,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         })
     }
     
+    func checkPortalActivation() {
+        let alpha : CGFloat = (self.actionBox == nil) ? 1.0 : 0.0
+        if alpha == self.nextPortal.alpha {
+            return
+        }
+        
+        let alphaAction = SKAction.fadeAlphaTo(alpha, duration: 0.5)
+        self.nextPortal.runAction(alphaAction)
+    }
+    
     func popActionNode(node : SKSpriteNode) {
         // avoid double collisions
         node.physicsBody = nil
@@ -140,8 +157,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let fade = SKAction.fadeAlphaTo(0.0, duration: 0.3)
         node.runAction(fade, completion: { () -> Void in
             node.removeFromParent()
+            self.checkPortalActivation()
         })
-        
     }
     
     func portalAnimation(completion:(()->())?) {
@@ -170,7 +187,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         for touch in (touches ) {
             let location = touch.locationInNode(self)
             
-            self.character.removeAllActions()
+            if let character = self.character {
+                character.removeAllActions()
+            }
         
             if let runToPosition = self.runToPosition {
                 runToPosition(position: location, completion: { () -> () in
@@ -217,18 +236,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             contactFunc(nodes: nodes)
         }
         
-        if let _ = nodes[.Character] {
-            if let _ = nodes[.Portal] {
-                if let nextScene = nextScene {
-                    portalAnimation({ () -> () in
-                        self.character.removeFromParent()
-                        Dispatch.after(0.5, block: { () -> () in
-                            nextScene(showCode: true)
-                        })
-                    })
-                }
-            }
+        guard let _ = nodes[.Character],
+            let nextScene = nextScene,
+            let portal = nodes[.Portal] where
+            portal.alpha == 1.0 else {
+                return
         }
+        
+        portalAnimation({ () -> () in
+            self.character.removeFromParent()
+            Dispatch.after(0.5, block: { () -> () in
+                nextScene(showCode: true)
+            })
+        })
     }
 }
 
