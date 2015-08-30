@@ -45,6 +45,16 @@ class Character: SKSpriteNode {
                 completion()
             }
         })
+
+        /*
+        // This may work with a bit more twigging!
+        self.physicsBody!.mass = 1.0
+        self.physicsBody!.linearDamping = 0.80
+        let vector = CGVectorMake(position.x - self.position.x, position.y - self.position.y)
+        self.physicsBody!.velocity = vector
+        */
+        
+        
     }
     
     func rest(direction: Direction) {

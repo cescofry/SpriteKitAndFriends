@@ -169,6 +169,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let center = self.nextPortal.position
         self.character.removeAllActions()
         
+        self.character.rest(.Front)
+        
         let move = SKAction.moveTo(center, duration: 0.7)
         self.character.runAction(move)
         let spin = SKAction.rotateByAngle(CGFloat(M_PI), duration: 0.5)

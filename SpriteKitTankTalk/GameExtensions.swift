@@ -142,24 +142,27 @@ extension GameScene {
     
     func didContact5(nodes: [NodeType : SKNode]) {
         if let actionBox = nodes[.ActionBox] as? SKSpriteNode {
-            self.popActionNode(actionBox)
-            
-            self.speakBoxController.speakText("Ahhhhhh!", willStart: nil, completion: nil)
-            
-            self.character.physicsBody!.affectedByGravity = true
-            self.physicsWorld.gravity = CGVector(dx: 0.0, dy: -5.0)
-            
-            for child in self.children {
-                if (child.name == nil && child.physicsBody != nil) {
-                    child.physicsBody!.affectedByGravity = true
+            if let _ = nodes[.Character] as? SKSpriteNode {
+                self.popActionNode(actionBox)
+                
+                self.speakBoxController.speakText("Ahhhhhh!", willStart: nil, completion: nil)
+                
+                self.character.physicsBody!.affectedByGravity = true
+                self.physicsWorld.gravity = CGVector(dx: 0.0, dy: -5.0)
+                
+                for child in self.children {
+                    if (child.name == nil && child.physicsBody != nil) {
+                        child.physicsBody!.affectedByGravity = true
+                    }
                 }
+                
+                Dispatch.after(2.0, block: { () -> () in
+                    if let nextScene = self.nextScene {
+                        nextScene(showCode: false)
+                    }
+                })
+                
             }
-            
-            Dispatch.after(2.0, block: { () -> () in
-                if let nextScene = self.nextScene {
-                    nextScene(showCode: false)
-                }
-            })
         }
     }
 }
