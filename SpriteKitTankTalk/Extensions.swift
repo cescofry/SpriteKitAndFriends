@@ -18,7 +18,11 @@ struct Dispatch {
     }
 }
 
-
+extension CGSize {
+    var center : CGPoint {
+        return CGPoint(x: (self.width / 2.0), y: (self.height / 2.0))
+    }
+}
 
 extension CGPoint {
     func radiantsToPoint(point: CGPoint) -> CGFloat {

@@ -66,12 +66,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     override func didMoveToView(view: SKView) {
         
+        setDefaultBackground()
         addCharacterToScene()
         setDefaultPhysicBodies()
         setDefaultActions()
         
         self.title.fontName = Config.sharedConfig().fontName
-        self.title.position = CGPoint(x: (self.scene!.size.width / 2.0), y: self.title.position.y)
+        self.title.position = CGPoint(x: self.scene!.size.center.x, y: self.title.position.y)
         
         self.nextPortal.alpha = 0.0
         checkPortalActivation()
@@ -85,6 +86,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if shouldRunEntranceAnimation {
             entranceAnimation()
         }
+    }
+    
+    private func setDefaultBackground() {
+        let node = SKSpriteNode(imageNamed: "rpg_bkg")
+        node.position = self.size.center
+        node.zPosition = -999
+        self.addChild(node)
     }
     
     private func addCharacterToScene() {
