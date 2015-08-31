@@ -294,30 +294,82 @@ extension GameScene {
         if let actionBox = nodes[.ActionBox] as? SKSpriteNode {
             self.popActionNode(actionBox)
             
-            //let validSize = CGSizeApplyAffineTransform(self.size, CGAffineTransformMakeScale(0.8, 0.8))
+            self.setPiros()
             
-            let fireLocations = [
-                CGPoint(x: 816.0, y: 102.0),
-                CGPoint(x: 122.0, y: 598.0),
-                CGPoint(x: 24.0, y: 245.0)
-            ]
+            Dispatch.after(2.0, block: { () -> () in
+                self.setFires()
+            })
             
-            var delay = 0.0
-            for location in fireLocations {
-                Dispatch.after(delay, block: { () -> () in
-                    let fireEmitter = self.fireEmitter()
-                    fireEmitter.position = location
-                    
-                    self.addChild(fireEmitter)
-                })
-                delay += 0.4
-                
-            }
+            Dispatch.after(6.0, block: { () -> () in
+                self.speakBoxController.speakText("Oh crap. let's get out of here", willStart: nil, completion: nil)
+            })
+            
         }
     }
     
+    func setPiros() {
+        let validSize = CGSizeApplyAffineTransform(self.size, CGAffineTransformMakeScale(0.8, 0.8))
+        
+        var delay = 0.0
+        for _ in 0...4  {
+            Dispatch.after(delay, block: { () -> () in
+                let piroEmitter = self.piroEmitter()
+                
+                let x = CGFloat(arc4random()%UInt32(validSize.width))
+                let y = CGFloat(arc4random()%UInt32(validSize.height))
+
+                piroEmitter.position = CGPoint(x: x, y: y)
+                self.addChild(piroEmitter)
+                Dispatch.after(1.0, block: { () -> () in
+                    piroEmitter.removeFromParent()
+                })
+            })
+            delay += 0.5
+            
+        }
+        
+    }
+    
+    func setFires() {
+        let fireLocations = [
+            CGPoint(x: 816.0, y: 102.0),
+            CGPoint(x: 122.0, y: 598.0),
+            CGPoint(x: 24.0, y: 245.0)
+        ]
+        
+        var delay = 0.0
+        for location in fireLocations {
+            Dispatch.after(delay, block: { () -> () in
+                let delay = (delay + 0.1)
+                let fireEmitter = self.fireEmitter()
+                fireEmitter.position = location
+                
+                self.addChild(fireEmitter)
+                
+                Dispatch.after(1.0 * delay, block: { () -> () in
+                    fireEmitter.setScale(1.2)
+                })
+                
+                Dispatch.after(2.0 * delay, block: { () -> () in
+                    fireEmitter.setScale(1.8)
+                })
+            })
+            delay += 0.4    
+            
+        }
+    }
+
+    
     func fireEmitter() -> SKEmitterNode{
         let emitterPath: String = NSBundle.mainBundle().pathForResource("Fire", ofType: "sks")!
+        let emitterNode = NSKeyedUnarchiver.unarchiveObjectWithFile(emitterPath) as! SKEmitterNode
+        emitterNode.setScale(0.8)
+        
+        return emitterNode
+    }
+    
+    func piroEmitter() -> SKEmitterNode{
+        let emitterPath: String = NSBundle.mainBundle().pathForResource("Piro", ofType: "sks")!
         let emitterNode = NSKeyedUnarchiver.unarchiveObjectWithFile(emitterPath) as! SKEmitterNode
         emitterNode.setScale(0.8)
         
