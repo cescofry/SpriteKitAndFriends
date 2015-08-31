@@ -195,7 +195,7 @@ extension GameScene {
                 actionBox.physicsBody = nil
                 let deltaY = character.position.y - character.size.height
                 
-                let move = SKAction.moveToY(deltaY, duration: 0.6)
+                let move = SKAction.moveToY(deltaY, duration: 1.5)
                 self.character.runAction(move, completion: { () -> Void in
                     if let nextScene = self.nextScene {
                         nextScene(showCode: false)
@@ -217,34 +217,26 @@ extension GameScene {
     func setUp7() {
         self.didContact = didContact7
         self.shouldRunEntranceAnimation = false
-        self.actionBox!.removeFromParent()
         
         hidewalls()
         
-        # ERROR FROM HERE
-        
+        self.physicsWorld.gravity = CGVector(dx: 0.0, dy: -5.0)
+
         let pipe = self.childNodeWithName("pipe") as! SKSpriteNode
-        self.character.position = CGPoint(x: pipe.position.x + 30, y: pipe.position.y)
-        let deltaY = self.character.position.y + self.character.size.height + 200
-        let move = SKAction.moveToY(deltaY, duration: 1.0)
+        self.character.position = CGPoint(x: pipe.position.x, y: pipe.position.y)
+        self.character.physicsBody!.affectedByGravity = false
+
+        let deltaY = pipe.position.y + self.character.size.height + 40
+        let move = SKAction.moveToY(deltaY, duration: 1.5)
         
+        let originalPipePhysics = pipe.physicsBody
         pipe.physicsBody = nil
         
         self.character.runAction(move) { () -> Void in
-            let deltaX = self.character.position.x - 100
-            let move = SKAction.moveToX(deltaX, duration: 0.6)
-            self.character.runAction(move)
-            
-            
-            self.physicsWorld.gravity = CGVector(dx: 0.0, dy: -5.0)
-            let physics = PhysicBody.physicsForNode(pipe)
-            pipe.physicsBody = physics
+            pipe.physicsBody = originalPipePhysics
+            self.character.physicsBody!.affectedByGravity = true
         }
-        
-        let characterPhysic = self.character.physicsBody!
-        characterPhysic.friction = 0.01
-        characterPhysic.affectedByGravity = true
-        self.character.physicsBody = characterPhysic
+
     }
     
     func didContact7(nodes: [NodeType : SKNode]) {

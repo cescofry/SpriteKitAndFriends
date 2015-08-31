@@ -20,11 +20,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SpriteKitTankTalk/GameExtensions.swift"
-            timestampString = "462716226.647695"
+            timestampString = "462721646.632005"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "252"
-            endingLineNumber = "252"
+            startingLineNumber = "244"
+            endingLineNumber = "244"
             landmarkName = "didContact7(_:)"
             landmarkType = "5">
          </BreakpointContent>

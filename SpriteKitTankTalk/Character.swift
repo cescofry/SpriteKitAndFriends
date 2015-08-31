@@ -191,7 +191,7 @@ struct PhysicBody {
             physic.categoryBitMask = 0x1 << 5
             physic.contactTestBitMask = 0x1 << 0
             physic.collisionBitMask = 0x1 << 0
-            physic.dynamic = false
+            physic.pinned = true
         default:
             physic.categoryBitMask = 0x1 << 8
             physic.contactTestBitMask = 0x1 << 0
