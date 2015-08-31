@@ -275,7 +275,7 @@ extension GameScene {
         let physicBody = PhysicBody.physicsForNode(cat)
         physicBody.friction = 0.1
         physicBody.affectedByGravity = true
-        physicBody.restitution = 1.0
+        physicBody.restitution = 0.9
         physicBody.mass = 0.15
         physicBody.dynamic = true
         cat.physicsBody = physicBody
@@ -294,20 +294,23 @@ extension GameScene {
         if let actionBox = nodes[.ActionBox] as? SKSpriteNode {
             self.popActionNode(actionBox)
             
-            let validSize = CGSizeApplyAffineTransform(self.size, CGAffineTransformMakeScale(0.8, 0.8))
+            //let validSize = CGSizeApplyAffineTransform(self.size, CGAffineTransformMakeScale(0.8, 0.8))
             
-            for i in 0...8 {
-                let delay = Double(i) * 0.3
+            let fireLocations = [
+                CGPoint(x: 816.0, y: 102.0),
+                CGPoint(x: 122.0, y: 598.0),
+                CGPoint(x: 24.0, y: 245.0)
+            ]
+            
+            var delay = 0.0
+            for location in fireLocations {
                 Dispatch.after(delay, block: { () -> () in
                     let fireEmitter = self.fireEmitter()
-                    
-                    let x = CGFloat(arc4random()%UInt32(validSize.width))
-                    let y = CGFloat(arc4random()%UInt32(validSize.height))
-                    fireEmitter.position = CGPoint(x: x, y: y)
+                    fireEmitter.position = location
                     
                     self.addChild(fireEmitter)
-                    
                 })
+                delay += 0.4
                 
             }
         }
