@@ -137,14 +137,27 @@ extension SpeechSynthesizer {
 
 class AudioController : NSObject, AVAudioPlayerDelegate {
     
-    static func url() -> NSURL {
+    static func mainTuneURL() -> NSURL {
         return NSBundle.mainBundle().URLForResource("8BitLoop", withExtension: "mp3")!
     }
     
-    let audioPlayer = try? AVAudioPlayer(contentsOfURL: AudioController.url())
+    static func overworldURL() -> NSURL {
+        return NSBundle.mainBundle().URLForResource("overworld", withExtension: "mp3")!
+    }
+    
+    let mainAudioPlayer = try? AVAudioPlayer(contentsOfURL: AudioController.mainTuneURL())
+    let overworldAudioPlayer = try? AVAudioPlayer(contentsOfURL: AudioController.overworldURL())
     
     func playBackgroundMusic() {
-        if let player = self.audioPlayer {
+        if let player = self.mainAudioPlayer {
+            player.volume = 0.3
+            player.play()
+            player.delegate = self
+        }
+    }
+    
+    func playMarioBackgroundMusic() {
+        if let player = self.overworldAudioPlayer {
             player.volume = 0.3
             player.play()
             player.delegate = self
@@ -152,10 +165,15 @@ class AudioController : NSObject, AVAudioPlayerDelegate {
     }
     
     func stopBackgroundMusic() {
-        if let player = self.audioPlayer {
+        if let player = self.mainAudioPlayer {
             player.stop()
         }
+        
+        if let overworldAudioPlayer = self.overworldAudioPlayer {
+            overworldAudioPlayer.stop()
+        }
     }
+    
     
     //MARK: Delegate
     

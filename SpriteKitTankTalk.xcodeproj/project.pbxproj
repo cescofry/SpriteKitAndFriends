@@ -51,6 +51,7 @@
 		A5B0FF721B8EFD8700BA9584 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B0FF711B8EFD8700BA9584 /* Extensions.swift */; };
 		A5BC5F0E1B94974100019376 /* Piro.sks in Resources */ = {isa = PBXBuildFile; fileRef = A5BC5F0C1B94974100019376 /* Piro.sks */; settings = {ASSET_TAGS = (); }; };
 		A5BC5F0F1B94974100019376 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = A5BC5F0D1B94974100019376 /* spark.png */; settings = {ASSET_TAGS = (); }; };
+		A5BC5F111B949FB900019376 /* overworld.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A5BC5F101B949FB900019376 /* overworld.mp3 */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,6 +113,7 @@
 		A5B0FF711B8EFD8700BA9584 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		A5BC5F0C1B94974100019376 /* Piro.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Piro.sks; sourceTree = "<group>"; };
 		A5BC5F0D1B94974100019376 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
+		A5BC5F101B949FB900019376 /* overworld.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = overworld.mp3; path = _etc/overworld.mp3; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,6 +220,7 @@
 		A5013AE81B8D9EB600AD3B6C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A5BC5F101B949FB900019376 /* overworld.mp3 */,
 				9B93C6631B9360790059E555 /* 8BitLoop.mp3 */,
 				9B19ECD61B8F5F0600552D11 /* html */,
 				9B19ECCE1B8E1DDC00552D11 /* elf.atlas */,
@@ -352,6 +355,7 @@
 				A5BC5F0E1B94974100019376 /* Piro.sks in Resources */,
 				9B1737291B8DD5C00033BEAD /* GameScene2.sks in Resources */,
 				A57418421B9049DC00A79A78 /* Fire.sks in Resources */,
+				A5BC5F111B949FB900019376 /* overworld.mp3 in Resources */,
 				9B945DA21B90893A009094AE /* source_9.html in Resources */,
 				9B93C6641B9360790059E555 /* 8BitLoop.mp3 in Resources */,
 				9B19ECE01B8F707400552D11 /* source_4.html in Resources */,

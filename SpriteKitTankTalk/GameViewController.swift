@@ -41,7 +41,7 @@ class GameViewController: UIViewController {
         self.scene = GameSceneGenerator.fromIndex(index)
         
         if let scene = self.scene  {
-            // Configure the view.
+            scene.audioController = self.audioController
             
             self.isDebug = Config.sharedConfig().isDebug
  

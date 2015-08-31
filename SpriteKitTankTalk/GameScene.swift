@@ -35,6 +35,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var shouldRunEntranceAnimation = true
     var didContact: DidContactBlock?
     var speakBoxController: SpeakBoxController!
+    var audioController : AudioController?
     
     var currentActionIndex = 0
     

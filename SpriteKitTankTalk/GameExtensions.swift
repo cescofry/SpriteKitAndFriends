@@ -173,6 +173,10 @@ extension GameScene {
         self.didContact = didContact6
         self.shouldRunEntranceAnimation = false
         
+        if let audioController = self.audioController {
+            audioController.stopBackgroundMusic()
+            audioController.playMarioBackgroundMusic()
+        }
         hidewalls()
         
         self.physicsWorld.gravity = CGVector(dx: 0.0, dy: -5.0)
@@ -288,6 +292,11 @@ extension GameScene {
     func setUp8() {
         self.didContact = didContact8
         self.character.physicsBody!.affectedByGravity = false
+        
+        if let audioController = self.audioController {
+            audioController.stopBackgroundMusic()
+            audioController.playBackgroundMusic()
+        }
     }
     
     func didContact8(nodes: [NodeType : SKNode]) {
