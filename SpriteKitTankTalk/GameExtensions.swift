@@ -173,6 +173,8 @@ extension GameScene {
         self.didContact = didContact6
         self.shouldRunEntranceAnimation = false
         
+        hidewalls()
+        
         self.physicsWorld.gravity = CGVector(dx: 0.0, dy: -5.0)
         
         self.character.removeAllActions()
@@ -188,15 +190,56 @@ extension GameScene {
     }
     
     func didContact6(nodes: [NodeType : SKNode]) {
-        //
+        if let actionBox = nodes[.ActionBox] as? SKSpriteNode {
+            if let character = nodes[.Character] as? SKSpriteNode {
+                actionBox.physicsBody = nil
+                let deltaY = character.position.y - character.size.height
+                
+                let move = SKAction.moveToY(deltaY, duration: 0.6)
+                self.character.runAction(move, completion: { () -> Void in
+                    if let nextScene = self.nextScene {
+                        nextScene(showCode: false)
+                    }
+                })
+            }
+        }
+    }
+    
+    func hidewalls() {
+        let walls = self.childrenFromType(.Wall)
+        for wall in walls {
+            wall.alpha = 0.0
+        }
     }
 }
 
 extension GameScene {
     func setUp7() {
         self.didContact = didContact7
-        self.character.position = CGPoint(x: 700.0, y: self.size.height - 150)
-        self.physicsWorld.gravity = CGVector(dx: 0.0, dy: -5.0)
+        self.shouldRunEntranceAnimation = false
+        self.actionBox!.removeFromParent()
+        
+        hidewalls()
+        
+        # ERROR FROM HERE
+        
+        let pipe = self.childNodeWithName("pipe") as! SKSpriteNode
+        self.character.position = CGPoint(x: pipe.position.x + 30, y: pipe.position.y)
+        let deltaY = self.character.position.y + self.character.size.height + 200
+        let move = SKAction.moveToY(deltaY, duration: 1.0)
+        
+        pipe.physicsBody = nil
+        
+        self.character.runAction(move) { () -> Void in
+            let deltaX = self.character.position.x - 100
+            let move = SKAction.moveToX(deltaX, duration: 0.6)
+            self.character.runAction(move)
+            
+            
+            self.physicsWorld.gravity = CGVector(dx: 0.0, dy: -5.0)
+            let physics = PhysicBody.physicsForNode(pipe)
+            pipe.physicsBody = physics
+        }
         
         let characterPhysic = self.character.physicsBody!
         characterPhysic.friction = 0.01
@@ -226,9 +269,13 @@ extension GameScene {
     }
     
     func cat() -> SKNode {
+        var characterPosition = CGPointZero
+        if let character = self.character {
+            characterPosition = character.position
+        }
         let cat = SKSpriteNode(imageNamed: "cat")
         cat.name = NodeType.Cat.toString()
-        cat.position = CGPointApplyAffineTransform(self.character.position, CGAffineTransformMakeTranslation(-60, 60))
+        cat.position = CGPointApplyAffineTransform(characterPosition, CGAffineTransformMakeTranslation(-60, 60))
         cat.setScale(0.15)
         cat.zRotation = CGFloat(Double(arc4random())%M_PI)
         

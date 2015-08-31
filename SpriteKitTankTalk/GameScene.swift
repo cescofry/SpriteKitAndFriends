@@ -66,7 +66,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     override func didMoveToView(view: SKView) {
         
-        setDefaultBackground()
         addCharacterToScene()
         setDefaultPhysicBodies()
         setDefaultActions()
@@ -87,19 +86,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             entranceAnimation()
         }
     }
-    
-    private func setDefaultBackground() {
-        let node = SKSpriteNode(imageNamed: "rpg_bkg")
-        node.position = self.size.center
-        node.zPosition = -999
-        self.addChild(node)
-    }
-    
+        
     private func addCharacterToScene() {
         let character = Character(imageNamed: "slice01.png")
         character.name = NodeType.Character.toString()
         character.setScale(0.5)
-        character.zPosition = 99.0
+        character.zPosition = 10.0
         character.position = self.view!.center
         self.addChild(character)
     }
@@ -197,8 +189,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         /* Called when a touch begins */
         
+        
         for touch in (touches ) {
             let location = touch.locationInNode(self)
+            print(location)
             
             if let character = self.character {
                 character.removeAllActions()
