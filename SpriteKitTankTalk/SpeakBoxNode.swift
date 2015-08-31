@@ -48,6 +48,7 @@ class SpeakBoxController {
         let speakBox = SpeakBoxNode(size: size)
         speakBox.position = CGPoint(x: (self.scene.size.center.x), y: size.height + 10)
         speakBox.name = "speakBox"
+        speakBox.zPosition = 99
         self.scene.addChild(speakBox)
         
         return speakBox

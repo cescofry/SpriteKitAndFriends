@@ -67,12 +67,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     override func didMoveToView(view: SKView) {
         
+        setupTitle()
         addCharacterToScene()
         setDefaultPhysicBodies()
         setDefaultActions()
-        
-        self.title.fontName = Config.sharedConfig().fontName
-        self.title.position = CGPoint(x: self.scene!.size.center.x, y: self.title.position.y)
         
         self.nextPortal.alpha = 0.0
         checkPortalActivation()
@@ -86,8 +84,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if shouldRunEntranceAnimation {
             entranceAnimation()
         }
+        else {
+            speakAllActions()
+        }
     }
-        
+    
+    private func setupTitle() {
+        self.title.fontName = Config.sharedConfig().fontName
+        self.title.position = CGPoint(x: self.scene!.size.center.x, y: self.title.position.y)
+    }
+    
     private func addCharacterToScene() {
         let character = Character(imageNamed: "slice01.png")
         character.name = NodeType.Character.toString()
@@ -134,11 +140,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         
         self.runToPosition!(position: startPosition, completion: { () -> () in
-            guard let actions = self.sceneDescription?.actions else {
-                return
-            }
-            self.speakBoxController.speakMultipleTextAndAdvance(actions, willStart: nil, completion: nil)
+            self.speakAllActions()
         })
+    }
+    
+    func speakAllActions() {
+        guard let actions = self.sceneDescription?.actions else {
+            return
+        }
+        self.speakBoxController.speakMultipleTextAndAdvance(actions, willStart: nil, completion: nil)
     }
     
     func checkPortalActivation() {

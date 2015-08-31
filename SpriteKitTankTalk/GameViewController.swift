@@ -38,6 +38,7 @@ class GameViewController: UIViewController {
     
     func loadCurrentScene(){
     
+        self.cleanUpScene()
         self.scene = GameSceneGenerator.fromIndex(index)
         
         if let scene = self.scene  {
@@ -54,6 +55,12 @@ class GameViewController: UIViewController {
             
             skView.presentScene(scene)
             scene.nextScene = nextScene
+        }
+    }
+    
+    func cleanUpScene() {
+        if let scene = self.scene {
+            scene.removeAllChildren()
         }
     }
     
