@@ -27,7 +27,7 @@ class SpeakBoxNode: SKShapeNode {
         self.lineWidth = 2.0
         self.lineJoin = CGLineJoin.Bevel
         
-        self.textLabel = SKLabelNode(fontNamed: "Menlo-Regular")
+        self.textLabel = SKLabelNode(fontNamed: Config.sharedConfig().fontName)
         self.textLabel.fontSize = 24
         self.textLabel.name = "label"
         

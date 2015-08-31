@@ -70,6 +70,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         setDefaultPhysicBodies()
         setDefaultActions()
         
+        self.title.fontName = Config.sharedConfig().fontName
         self.title.position = CGPoint(x: (self.scene!.size.width / 2.0), y: self.title.position.y)
         
         self.nextPortal.alpha = 0.0

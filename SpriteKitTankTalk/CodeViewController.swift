@@ -36,6 +36,7 @@ class CodeViewController : UIViewController {
         self.view.backgroundColor = UIColor.lightTextColor()
         
         self.navigationItem.title = self.sceneDescription!.title
+        self.view.backgroundColor = UIColor.whiteColor()
         
         let(speakLabelRect, webViewRect) = self.view.bounds.divide(120, fromEdge: CGRectEdge.MaxYEdge)
         
@@ -45,15 +46,23 @@ class CodeViewController : UIViewController {
         self.view.addSubview(self.webView)
         
         // Speak Box
-        self.speakBox.frame = speakLabelRect
+        
+        let backgorund = UIView(frame: speakLabelRect)
+        backgorund.backgroundColor = UIColor.blueColor()
+        backgorund.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight]
+        self.view.addSubview(backgorund)
+        
+        let insettedFrame = backgorund.bounds.insetBy(dx: 10, dy: 10)
+        
+        self.speakBox.frame = insettedFrame
         self.speakBox.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight]
         self.speakBox.numberOfLines = 0
-        self.speakBox.backgroundColor = UIColor.blackColor()
+        self.speakBox.backgroundColor = backgorund.backgroundColor
         self.speakBox.textColor = UIColor.whiteColor()
-        self.speakBox.font = UIFont.systemFontOfSize(20)
+        self.speakBox.font = UIFont(name: Config.sharedConfig().fontName, size: 20)
         self.speakBox.textAlignment = .Center
         
-        self.view.addSubview(self.speakBox)
+        backgorund.addSubview(self.speakBox)
         
     }
     

@@ -13,6 +13,7 @@ typealias GenericDictionary = [String: AnyObject]
 struct Config {
     let isDebug : Bool
     let speakText : Bool
+    let fontName: String
     let scenes : [SceneDescription]
     
     private static var cachedSharedConfig : Config?
@@ -25,6 +26,7 @@ struct Config {
         let configDict = plistDictionary()
         let isDebug = configDict["isDebug"]!.boolValue!
         let speakText = configDict["speakText"]!.boolValue!
+        let fontName = configDict["fontName"]! as! String
         
         var index = 0
         var stop = false
@@ -42,7 +44,7 @@ struct Config {
             scenes.append(scene)
         }
         
-        self.cachedSharedConfig = Config(isDebug: isDebug, speakText: speakText, scenes: scenes)
+        self.cachedSharedConfig = Config(isDebug: isDebug, speakText: speakText, fontName: fontName, scenes: scenes)
         return self.cachedSharedConfig
     }
     

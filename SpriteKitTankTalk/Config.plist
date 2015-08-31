@@ -6,5 +6,7 @@
 	<true/>
 	<key>speakText</key>
 	<true/>
+	<key>fontName</key>
+	<string>Menlo-Regular</string>
 </dict>
 </plist>
