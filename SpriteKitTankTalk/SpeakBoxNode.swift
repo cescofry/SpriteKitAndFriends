@@ -9,26 +9,30 @@
 import Foundation
 import SpriteKit
 
-class SpeakBoxNode: SKSpriteNode {
-    var textLabel : SKLabelNode {
-        if let label = self.childNodeWithName("label") as? SKLabelNode {
-            return label
-        }
-        
-        let label = SKLabelNode(fontNamed: "San Francisco")
-        label.fontSize = 24
-        label.name = "label"
-        self.addChild(label)
-        
-        return label
-    }
-    
+class SpeakBoxNode: SKShapeNode {
+    var textLabel : SKLabelNode!
     var text : String? {
         didSet {
             if let text = text {
                 self.textLabel.text = text
             }
         }
+    }
+    
+    convenience init(size: CGSize) {
+        self.init()
+        self.init(rectOfSize: size, cornerRadius: 10.0)
+        self.fillColor = UIColor.blueColor()
+        self.strokeColor = UIColor.whiteColor()
+        self.lineWidth = 2.0
+        self.lineJoin = CGLineJoin.Bevel
+        
+        self.textLabel = SKLabelNode(fontNamed: "Menlo-Regular")
+        self.textLabel.fontSize = 24
+        self.textLabel.name = "label"
+        
+        self.addChild(self.textLabel)
+        self.textLabel.position = CGPointApplyAffineTransform(self.position, CGAffineTransformMakeTranslation(0.0, -10))
     }
 }
 
@@ -40,9 +44,9 @@ class SpeakBoxController {
             return speakBox
         }
         
-        let size = CGSize(width: self.scene.size.width - 40, height: 50)
-        let speakBox = SpeakBoxNode(color: UIColor.darkTextColor(), size: size)
-        speakBox.position = CGPoint(x: (self.scene.size.width / 2.0), y: 70.0)
+        let size = CGSize(width: self.scene.size.width - 40, height: 60)
+        let speakBox = SpeakBoxNode(size: size)
+        speakBox.position = CGPoint(x: (self.scene.size.width / 2.0), y: size.height + 10)
         speakBox.name = "speakBox"
         self.scene.addChild(speakBox)
         

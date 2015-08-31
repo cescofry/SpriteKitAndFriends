@@ -140,12 +140,6 @@ class TestViewController: UIViewController {
     func setupStrategist()  {
         
     }
-    
-
-    
-    
-
-    
 }
 
 // Speech Synthesizer
