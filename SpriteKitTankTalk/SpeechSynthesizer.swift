@@ -95,13 +95,14 @@ extension SpeechSynthesizer {
     func demoScript() -> [AVSpeechUtterance] {
         var entries = [AVSpeechUtterance]()
         
-        entries.append(entryFromString("By the way, I speaking using an A V Speech Synthesizer. This think is crazy.", pitch: nil, rate: nil, language: nil))
+        entries.append(entryFromString("By the way, I speaking using an A V Speech Synthesizer.", pitch: nil, rate: nil, language: nil))
+        entries.append(entryFromString("This think is crazy.", pitch: nil, rate: nil, language: nil))
         entries.append(entryFromString("Of course I speak English.", pitch: nil, rate: nil, language: nil))
-        entries.append(entryFromString("Je peux parler français", pitch: nil, rate: nil, language: "fr-FR"))
+        entries.append(entryFromString("Mais je peux parler français", pitch: nil, rate: nil, language: "fr-FR"))
         entries.append(entryFromString("y españoles también", pitch: nil, rate: nil, language: "es-ES"))
         entries.append(entryFromString("Ordinare una pizza in italiano", pitch: nil, rate: nil, language: "it-IT"))
         entries.append(entryFromString("要求一个中国翻译", pitch: nil, rate: nil, language: "zh-CN"))
-        entries.append(entryFromString("go down", pitch: 0.5, rate: nil, language: nil))
+        entries.append(entryFromString("go down with the tone", pitch: 0.5, rate: nil, language: nil))
         entries.append(entryFromString("and then up again", pitch: 2.0, rate: nil, language: nil))
         entries.append(entryFromString("slowing", pitch: nil, rate: 0.2, language: nil))
         entries.append(entryFromString("and fast, so fast that you gonna barely understand what I am saying", pitch: nil, rate: 0.7, language: nil))
