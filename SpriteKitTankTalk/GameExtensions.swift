@@ -426,7 +426,7 @@ extension GameScene {
         self.title.color = UIColor.whiteColor()
         
         self.character.removeAllActions()
-        let lines = ["@cescofry - francesco.co", "github.com/cescofry/SpriteKitAndFriends", "developer.apple.com/Spritekit"]
+        let lines = ["@cescofry - francesco.co", "github.com/cescofry/SpriteKitAndFriends", "developer.apple.com/spritekit"]
         
         
         var position = CGPoint(x: 100, y: self.size.height + 100)
