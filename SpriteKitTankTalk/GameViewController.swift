@@ -39,6 +39,8 @@ class GameViewController: UIViewController {
     
     func loadCurrentScene(){
         
+        self.speakBoxController.stopSpeaking()
+        
         self.cleanUpScene()
         self.scene = GameSceneGenerator.fromIndex(index)
         

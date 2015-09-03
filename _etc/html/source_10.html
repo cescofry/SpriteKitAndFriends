@@ -1,37 +1,10 @@
 <script type="json">
 {
-	"title" : "Speak",
+	"title" : "Thank You",
 	"action" : "",
-	"code" : "Craete an A V Speech Utterance with the text you want to speak and give it to the A V Speech Synthesizer. The Synthesizer will queue the sentences and speak them in order. Rate, pitch multiplier and voice control the delivery of the speech. The synthesizer has a set of delegates to control when a sentence will start or has finished."
+	"code" : ""
 }
 </script>
 
-<!--SPEAK: Craete an A V Speech Utterance with the text you want to speak and give it to the A V Speech Synthesizer. Rate, pitch multiplier and voice control the delivery of the speech.-->
-
-<!-- HTML generated using hilite.me --><div style="background: #272822; overflow:auto;width:auto;padding:.2em .6em; font-size: 150%"><pre style="margin: 0; line-height: 125%"><span style="color: #f92672">//</span> <span style="color: #66d9ef">Speech</span> <span style="color: #66d9ef">Synthesizer</span>
-
-<span style="color: #66d9ef">import</span> <span style="color: #f8f8f2">AVFoundation</span>
-
-<span style="color: #66d9ef">class</span> <span style="color: #66d9ef">Synth</span> <span style="color: #66d9ef">:</span> <span style="color: #66d9ef">NSObject</span><span style="color: #f8f8f2">,</span> <span style="color: #66d9ef">AVSpeechSynthesizerDelegate</span> <span style="color: #f8f8f2">{</span>
-    <span style="color: #66d9ef">let</span> <span style="color: #f8f8f2">synth</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">AVSpeechSynthesizer</span><span style="color: #f8f8f2">()</span>
-    
-    <span style="color: #f8f8f2">func</span> <span style="color: #f8f8f2">speakText(text</span> <span style="color: #66d9ef">:</span> <span style="color: #66d9ef">String</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
-        <span style="color: #66d9ef">let</span> <span style="color: #f8f8f2">utterance</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">AVSpeechUtterance</span><span style="color: #f8f8f2">(string</span><span style="color: #66d9ef">:</span> <span style="color: #f8f8f2">text)</span>
-        <span style="color: #f8f8f2">utterance</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">rate</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">0.5</span>
-        <span style="color: #f8f8f2">utterance</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">pitchMultiplier</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">1.0</span>
-
-        <span style="color: #66d9ef">let</span> <span style="color: #f8f8f2">voice</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">AVSpeechSynthesisVoice</span><span style="color: #f8f8f2">(language</span><span style="color: #66d9ef">:</span> <span style="color: #e6db74">&quot;fr-FR&quot;</span><span style="color: #f8f8f2">)</span>
-        <span style="color: #f8f8f2">utterance</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">voice</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">voice</span>
-
-        <span style="color: #f8f8f2">synth</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">delegate</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">self</span>
-        <span style="color: #f8f8f2">synth</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">speakUtterance(utterance)</span>
-    <span style="color: #f8f8f2">}</span>
-    
-    <span style="color: #f8f8f2">func</span> <span style="color: #f8f8f2">speechSynthesizer(synthesizer</span><span style="color: #66d9ef">:</span> <span style="color: #66d9ef">AVSpeechSynthesizer</span><span style="color: #f8f8f2">,</span>
-        <span style="color: #f8f8f2">didFinishSpeechUtterance</span> <span style="color: #f8f8f2">utterance</span><span style="color: #66d9ef">:</span> <span style="color: #66d9ef">AVSpeechUtterance</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
-        <span style="color: #f8f8f2">print(</span><span style="color: #e6db74">&quot;ended&quot;</span><span style="color: #f8f8f2">)</span>
-    <span style="color: #f8f8f2">}</span>
-<span style="color: #f8f8f2">}</span>
-</pre></div>
-
+not implemented yet!
 
