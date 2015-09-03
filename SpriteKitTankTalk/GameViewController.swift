@@ -11,7 +11,7 @@ import SpriteKit
 
 class GameViewController: UIViewController {
 
-    var index = 0
+    var index = 10
     var scene : GameScene?
     let audioController = AudioController()
     

@@ -416,3 +416,107 @@ extension GameScene {
     }
     
 }
+
+
+extension GameScene {
+    func setUp11() {
+        self.didContact = didContact11
+        self.shouldRunEntranceAnimation = false
+        self.nextPortal.alpha = 0.0
+        self.title.color = UIColor.whiteColor()
+        
+        self.character.removeAllActions()
+        let lines = ["@cescofry - francesco.co", "github.com/cescofry/SpriteKitAndFriends", "developer.apple.com/spritekit"]
+        
+        
+        var position = CGPoint(x: 100, y: self.size.height + 100)
+        self.character.position = position
+        
+        position.y = self.title.position.y - 100
+        self.character.runToPosition(position) { () -> () in
+            
+            self.moveToLines(lines) { () -> () in
+                self.speakBoxController.speakText("Thank You", willStart: nil, completion: nil)
+                
+                Dispatch.after(2.0, block: { () -> () in
+                    // Do Something to close
+                })
+            }
+        }
+        
+        
+    }
+    
+    func didContact11(nodes: [NodeType : SKNode]) {
+
+    }
+    
+    func moveToLines(var lines : [String], completedAll: (()->())) {
+        
+        guard let line = lines.first else {
+            completedAll()
+            return
+        }
+        
+        lines.removeFirst()
+    
+        let lineGap : CGFloat = 100.0
+        var position = self.character.position
+        position.y -= lineGap
+        self.character.runToPosition(position) { () -> () in
+            let label = self.labelForString(line)
+            var labelPosition = self.character.position
+            labelPosition.x += 100
+            label.position = labelPosition
+            
+            self.addChild(label)
+            
+            let fireWall = self.fireNodeForSize(label.frame.size)
+            fireWall.position = label.position
+            
+            self.addChild(fireWall)
+         
+            Dispatch.after(1.6, block: { () -> () in
+                self.moveToLines(lines, completedAll: completedAll)
+            })
+        }
+        
+    }
+    
+    func labelForString(string: String) -> SKLabelNode {
+        let label = SKLabelNode(text: string)
+        var labelPosition = self.character.position
+        labelPosition.x += 100
+        label.position = labelPosition
+        label.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Left
+        label.color = UIColor.whiteColor()
+        label.fontSize = 38.0
+        label.alpha = 0.0
+
+        
+        let fadeIn = SKAction.fadeInWithDuration(0.6)
+        label.runAction(fadeIn)
+        
+        return label
+    }
+    
+    func fireNodeForSize(size: CGSize) -> SKNode {
+        var x : CGFloat = 0.0
+        
+        let node = SKNode()
+        while (x < size.width) {
+            let fire = fireEmitter()
+            fire.position = CGPoint(x: x, y: 0.0)
+            node.addChild(fire)
+            x += 50.0
+        }
+        
+        let remove = SKAction.fadeOutWithDuration(1.5)
+        node.runAction(remove) { () -> Void in
+            node.removeFromParent()
+        }
+        
+        return node
+    }
+    
+}

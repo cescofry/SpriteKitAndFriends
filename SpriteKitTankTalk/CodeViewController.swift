@@ -92,7 +92,7 @@ class CodeViewController : UIViewController {
         let navVC = UINavigationController(rootViewController: vc)
         navVC.modalPresentationStyle = UIModalPresentationStyle.PageSheet
         
-        let closeBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Cancel, target: vc, action: Selector("dismiss"))
+        let closeBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Done, target: vc, action: Selector("dismiss"))
         vc.navigationItem.rightBarButtonItem = closeBtn
         return navVC
     }
