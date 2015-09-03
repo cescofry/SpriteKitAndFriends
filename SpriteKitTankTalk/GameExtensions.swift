@@ -149,9 +149,8 @@ extension GameScene {
         
         self.popActionNode(actionBox)
         
-        if let gameVC = self.presenterController {
-            gameVC.speakBoxController.speakText("Ahhhhhh!", willStart: nil, completion: nil)
-            
+        if let speakBoxController = self.speakBoxController {
+            speakBoxController.speakText("Ahhhhhh!", willStart: nil, completion: nil)
         }
         
         self.character.physicsBody!.affectedByGravity = true
@@ -194,8 +193,8 @@ extension GameScene {
         characterPhysic.affectedByGravity = true
         self.character.physicsBody = characterPhysic
         
-        if let gameVC = self.presenterController {
-            gameVC.speakBoxController.speakText("Ahhhhhh!", willStart: nil, completion: nil)
+        if let speakBoxController = self.speakBoxController {
+            speakBoxController.speakText("Ahhhhhh!", willStart: nil, completion: nil)
         }
     }
     
@@ -316,8 +315,8 @@ extension GameScene {
             })
             
             Dispatch.after(6.0, block: { () -> () in
-                if let gameVC = self.presenterController {
-                    gameVC.speakBoxController.speakText("Oh crap. let's get out of here", willStart: nil, completion: nil)
+                if let speakBoxController = self.speakBoxController {
+                    speakBoxController.speakText("Oh crap. let's get out of here", willStart: nil, completion: nil)
                 }
             })
             
@@ -416,12 +415,12 @@ extension GameScene {
     func didContact10(nodes: [NodeType : SKNode]) {
         
         guard let actionBox = nodes[.ActionBox] as? SKSpriteNode,
-            let gameVC = self.presenterController else {
+            let speakBoxController = self.speakBoxController else {
                 return
         }
 
         self.popActionNode(actionBox)
-        gameVC.speakBoxController.runDemo({ (cancelled, text) -> () in
+        speakBoxController.runDemo({ (cancelled, text) -> () in
             //
             
         })
@@ -448,8 +447,8 @@ extension GameScene {
         self.character.runToPosition(position) { () -> () in
             
             self.moveToLines(lines) { () -> () in
-                if let gameVC = self.presenterController {
-                    gameVC.speakBoxController.speakText("Thank You", willStart: nil, completion: nil)
+                if let speakBoxController = self.speakBoxController {
+                    speakBoxController.speakText("Thank You", willStart: nil, completion: nil)
                 }
                 
                 Dispatch.after(2.0, block: { () -> () in

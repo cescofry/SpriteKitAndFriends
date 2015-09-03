@@ -44,7 +44,7 @@ class GameViewController: UIViewController {
         
         if let scene = self.scene  {
             scene.audioController = self.audioController
-            scene.presenterController = self
+            scene.speakBoxController = self.speakBoxController
             
             self.isDebug = Config.sharedConfig().isDebug
  
@@ -69,7 +69,7 @@ class GameViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        self.speakBoxController = SpeakBoxController(viewController: self)
+        self.speakBoxController = SpeakBoxController(viewController: self, type: .Character)
 
         nextScene(false)
         self.audioController.playBackgroundMusic()
@@ -98,11 +98,8 @@ class GameViewController: UIViewController {
     
     func presentCode() {
         if let sceneDescription = self.scene?.sceneDescription {
-            self.speakBoxController.speechSynthesizer.stopSpeaking()
-            let vc = CodeViewController.inNavigationController(sceneDescription, speechSynthesizer: self.speakBoxController.speechSynthesizer, dismissBlock: loadCurrentScene)
-            self.presentViewController(vc, animated: true, completion: { () -> Void in
-                //
-            })
+            self.speakBoxController.stopSpeaking()
+            CodeViewController.presentInNavigationController(self, sceneDescription: sceneDescription, dismissBlock: loadCurrentScene)
         }
         else {
             loadCurrentScene()

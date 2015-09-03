@@ -12,6 +12,20 @@ import SpriteKit
 
 enum SpeakerType {
     case Character, Professor
+    
+    func toImage() -> UIImage {
+        switch self {
+        case .Character: return UIImage(named: "zelda")!
+        case .Professor: return UIImage(named: "cescofry")!
+        }
+    }
+    
+    func toLanguage() -> String {
+        switch self {
+        case .Character: return "en-US"
+        case .Professor: return "en-GB"
+        }
+    }
 }
 
 
@@ -26,10 +40,26 @@ class SpeakBoxView : UIView {
         }
     }
     
+    var type: SpeakerType? {
+        didSet {
+            guard let type = self.type else {
+                return
+            }
+            
+            self.speakerImageView.image = type.toImage()
+            
+            let fontSize = (type == .Professor) ? CGFloat(20.0) : CGFloat(24.0)
+            self.textLabel.font = UIFont(name: Config.sharedConfig().fontName, size: fontSize)
+        }
+    }
+    
     var speakerType: SpeakerType!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        let resizingMask : UIViewAutoresizing = [.FlexibleHeight, .FlexibleWidth, .FlexibleLeftMargin, .FlexibleRightMargin, .FlexibleBottomMargin]
+        
+        self.autoresizingMask = autoresizingMask
         
         self.backgroundColor = UIColor.blueColor()
         self.layer.borderColor = UIColor.whiteColor().CGColor
@@ -40,19 +70,27 @@ class SpeakBoxView : UIView {
         let insetLabelFrame = labelFrame.insetBy(dx: 20, dy: 20)
         
         self.speakerImageView = UIImageView(frame: speakerFrame)
-        self.speakerImageView.autoresizingMask = [.FlexibleHeight, .FlexibleWidth]
         self.speakerImageView.contentMode = .ScaleAspectFill
-        self.speakerImageView.backgroundColor = UIColor.redColor()
+        self.speakerImageView.autoresizingMask = resizingMask
         self.addSubview(self.speakerImageView)
         
         self.textLabel = UILabel(frame: insetLabelFrame)
+        self.textLabel.textColor = UIColor.whiteColor()
         self.textLabel.font  = UIFont(name: Config.sharedConfig().fontName, size: 24)
-        self.textLabel.autoresizingMask = [.FlexibleHeight, .FlexibleWidth]
+        self.textLabel.numberOfLines = 0
+        self.textLabel.autoresizingMask = resizingMask
         self.addSubview(self.textLabel)
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutSubviews() {
+        let(speakerFrame, labelFrame) = self.bounds.divide(self.bounds.size.height, fromEdge: .MinXEdge)
+        let insetLabelFrame = labelFrame.insetBy(dx: 20, dy: 20)
+        self.speakerImageView.frame = speakerFrame
+        self.textLabel.frame = insetLabelFrame
     }
 }
 
@@ -62,17 +100,30 @@ class SpeakBoxController {
     var speechSynthesizer: SpeechSynthesizer
     var speakBox: SpeakBoxView!
     var text : String?
+    var type : SpeakerType
     
-    init(viewController: UIViewController) {
+    init(viewController: UIViewController, type: SpeakerType) {
         self.speechSynthesizer = SpeechSynthesizer()
+        self.type = type
         
         self.presenterViewController = viewController
         
         let frame = self.presenterViewController!.view.bounds.divide(140.0, fromEdge: .MaxYEdge).slice.insetBy(dx: 20, dy: 20)
         self.speakBox = SpeakBoxView(frame: frame)
+        self.speakBox.type = type
         self.presenterViewController!.view.addSubview(self.speakBox)
     }
-
+    
+    func layoutSpeakBox() {
+        
+        if self.speakBox.superview == nil {
+            self.presenterViewController!.view.addSubview(self.speakBox)
+        }
+        
+        let frame = self.presenterViewController!.view.bounds.divide(140.0, fromEdge: .MaxYEdge).slice.insetBy(dx: 20, dy: 20)
+        self.speakBox.frame = frame
+    }
+    
     
     func speakMultipleTextAndAdvance(texts: [String], willStart:((text: String)->())?, completion:((cancelled: Bool, text: String)->())?) {
         
@@ -85,6 +136,7 @@ class SpeakBoxController {
         
         func willStart(text: String) {
             self.text = text
+            self.layoutSpeakBox()
             self.speakBox.text = text
             if let willStart = willStart {
                 willStart(text: text)
@@ -98,17 +150,22 @@ class SpeakBoxController {
             }
         }
         
-        self.speechSynthesizer.speakText(text, willStart: willStart, completion: didFinish)
+        self.speechSynthesizer.speakText(text, language: self.type.toLanguage(), willStart: willStart, completion: didFinish)
+    }
+    
+    func stopSpeaking() {
+        self.speechSynthesizer.stopSpeaking()
+        self.speakBox.removeFromSuperview()
     }
     
     private func didEndShowingText(text: String) {
-        Dispatch.after(1.0) { () -> () in
+        Dispatch.after(0.5) { () -> () in
             guard let currentText = self.text else {
                 return
             }
             
             if currentText == text {
-                //self.speakBox.removeFromSuperview()
+                self.speakBox.removeFromSuperview()
             }
             
         }
@@ -117,6 +174,7 @@ class SpeakBoxController {
     func runDemo(completion: ((cancelled: Bool, text: String) -> ())?) {
         
         func willStart(text: String) {
+            self.layoutSpeakBox()
             self.text = text
             self.speakBox.text = text
         }
