@@ -88,7 +88,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     private func setupTitle() {
+        
         self.title.fontName = Config.sharedConfig().fontName
+        self.title.fontSize = 50.0
+        self.title.color = UIColor.whiteColor()
         self.title.position = CGPoint(x: self.scene!.size.center.x, y: self.title.position.y)
     }
     

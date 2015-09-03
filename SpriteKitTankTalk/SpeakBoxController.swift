@@ -136,7 +136,9 @@ class SpeakBoxController {
         
         func willStart(text: String) {
             self.text = text
-            self.layoutSpeakBox()
+            if text.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) > 0 {
+                self.layoutSpeakBox()
+            }
             self.speakBox.text = text
             if let willStart = willStart {
                 willStart(text: text)

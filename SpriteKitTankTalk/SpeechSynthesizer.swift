@@ -32,7 +32,7 @@ class SpeechSynthesizer : NSObject, AVSpeechSynthesizerDelegate {
         self.completion = completion
         self.willStart = willStart
         let utterance = AVSpeechUtterance(string: text)
-        
+        utterance.rate = 0.45
         utterance.voice = self.voiceFromLanguage(language)
         
         synth.speakUtterance(utterance)

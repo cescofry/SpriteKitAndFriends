@@ -393,26 +393,13 @@ extension GameScene {
     }
 }
 
-extension GameScene : GKAgentDelegate {
-    
+
+extension GameScene {
     func setUp9() {
         self.didContact = didContact9
-        
-
     }
     
     func didContact9(nodes: [NodeType : SKNode]) {
-        
-    }
-    
-}
-
-extension GameScene {
-    func setUp10() {
-        self.didContact = didContact10
-    }
-    
-    func didContact10(nodes: [NodeType : SKNode]) {
         
         guard let actionBox = nodes[.ActionBox] as? SKSpriteNode,
             let speakBoxController = self.speakBoxController else {
@@ -430,8 +417,8 @@ extension GameScene {
 
 
 extension GameScene {
-    func setUp11() {
-        self.didContact = didContact11
+    func setUp10() {
+        self.didContact = didContact10
         self.shouldRunEntranceAnimation = false
         self.nextPortal.alpha = 0.0
         self.title.color = UIColor.whiteColor()
@@ -460,7 +447,7 @@ extension GameScene {
         
     }
     
-    func didContact11(nodes: [NodeType : SKNode]) {
+    func didContact10(nodes: [NodeType : SKNode]) {
 
     }
     
