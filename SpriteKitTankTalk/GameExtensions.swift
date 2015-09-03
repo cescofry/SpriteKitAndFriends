@@ -141,29 +141,34 @@ extension GameScene {
     }
     
     func didContact5(nodes: [NodeType : SKNode]) {
-        if let actionBox = nodes[.ActionBox] as? SKSpriteNode {
-            if let _ = nodes[.Character] as? SKSpriteNode {
-                self.popActionNode(actionBox)
-                
-                self.speakBoxController.speakText("Ahhhhhh!", willStart: nil, completion: nil)
-                
-                self.character.physicsBody!.affectedByGravity = true
-                self.physicsWorld.gravity = CGVector(dx: 0.0, dy: -5.0)
-                
-                for child in self.children {
-                    if (child.name == nil && child.physicsBody != nil) {
-                        child.physicsBody!.affectedByGravity = true
-                    }
-                }
-                
-                Dispatch.after(2.0, block: { () -> () in
-                    if let nextScene = self.nextScene {
-                        nextScene(showCode: false)
-                    }
-                })
-                
+        
+        guard let actionBox = nodes[.ActionBox] as? SKSpriteNode,
+            let _ = nodes[.Character] as? SKSpriteNode else {
+                return
+        }
+        
+        self.popActionNode(actionBox)
+        
+        if let gameVC = self.presenterController {
+            gameVC.speakBoxController.speakText("Ahhhhhh!", willStart: nil, completion: nil)
+            
+        }
+        
+        self.character.physicsBody!.affectedByGravity = true
+        self.physicsWorld.gravity = CGVector(dx: 0.0, dy: -5.0)
+        
+        for child in self.children {
+            if (child.name == nil && child.physicsBody != nil) {
+                child.physicsBody!.affectedByGravity = true
             }
         }
+        
+        Dispatch.after(2.0, block: { () -> () in
+            if let nextScene = self.nextScene {
+                nextScene(showCode: false)
+            }
+        })
+        
     }
 }
 
@@ -189,8 +194,9 @@ extension GameScene {
         characterPhysic.affectedByGravity = true
         self.character.physicsBody = characterPhysic
         
-        
-        self.speakBoxController.speakText("Ahhhhhh!", willStart: nil, completion: nil)
+        if let gameVC = self.presenterController {
+            gameVC.speakBoxController.speakText("Ahhhhhh!", willStart: nil, completion: nil)
+        }
     }
     
     func didContact6(nodes: [NodeType : SKNode]) {
@@ -310,7 +316,9 @@ extension GameScene {
             })
             
             Dispatch.after(6.0, block: { () -> () in
-                self.speakBoxController.speakText("Oh crap. let's get out of here", willStart: nil, completion: nil)
+                if let gameVC = self.presenterController {
+                    gameVC.speakBoxController.speakText("Oh crap. let's get out of here", willStart: nil, completion: nil)
+                }
             })
             
         }
@@ -406,13 +414,17 @@ extension GameScene {
     }
     
     func didContact10(nodes: [NodeType : SKNode]) {
-        if let actionBox = nodes[.ActionBox] as? SKSpriteNode {
-            self.popActionNode(actionBox)
-            
-            self.speakBoxController.runDemo({ (cancelled, text) -> () in
-                //
-            })
+        
+        guard let actionBox = nodes[.ActionBox] as? SKSpriteNode,
+            let gameVC = self.presenterController else {
+                return
         }
+
+        self.popActionNode(actionBox)
+        gameVC.speakBoxController.runDemo({ (cancelled, text) -> () in
+            //
+            
+        })
     }
     
 }
@@ -436,7 +448,9 @@ extension GameScene {
         self.character.runToPosition(position) { () -> () in
             
             self.moveToLines(lines) { () -> () in
-                self.speakBoxController.speakText("Thank You", willStart: nil, completion: nil)
+                if let gameVC = self.presenterController {
+                    gameVC.speakBoxController.speakText("Thank You", willStart: nil, completion: nil)
+                }
                 
                 Dispatch.after(2.0, block: { () -> () in
                     // Do Something to close

@@ -9,8 +9,15 @@
 import Foundation
 import SpriteKit
 
-class SpeakBoxNode: SKShapeNode {
-    var textLabel : SKLabelNode!
+
+enum SpeakerType {
+    case Character, Professor
+}
+
+
+class SpeakBoxView : UIView {
+    private var textLabel: UILabel!
+    private var speakerImageView: UIImageView!
     var text : String? {
         didSet {
             if let text = text {
@@ -19,49 +26,53 @@ class SpeakBoxNode: SKShapeNode {
         }
     }
     
-    convenience init(size: CGSize) {
-        self.init()
-        self.init(rectOfSize: size, cornerRadius: 10.0)
-        self.fillColor = UIColor.blueColor()
-        self.strokeColor = UIColor.whiteColor()
-        self.lineWidth = 2.0
-        self.lineJoin = CGLineJoin.Bevel
+    var speakerType: SpeakerType!
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         
-        self.textLabel = SKLabelNode(fontNamed: Config.sharedConfig().fontName)
-        self.textLabel.fontSize = 24
-        self.textLabel.name = "label"
+        self.backgroundColor = UIColor.blueColor()
+        self.layer.borderColor = UIColor.whiteColor().CGColor
+        self.layer.borderWidth = 2.0
+        self.layer.cornerRadius = 10.0
         
-        self.addChild(self.textLabel)
-        self.textLabel.position = CGPointApplyAffineTransform(self.position, CGAffineTransformMakeTranslation(0.0, -10))
+        let(speakerFrame, labelFrame) = self.bounds.divide(self.bounds.size.height, fromEdge: .MinXEdge)
+        let insetLabelFrame = labelFrame.insetBy(dx: 20, dy: 20)
+        
+        self.speakerImageView = UIImageView(frame: speakerFrame)
+        self.speakerImageView.autoresizingMask = [.FlexibleHeight, .FlexibleWidth]
+        self.speakerImageView.contentMode = .ScaleAspectFill
+        self.speakerImageView.backgroundColor = UIColor.redColor()
+        self.addSubview(self.speakerImageView)
+        
+        self.textLabel = UILabel(frame: insetLabelFrame)
+        self.textLabel.font  = UIFont(name: Config.sharedConfig().fontName, size: 24)
+        self.textLabel.autoresizingMask = [.FlexibleHeight, .FlexibleWidth]
+        self.addSubview(self.textLabel)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
 
+
 class SpeakBoxController {
-    var scene : GameScene
+    private var presenterViewController: UIViewController?
     var speechSynthesizer: SpeechSynthesizer
-    var speakBox: SpeakBoxNode {
-        if let speakBox = self.scene.childNodeWithName("speakBox") as? SpeakBoxNode {
-            return speakBox
-        }
-        
-        let size = CGSize(width: self.scene.size.width - 40, height: 60)
-        let speakBox = SpeakBoxNode(size: size)
-        speakBox.position = CGPoint(x: (self.scene.size.center.x), y: size.height + 10)
-        speakBox.name = "speakBox"
-        speakBox.zPosition = 99
-        self.scene.addChild(speakBox)
-        
-        return speakBox
-    }
-    
-    init(scene : GameScene) {
-        self.scene = scene
-        self.speechSynthesizer = SpeechSynthesizer()
-    }
-    
+    var speakBox: SpeakBoxView!
     var text : String?
     
-    
+    init(viewController: UIViewController) {
+        self.speechSynthesizer = SpeechSynthesizer()
+        
+        self.presenterViewController = viewController
+        
+        let frame = self.presenterViewController!.view.bounds.divide(140.0, fromEdge: .MaxYEdge).slice.insetBy(dx: 20, dy: 20)
+        self.speakBox = SpeakBoxView(frame: frame)
+        self.presenterViewController!.view.addSubview(self.speakBox)
+    }
+
     
     func speakMultipleTextAndAdvance(texts: [String], willStart:((text: String)->())?, completion:((cancelled: Bool, text: String)->())?) {
         
@@ -97,7 +108,7 @@ class SpeakBoxController {
             }
             
             if currentText == text {
-                self.speakBox.removeFromParent()
+                //self.speakBox.removeFromSuperview()
             }
             
         }

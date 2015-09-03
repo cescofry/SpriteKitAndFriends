@@ -11,9 +11,10 @@ import SpriteKit
 
 class GameViewController: UIViewController {
 
-    var index = 10
+    var index = 0
     var scene : GameScene?
     let audioController = AudioController()
+    var speakBoxController: SpeakBoxController!
     
     var isDebug : Bool? {
         didSet {
@@ -37,12 +38,13 @@ class GameViewController: UIViewController {
     }
     
     func loadCurrentScene(){
-    
+        
         self.cleanUpScene()
         self.scene = GameSceneGenerator.fromIndex(index)
         
         if let scene = self.scene  {
             scene.audioController = self.audioController
+            scene.presenterController = self
             
             self.isDebug = Config.sharedConfig().isDebug
  
@@ -55,7 +57,7 @@ class GameViewController: UIViewController {
             
             skView.presentScene(scene)
             scene.nextScene = nextScene
-        }
+        }        
     }
     
     func cleanUpScene() {
@@ -66,6 +68,8 @@ class GameViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        
+        self.speakBoxController = SpeakBoxController(viewController: self)
 
         nextScene(false)
         self.audioController.playBackgroundMusic()
@@ -94,8 +98,8 @@ class GameViewController: UIViewController {
     
     func presentCode() {
         if let sceneDescription = self.scene?.sceneDescription {
-            self.scene!.speakBoxController.speechSynthesizer.stopSpeaking()
-            let vc = CodeViewController.inNavigationController(sceneDescription, speechSynthesizer: self.scene!.speakBoxController.speechSynthesizer, dismissBlock: loadCurrentScene)
+            self.speakBoxController.speechSynthesizer.stopSpeaking()
+            let vc = CodeViewController.inNavigationController(sceneDescription, speechSynthesizer: self.speakBoxController.speechSynthesizer, dismissBlock: loadCurrentScene)
             self.presentViewController(vc, animated: true, completion: { () -> Void in
                 //
             })

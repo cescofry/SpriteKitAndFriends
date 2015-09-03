@@ -34,8 +34,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var setup: (()->())?
     var shouldRunEntranceAnimation = true
     var didContact: DidContactBlock?
-    var speakBoxController: SpeakBoxController!
     var audioController : AudioController?
+    var presenterController : GameViewController?
     
     var currentActionIndex = 0
     
@@ -74,8 +74,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         self.nextPortal.alpha = 0.0
         checkPortalActivation()
-        
-        self.speakBoxController = SpeakBoxController(scene: self)
         
         if let setup = self.setup {
             setup()
@@ -145,10 +143,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func speakAllActions() {
-        guard let actions = self.sceneDescription?.actions else {
+        guard let actions = self.sceneDescription?.actions,
+        let gameVC = self.presenterController else {
             return
         }
-        self.speakBoxController.speakMultipleTextAndAdvance(actions, willStart: nil, completion: nil)
+        
+        gameVC.speakBoxController.speakMultipleTextAndAdvance(actions, willStart: nil, completion: nil)
     }
     
     func checkPortalActivation() {
