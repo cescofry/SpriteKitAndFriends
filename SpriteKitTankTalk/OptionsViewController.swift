@@ -48,27 +48,6 @@ class OptionsViewController : UITableViewController {
         
     }
     
-    static func fromNavigationBarButton(button: UIBarButtonItem) -> UINavigationController {
-        let optionsVC = OptionsViewController(style: UITableViewStyle.Grouped)
-        let navController = UINavigationController(rootViewController: optionsVC)
-        
-        navController.modalPresentationStyle = UIModalPresentationStyle.Popover
-        navController.popoverPresentationController!.barButtonItem = button
-        
-        let closeBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Cancel, target: optionsVC, action: "dismiss")
-        optionsVC.navigationItem.rightBarButtonItem = closeBtn
-        
-        return navController
-    }
-    
-
-    
-    override func loadView() {
-        super.loadView()
-        
-        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "sceneCell")
-    }
-    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 2
     }
@@ -81,16 +60,36 @@ class OptionsViewController : UITableViewController {
         return (section == 0) ? "Select Level" : "Change Options"
     }
     
+    @IBAction func dismiss(sender: AnyObject?) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("sceneCell", forIndexPath: indexPath)
+        let title : String
+        let subtitle : String?
+        let cellID : String
+        
+        
         switch indexPath.section {
         case 0:
-            cell.textLabel!.text = self.titles[indexPath.row]
+            cellID = "sceneCell"
+            title = self.titles[indexPath.row]
+            subtitle = nil
         default:
+            cellID = "configCell"
             let option = self.options[indexPath.row]
-            cell.textLabel!.text = "\(option.title): \(option.value)"
+            title = option.title
+            subtitle = "\(option.value)"
         }
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellID, forIndexPath: indexPath)
+        cell.textLabel!.text = title
+        
+        if let subtitle = subtitle {
+            cell.detailTextLabel!.text = subtitle
+        }
+        
         return cell
     }
     
@@ -99,17 +98,14 @@ class OptionsViewController : UITableViewController {
             if let didSelectIndex = didSelectIndex {
                 didSelectIndex(index: (indexPath.row + 1))
             }            
-            dismiss()
+            dismiss(nil)
         }
         else {
             switchOptionAtIndex(indexPath.row)
             self.tableView.reloadData()
         }
     }
-    
-    func dismiss() {
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
+
     
 }
 

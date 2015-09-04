@@ -107,21 +107,21 @@ class GameViewController: UIViewController {
             loadCurrentScene()
         }
     }
-    
-    @IBAction func optionsAction(sender: AnyObject?) {
-        if let btn = sender as? UIBarButtonItem {
-            let navVC = OptionsViewController.fromNavigationBarButton(btn)
-            if let optionsVC = navVC.optionsViewController() {
-                optionsVC.currentIndex = self.index
-                optionsVC.didSelectIndex = {(index: Int) in
-                    self.index = index
-                    self.loadCurrentScene()
-                }
-                
-            }
-            
-            
-            self.presentViewController(navVC, animated: true, completion: nil)
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        guard let identifier = segue.identifier where
+        identifier == "OptionsViewController",
+            let navVC = segue.destinationViewController as? UINavigationController else {
+                return
+        }
+        
+        guard let optionsVC = navVC.viewControllers.first as? OptionsViewController else {
+                return
+        }
+        
+        optionsVC.currentIndex = self.index
+        optionsVC.didSelectIndex = {(index: Int) in
+            self.index = index
+            self.loadCurrentScene()
         }
     }
 }
