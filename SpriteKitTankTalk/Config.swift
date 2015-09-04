@@ -11,8 +11,8 @@ import Foundation
 typealias GenericDictionary = [String: AnyObject]
 
 struct Config {
-    let isDebug : Bool
-    let speakText : Bool
+    var isDebug : Bool
+    var speakText : Bool
     let fontName: String
     let scenes : [SceneDescription]
     

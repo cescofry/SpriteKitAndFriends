@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>isDebug</key>
-	<true/>
+	<false/>
 	<key>speakText</key>
 	<true/>
 	<key>fontName</key>
