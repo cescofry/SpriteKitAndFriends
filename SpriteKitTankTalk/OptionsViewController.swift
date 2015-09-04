@@ -44,6 +44,8 @@ class OptionsViewController : UITableViewController {
         default:
             config.speakText = !config.speakText
         }
+        config.save()
+        
     }
     
     static func fromNavigationBarButton(button: UIBarButtonItem) -> UINavigationController {
@@ -102,7 +104,6 @@ class OptionsViewController : UITableViewController {
         else {
             switchOptionAtIndex(indexPath.row)
             self.tableView.reloadData()
-            // change options
         }
     }
     

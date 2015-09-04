@@ -48,14 +48,30 @@ struct Config {
         return self.cachedSharedConfig
     }
     
+    private static func plistPath() -> String {
+        return NSBundle.mainBundle().pathForResource("Config", ofType: "plist")!
+    }
+    
     private static func plistDictionary() -> NSDictionary {
-        let path = NSBundle.mainBundle().pathForResource("Config", ofType: "plist")!
-        return NSDictionary(contentsOfFile: path)!
+        return NSDictionary(contentsOfFile: plistPath())!
     }
     
     private static func codeForIndex(index: Int) -> String {
         let path = NSBundle.mainBundle().pathForResource("source_\(index)", ofType: "html")!
         return try! NSString(contentsOfFile: path, encoding: NSUTF8StringEncoding) as String
+    }
+}
+
+extension Config {
+    func save() {
+        let dictionary = Config.plistDictionary().mutableCopy() as! NSMutableDictionary
+        dictionary.setValue(NSNumber(bool: self.isDebug), forKey: "isDebug")
+        dictionary.setValue(NSNumber(bool: self.speakText), forKey: "speakText")
+        
+        let path = Config.plistPath()
+        if dictionary.writeToFile(path, atomically: true) {
+            Config.cachedSharedConfig = nil
+        }
     }
 }
 

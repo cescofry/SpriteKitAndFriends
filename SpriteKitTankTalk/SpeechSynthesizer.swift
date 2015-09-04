@@ -13,7 +13,9 @@ class SpeechSynthesizer : NSObject, AVSpeechSynthesizerDelegate {
     private let synth = AVSpeechSynthesizer()
     private var completion: ((cancelled: Bool, text: String)->())?
     private var willStart:((text: String)->())?
-    private let speakText = Config.sharedConfig().speakText
+    private var speakText : Bool {
+        return Config.sharedConfig().speakText
+    }
     
     func speakText(text: String, willStart: ((text: String)->())?, completion:((cancelled: Bool, text: String)->())?) {
         speakText(text, language: nil, willStart: willStart, completion: completion)
