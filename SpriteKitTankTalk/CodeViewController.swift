@@ -27,7 +27,7 @@ class CodeViewController : UIViewController {
     }
     
     var webView =  WKWebView(frame: CGRectZero, configuration: CodeViewController.webViewConfiguration())
-    var speakBoxXontroller : SpeakBoxController!
+    var speakBoxController : SpeakBoxController!
     
     var aboutToDismiss : (()->())?
     
@@ -42,6 +42,8 @@ class CodeViewController : UIViewController {
         self.webView.backgroundColor = self.view.backgroundColor
         self.webView.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight]
         self.view.addSubview(self.webView)
+        
+        self.speakBoxController.layoutSpeakBox()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -51,9 +53,7 @@ class CodeViewController : UIViewController {
             return
         }
         
-        for text in texts {
-            self.speakBoxXontroller.speakText(text, willStart: nil, completion: nil)
-        }
+        self.speakBoxController.speakMultipleTextAndAdvance(texts, willStart: nil, completion: nil)
     }
         
     static func presentInNavigationController(presenterViewController: UIViewController, sceneDescription: SceneDescription, dismissBlock: (()->())?) {
@@ -61,7 +61,7 @@ class CodeViewController : UIViewController {
         let vc = CodeViewController(nibName: nil, bundle: nil)
         vc.sceneDescription = sceneDescription
         vc.aboutToDismiss = dismissBlock
-        vc.speakBoxXontroller = SpeakBoxController(viewController: vc, type: .Professor)
+        vc.speakBoxController = SpeakBoxController(viewController: vc, type: .Professor)
         
         let navVC = UINavigationController(rootViewController: vc)
         navVC.modalPresentationStyle = UIModalPresentationStyle.PageSheet
@@ -94,7 +94,7 @@ class CodeViewController : UIViewController {
     
     func dismiss() {
         self.dismissViewControllerAnimated(true, completion: { () -> Void in
-            self.speakBoxXontroller.stopSpeaking()
+            self.speakBoxController.stopSpeaking()
             if let aboutToDismiss = self.aboutToDismiss {
                 aboutToDismiss()
             }

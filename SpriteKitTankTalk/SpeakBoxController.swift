@@ -99,7 +99,7 @@ class SpeakBoxView : UIView {
 class SpeakBoxController {
     private var presenterViewController: UIViewController?
     var speechSynthesizer: SpeechSynthesizer
-    var speakBox: SpeakBoxView!
+    var speakBox: SpeakBoxView
     var text : String?
     var type : SpeakerType
     
@@ -109,20 +109,19 @@ class SpeakBoxController {
         
         self.presenterViewController = viewController
         
-        let frame = self.presenterViewController!.view.bounds.divide(140.0, fromEdge: .MaxYEdge).slice.insetBy(dx: 20, dy: 20)
-        self.speakBox = SpeakBoxView(frame: frame)
+        self.speakBox = SpeakBoxView(frame: CGRectMake(0, 0, 600, 100))
         self.speakBox.type = type
-        self.presenterViewController!.view.addSubview(self.speakBox)
     }
     
     func layoutSpeakBox() {
+        
+        let frame = self.presenterViewController!.view.bounds.divide(140.0, fromEdge: .MaxYEdge).slice.insetBy(dx: 20, dy: 20)
+        self.speakBox.frame = frame
         
         if self.speakBox.superview == nil {
             self.presenterViewController!.view.addSubview(self.speakBox)
         }
         
-        let frame = self.presenterViewController!.view.bounds.divide(140.0, fromEdge: .MaxYEdge).slice.insetBy(dx: 20, dy: 20)
-        self.speakBox.frame = frame
     }
     
     
