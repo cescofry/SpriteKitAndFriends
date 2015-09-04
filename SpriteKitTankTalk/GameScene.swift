@@ -98,7 +98,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     private func addCharacterToScene() {
         let character = Character(imageNamed: "slice01.png")
         character.name = NodeType.Character.toString()
-        character.setScale(0.5)
+        character.setScale(0.6)
         character.zPosition = 10.0
         character.position = self.view!.center
         self.addChild(character)

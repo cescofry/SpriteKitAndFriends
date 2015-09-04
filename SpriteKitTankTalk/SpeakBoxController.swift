@@ -16,7 +16,7 @@ enum SpeakerType {
     func toImage() -> UIImage {
         switch self {
         case .Character: return UIImage(named: "zelda")!
-        case .Professor: return UIImage(named: "cescofry")!
+        case .Professor: return UIImage(named: "professor")!
         }
     }
     
