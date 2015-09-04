@@ -78,6 +78,7 @@ class SpeakBoxView : UIView {
         self.textLabel.textColor = UIColor.whiteColor()
         self.textLabel.font  = UIFont(name: Config.sharedConfig().fontName, size: 24)
         self.textLabel.numberOfLines = 0
+        self.textLabel.adjustsFontSizeToFitWidth = true
         self.textLabel.autoresizingMask = resizingMask
         self.addSubview(self.textLabel)
     }
