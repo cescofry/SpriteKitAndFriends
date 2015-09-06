@@ -31,12 +31,12 @@ struct Config {
         var index = 0
         var stop = false
         var scenes = [SceneDescription]()
+        
         while (!stop) {
             index++
             
             guard let path = NSBundle.mainBundle().pathForResource("source_\(index)", ofType: "html"),
-                let scene = SceneDescription.fromCodePath(path)
-                else {
+                let scene = SceneDescription.fromCodePath(path) else {
                 stop = true
                 continue
             }
@@ -82,11 +82,7 @@ struct SceneDescription {
     let actions : [String]
     
     var html : String? {
-        return SceneDescription.htmlFromPath(self.codePath)
-    }
-    
-    private static func htmlFromPath(path : String) -> String? {
-        return try? NSString(contentsOfFile: path, encoding: NSUTF8StringEncoding) as String
+        return SceneDescription.fullHtmlFromPath(self.codePath)
     }
     
     static func fromCodePath(codePath: String) -> SceneDescription? {
@@ -109,6 +105,8 @@ struct SceneDescription {
 
     }
     
+    
+    //MARK: JSON
     private static func jsonConfigFromHTML(html : String) -> [String: String]? {
         
         let regEx = try? NSRegularExpression(pattern: "<script type=\"json\">(.+)</script>", options: [.CaseInsensitive, .DotMatchesLineSeparators])
@@ -131,6 +129,29 @@ struct SceneDescription {
     }
     
 
+    //MARK: HTML
     
+    private static func htmlFromPath(path : String) -> String? {
+        return try? NSString(contentsOfFile: path, encoding: NSUTF8StringEncoding) as String
+    }
     
+    static func fullHtmlFromPath(path : String) -> String? {
+        guard let codeHtml = htmlFromPath(path),
+            let templates = htmlTemplates else {
+                return nil
+        }
+        
+        return "\(templates.pre)\n\(codeHtml)\n\(templates)"
+    }
+
+    
+    static var htmlTemplates : (pre: String, post: String)? {
+        guard let path = NSBundle.mainBundle().pathForResource("source_template", ofType: "html"),
+        let template = try? NSString(contentsOfFile: path, encoding: NSUTF8StringEncoding) as String else {
+            return nil
+        }
+        
+        let components = template.componentsSeparatedByString("{{SOURCE_CODE}}")
+        return (components[0], components[1])
+    }
 }

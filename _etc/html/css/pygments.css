@@ -74,7 +74,6 @@ pre .il { color: #40a070 } /* Literal.Number.Integer.Long */.syntax pre .hll { b
 .syntax pre .p { color: #cccccc } /* Punctuation */
 .syntax pre .cm { color: #000080 } /* Comment.Multiline */
 .syntax pre .cp { color: #000080 } /* Comment.Preproc */
-.syntax pre .c1 { color: #000080 } /* Comment.Single */
 .syntax pre .cs { color: #cd0000; font-weight: bold } /* Comment.Special */
 .syntax pre .gd { color: #cd0000 } /* Generic.Deleted */
 .syntax pre .ge { color: #cccccc; font-style: italic } /* Generic.Emph */

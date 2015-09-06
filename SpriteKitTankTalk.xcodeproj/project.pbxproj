@@ -50,7 +50,7 @@
 		A594B0B21B9C3EB400F89ECE /* source_7.html in Resources */ = {isa = PBXBuildFile; fileRef = A594B0A41B9C3EB400F89ECE /* source_7.html */; settings = {ASSET_TAGS = (); }; };
 		A594B0B31B9C3EB400F89ECE /* source_8.html in Resources */ = {isa = PBXBuildFile; fileRef = A594B0A51B9C3EB400F89ECE /* source_8.html */; settings = {ASSET_TAGS = (); }; };
 		A594B0B41B9C3EB400F89ECE /* source_9.html in Resources */ = {isa = PBXBuildFile; fileRef = A594B0A61B9C3EB400F89ECE /* source_9.html */; settings = {ASSET_TAGS = (); }; };
-		A594B0B51B9C3EB400F89ECE /* source_tempalte.html in Resources */ = {isa = PBXBuildFile; fileRef = A594B0A71B9C3EB400F89ECE /* source_tempalte.html */; settings = {ASSET_TAGS = (); }; };
+		A594B0B51B9C3EB400F89ECE /* source_template.html in Resources */ = {isa = PBXBuildFile; fileRef = A594B0A71B9C3EB400F89ECE /* source_template.html */; settings = {ASSET_TAGS = (); }; };
 		A5B0FF701B8EF7A100BA9584 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B0FF6F1B8EF7A100BA9584 /* Config.swift */; };
 		A5B0FF721B8EFD8700BA9584 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B0FF711B8EFD8700BA9584 /* Extensions.swift */; };
 		A5BC5F0E1B94974100019376 /* Piro.sks in Resources */ = {isa = PBXBuildFile; fileRef = A5BC5F0C1B94974100019376 /* Piro.sks */; settings = {ASSET_TAGS = (); }; };
@@ -116,7 +116,7 @@
 		A594B0A41B9C3EB400F89ECE /* source_7.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = source_7.html; sourceTree = "<group>"; };
 		A594B0A51B9C3EB400F89ECE /* source_8.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = source_8.html; sourceTree = "<group>"; };
 		A594B0A61B9C3EB400F89ECE /* source_9.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = source_9.html; sourceTree = "<group>"; };
-		A594B0A71B9C3EB400F89ECE /* source_tempalte.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = source_tempalte.html; sourceTree = "<group>"; };
+		A594B0A71B9C3EB400F89ECE /* source_template.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = source_template.html; sourceTree = "<group>"; };
 		A5B0FF6F1B8EF7A100BA9584 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		A5B0FF711B8EFD8700BA9584 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		A5BC5F0C1B94974100019376 /* Piro.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Piro.sks; sourceTree = "<group>"; };
@@ -248,6 +248,7 @@
 			isa = PBXGroup;
 			children = (
 				A594B0991B9C3EB300F89ECE /* css */,
+				A594B0A71B9C3EB400F89ECE /* source_template.html */,
 				A594B09D1B9C3EB400F89ECE /* source_1.html */,
 				A594B09E1B9C3EB400F89ECE /* source_10.html */,
 				A594B09F1B9C3EB400F89ECE /* source_2.html */,
@@ -258,7 +259,6 @@
 				A594B0A41B9C3EB400F89ECE /* source_7.html */,
 				A594B0A51B9C3EB400F89ECE /* source_8.html */,
 				A594B0A61B9C3EB400F89ECE /* source_9.html */,
-				A594B0A71B9C3EB400F89ECE /* source_tempalte.html */,
 			);
 			name = html;
 			path = _etc/html;
@@ -391,7 +391,7 @@
 				9B19ECDE1B8F6E2800552D11 /* GameScene4.sks in Resources */,
 				A594B0A81B9C3EB400F89ECE /* font.css in Resources */,
 				9B19ECCA1B8DF26800552D11 /* Config.plist in Resources */,
-				A594B0B51B9C3EB400F89ECE /* source_tempalte.html in Resources */,
+				A594B0B51B9C3EB400F89ECE /* source_template.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -21,7 +21,7 @@ class CodeViewController : UIViewController {
     var html : String? {
         didSet {
             if let html = html {
-                self.webView.loadHTMLString(html, baseURL: nil)
+                self.webView.loadHTMLString(html, baseURL: NSBundle.mainBundle().bundleURL)
             }
         }
     }
@@ -75,7 +75,27 @@ class CodeViewController : UIViewController {
     static func webViewConfiguration() -> WKWebViewConfiguration {
         
         let config = WKWebViewConfiguration()
+        return config
+        /*
+        let contentController = WKUserContentController()
         
+        for name in ["font", "pugments", "pygments14"] {
+            guard let path = NSBundle.mainBundle().pathForResource(name, ofType: "css"),
+                let scriptContent = try? String(contentsOfFile: path, encoding: NSUTF8StringEncoding)
+                else {
+                    return config
+            }
+        
+            let css = WKUserScript(source: scriptContent, injectionTime: WKUserScriptInjectionTime.AtDocumentStart, forMainFrameOnly: false)
+        
+            contentController.addUserScript(css)
+        }
+    
+        
+        config.userContentController = contentController
+        */
+        
+        /*
         guard let path = NSBundle.mainBundle().pathForResource("InjectCSS", ofType: "js") else {
             return config
         }
@@ -90,6 +110,7 @@ class CodeViewController : UIViewController {
         config.userContentController.addUserScript(script)
 
         return config
+*/
     }
     
     func dismiss() {
