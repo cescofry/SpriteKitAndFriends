@@ -10,6 +10,66 @@ import UIKit
 import SpriteKit
 import AVFoundation
 
+
+class HtmlTestViewController : UINavigationController {
+    
+    private var index  = 0
+    private var scenes = Config.sharedConfig().scenes
+    private var presenterViewController : UIViewController!
+    
+    func nextScene() {
+        
+        guard let vc = self.nextViewController() else {
+            return
+        }
+        
+        let closeBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Done, target: self, action: Selector("nextScene"))
+        vc.navigationItem.rightBarButtonItem = closeBtn
+        
+        self.pushViewController(vc, animated: true)
+    }
+    
+    func nextViewController() -> CodeViewController? {
+        
+        if index >= scenes.count {
+            return nil
+        }
+        
+        let scene =  scenes[index]
+        
+        let vc = CodeViewController(nibName: nil, bundle: nil)
+        vc.sceneDescription = scene
+        vc.speakBoxController = SpeakBoxController(viewController: vc, type: .Professor)
+        
+        index++
+        
+        return vc
+    }
+    
+    
+    convenience init() {
+        self.init(nibName: nil, bundle: nil)
+        self.nextScene()
+    }
+    
+    static func fromDummyVC() -> UIViewController {
+        let navVC = HtmlTestViewController()
+        navVC.modalPresentationStyle = UIModalPresentationStyle.PageSheet
+        
+        
+        let vc = UIViewController(nibName: nil, bundle: nil)
+        
+        Dispatch.after(1.0) { () -> () in            
+            vc.presentViewController(navVC, animated: true) { () -> Void in
+            }
+
+        }
+        
+        return vc
+    }
+
+}
+
 class TestViewController: UIViewController {
     
     // SKScene and SKNode

@@ -141,7 +141,7 @@ struct SceneDescription {
                 return nil
         }
         
-        return "\(templates.pre)\n\(codeHtml)\n\(templates)"
+        return "\(templates.pre)\n\(codeHtml)\n\(templates.post)"
     }
 
     
