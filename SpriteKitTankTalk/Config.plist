@@ -5,7 +5,7 @@
 	<key>isDebug</key>
 	<false/>
 	<key>speakText</key>
-	<false/>
+	<true/>
 	<key>fontName</key>
 	<string>Menlo-Regular</string>
 </dict>
