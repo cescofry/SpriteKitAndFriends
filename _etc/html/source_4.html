@@ -6,16 +6,15 @@
 }
 </script>
 
-<!-- HTML generated using hilite.me --><div style="background: #272822; overflow:auto;width:auto;padding:.2em .6em; font-size: 150%"><pre style="margin: 0; line-height: 125%">    <span style="color: #f92672">//</span> <span style="color: #66d9ef">Physics</span>
+
+    <span class="c1">// Physics</span>
     
-    <span style="color: #f8f8f2">func</span> <span style="color: #f8f8f2">addPhysicsToNode(node</span><span style="color: #66d9ef">:</span> <span style="color: #66d9ef">SKSpriteNode</span><span style="color: #f8f8f2">)</span>  <span style="color: #f8f8f2">{</span>
-        <span style="color: #66d9ef">let</span> <span style="color: #f8f8f2">radius</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">node</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">size</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">width</span> <span style="color: #f92672">/</span> <span style="color: #ae81ff">2.0</span>
-        <span style="color: #66d9ef">let</span> <span style="color: #f8f8f2">physics</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">SKPhysicsBody</span><span style="color: #f8f8f2">(circleOfRadius</span><span style="color: #66d9ef">:</span> <span style="color: #f8f8f2">radius)</span>
-        <span style="color: #f8f8f2">physics</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">dynamic</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">false</span>
-        <span style="color: #f8f8f2">physics</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">friction</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">0.2</span>
+    <span class="kd">func</span> <span class="nf">addPhysicsToNode</span><span class="p">(</span><span class="n">node</span><span class="p">:</span> <span class="bp">SKSpriteNode</span><span class="p">)</span>  <span class="p">{</span>
+        <span class="kd">let</span> <span class="nv">radius</span> <span class="p">=</span> <span class="n">node</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">width</span> <span class="o">/</span> <span class="mf">2.0</span>
+        <span class="kd">let</span> <span class="nv">physics</span> <span class="p">=</span> <span class="bp">SKPhysicsBody</span><span class="p">(</span><span class="n">circleOfRadius</span><span class="p">:</span> <span class="n">radius</span><span class="p">)</span>
+        <span class="n">physics</span><span class="p">.</span><span class="kr">dynamic</span> <span class="p">=</span> <span class="kc">false</span>
+        <span class="n">physics</span><span class="p">.</span><span class="n">friction</span> <span class="p">=</span> <span class="mf">0.2</span>
         
-        <span style="color: #f8f8f2">node</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">physicsBody</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">physics</span>
-    <span style="color: #f8f8f2">}</span>
-</pre></div>
-
-
+        <span class="n">node</span><span class="p">.</span><span class="n">physicsBody</span> <span class="p">=</span> <span class="n">physics</span>
+    <span class="p">}</span>
+    

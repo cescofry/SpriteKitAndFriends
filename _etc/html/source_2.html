@@ -7,14 +7,12 @@
 </script>
 
 
-<!-- HTML generated using hilite.me --><div style="background: #272822; overflow:auto;width:auto;padding:.2em .6em; font-size: 150%"><pre style="margin: 0; line-height: 125%">    <span style="color: #f92672">//</span> <span style="color: #66d9ef">SKAction</span>
+    <span class="c1">// SKAction</span>
     
-    <span style="color: #f8f8f2">func</span> <span style="color: #f8f8f2">addActionToNode(node</span><span style="color: #66d9ef">:</span> <span style="color: #66d9ef">SKSpriteNode</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
-        <span style="color: #66d9ef">let</span> <span style="color: #f8f8f2">position</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">CGPoint</span><span style="color: #f8f8f2">(x</span><span style="color: #66d9ef">:</span> <span style="color: #ae81ff">50.0</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">y</span><span style="color: #66d9ef">:</span> <span style="color: #ae81ff">40.0</span><span style="color: #f8f8f2">)</span>
-        <span style="color: #66d9ef">let</span> <span style="color: #f8f8f2">move</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">SKAction</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">moveTo(position,</span> <span style="color: #f8f8f2">duration</span><span style="color: #66d9ef">:</span> <span style="color: #ae81ff">1.0</span><span style="color: #f8f8f2">)</span>
+    <span class="kd">func</span> <span class="nf">addActionToNode</span><span class="p">(</span><span class="n">node</span><span class="p">:</span> <span class="bp">SKSpriteNode</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nv">position</span> <span class="p">=</span> <span class="bp">CGPoint</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="mf">50.0</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="mf">40.0</span><span class="p">)</span>
+        <span class="kd">let</span> <span class="nv">move</span> <span class="p">=</span> <span class="bp">SKAction</span><span class="p">.</span><span class="n">moveTo</span><span class="p">(</span><span class="n">position</span><span class="p">,</span> <span class="n">duration</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">)</span>
         
-        <span style="color: #f8f8f2">node</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">runAction(move)</span>
-    <span style="color: #f8f8f2">}</span>
-    
-</pre></div>
-
+        <span class="n">node</span><span class="p">.</span><span class="n">runAction</span><span class="p">(</span><span class="n">move</span><span class="p">)</span>
+        
+    <span class="p">}</span>

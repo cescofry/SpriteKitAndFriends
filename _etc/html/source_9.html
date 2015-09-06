@@ -6,32 +6,27 @@
 }
 </script>
 
-<!--SPEAK: Craete an A V Speech Utterance with the text you want to speak and give it to the A V Speech Synthesizer. Rate, pitch multiplier and voice control the delivery of the speech.-->
+<span class="c1">// Speech Synthesizer</span>
 
-<!-- HTML generated using hilite.me --><div style="background: #272822; overflow:auto;width:auto;padding:.2em .6em; font-size: 150%"><pre style="margin: 0; line-height: 125%"><span style="color: #f92672">//</span> <span style="color: #66d9ef">Speech</span> <span style="color: #66d9ef">Synthesizer</span>
+<span class="kd">import</span> <span class="nc">AVFoundation</span>
 
-<span style="color: #66d9ef">import</span> <span style="color: #f8f8f2">AVFoundation</span>
-
-<span style="color: #66d9ef">class</span> <span style="color: #66d9ef">Synth</span> <span style="color: #66d9ef">:</span> <span style="color: #66d9ef">NSObject</span><span style="color: #f8f8f2">,</span> <span style="color: #66d9ef">AVSpeechSynthesizerDelegate</span> <span style="color: #f8f8f2">{</span>
-    <span style="color: #66d9ef">let</span> <span style="color: #f8f8f2">synth</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">AVSpeechSynthesizer</span><span style="color: #f8f8f2">()</span>
+<span class="kd">class</span> <span class="nc">Synth</span> <span class="p">:</span> <span class="bp">NSObject</span><span class="p">,</span> <span class="bp">AVSpeechSynthesizerDelegate</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nv">synth</span> <span class="p">=</span> <span class="bp">AVSpeechSynthesizer</span><span class="p">()</span>
     
-    <span style="color: #f8f8f2">func</span> <span style="color: #f8f8f2">speakText(text</span> <span style="color: #66d9ef">:</span> <span style="color: #66d9ef">String</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
-        <span style="color: #66d9ef">let</span> <span style="color: #f8f8f2">utterance</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">AVSpeechUtterance</span><span style="color: #f8f8f2">(string</span><span style="color: #66d9ef">:</span> <span style="color: #f8f8f2">text)</span>
-        <span style="color: #f8f8f2">utterance</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">rate</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">0.5</span>
-        <span style="color: #f8f8f2">utterance</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">pitchMultiplier</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">1.0</span>
+    <span class="kd">func</span> <span class="nf">speakText</span><span class="p">(</span><span class="n">text</span> <span class="p">:</span> <span class="nb">String</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nv">utterance</span> <span class="p">=</span> <span class="bp">AVSpeechUtterance</span><span class="p">(</span><span class="n">string</span><span class="p">:</span> <span class="n">text</span><span class="p">)</span>
+        <span class="n">utterance</span><span class="p">.</span><span class="n">rate</span> <span class="p">=</span> <span class="mf">0.5</span>
+        <span class="n">utterance</span><span class="p">.</span><span class="n">pitchMultiplier</span> <span class="p">=</span> <span class="mf">1.0</span>
 
-        <span style="color: #66d9ef">let</span> <span style="color: #f8f8f2">voice</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">AVSpeechSynthesisVoice</span><span style="color: #f8f8f2">(language</span><span style="color: #66d9ef">:</span> <span style="color: #e6db74">&quot;fr-FR&quot;</span><span style="color: #f8f8f2">)</span>
-        <span style="color: #f8f8f2">utterance</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">voice</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">voice</span>
+        <span class="kd">let</span> <span class="nv">voice</span> <span class="p">=</span> <span class="bp">AVSpeechSynthesisVoice</span><span class="p">(</span><span class="n">language</span><span class="p">:</span> <span class="s">"fr-FR"</span><span class="p">)</span>
+        <span class="n">utterance</span><span class="p">.</span><span class="n">voice</span> <span class="p">=</span> <span class="n">voice</span>
 
-        <span style="color: #f8f8f2">synth</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">delegate</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">self</span>
-        <span style="color: #f8f8f2">synth</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">speakUtterance(utterance)</span>
-    <span style="color: #f8f8f2">}</span>
+        <span class="n">synth</span><span class="p">.</span><span class="n">delegate</span> <span class="p">=</span> <span class="kc">self</span>
+        <span class="n">synth</span><span class="p">.</span><span class="n">speakUtterance</span><span class="p">(</span><span class="n">utterance</span><span class="p">)</span>
+    <span class="p">}</span>
     
-    <span style="color: #f8f8f2">func</span> <span style="color: #f8f8f2">speechSynthesizer(synthesizer</span><span style="color: #66d9ef">:</span> <span style="color: #66d9ef">AVSpeechSynthesizer</span><span style="color: #f8f8f2">,</span>
-        <span style="color: #f8f8f2">didFinishSpeechUtterance</span> <span style="color: #f8f8f2">utterance</span><span style="color: #66d9ef">:</span> <span style="color: #66d9ef">AVSpeechUtterance</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
-        <span style="color: #f8f8f2">print(</span><span style="color: #e6db74">&quot;ended&quot;</span><span style="color: #f8f8f2">)</span>
-    <span style="color: #f8f8f2">}</span>
-<span style="color: #f8f8f2">}</span>
-</pre></div>
-
-
+    <span class="kd">func</span> <span class="nf">speechSynthesizer</span><span class="p">(</span><span class="n">synthesizer</span><span class="p">:</span> <span class="bp">AVSpeechSynthesizer</span><span class="p">,</span>
+        <span class="n">didFinishSpeechUtterance</span> <span class="n">utterance</span><span class="p">:</span> <span class="bp">AVSpeechUtterance</span><span class="p">)</span> <span class="p">{</span>
+        <span class="bp">print</span><span class="p">(</span><span class="s">"ended"</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>

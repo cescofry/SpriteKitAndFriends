@@ -6,23 +6,22 @@
 }
 </script>
 
-<!-- HTML generated using hilite.me --><div style="background: #272822; overflow:auto;width:auto;padding:.2em .6em; font-size: 150%"><pre style="margin: 0; line-height: 125%">    <span style="color: #f92672">//</span> <span style="color: #66d9ef">Gravity</span> <span style="color: #f8f8f2">and</span> <span style="color: #66d9ef">Inpulses</span>
-    
-    <span style="color: #f8f8f2">func</span> <span style="color: #f8f8f2">shootNodeWithPhysics(node</span><span style="color: #66d9ef">:</span> <span style="color: #66d9ef">SKSpriteNode</span><span style="color: #f8f8f2">)</span>  <span style="color: #f8f8f2">{</span>
-        <span style="color: #66d9ef">let</span> <span style="color: #f8f8f2">radius</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">node</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">size</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">width</span> <span style="color: #f92672">/</span> <span style="color: #ae81ff">2.0</span>
-        <span style="color: #66d9ef">let</span> <span style="color: #f8f8f2">physics</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">SKPhysicsBody</span><span style="color: #f8f8f2">(circleOfRadius</span><span style="color: #66d9ef">:</span> <span style="color: #f8f8f2">radius)</span>
-        <span style="color: #f8f8f2">physics</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">dynamic</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">false</span>
-        <span style="color: #f8f8f2">physics</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">mass</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">1.2</span> <span style="color: #f92672">//</span> <span style="color: #f8f8f2">resistence</span> <span style="color: #f8f8f2">to</span> <span style="color: #f8f8f2">impulses</span>
-        <span style="color: #f8f8f2">physics</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">density</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">1.2</span>
-        
-        <span style="color: #f8f8f2">physics</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">restitution</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">0.9</span> <span style="color: #f92672">//</span> <span style="color: #f8f8f2">bouncing</span>
-        <span style="color: #f8f8f2">physics</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">friction</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">0.2</span> <span style="color: #f92672">//</span> <span style="color: #f8f8f2">sliding</span>
-        
-        
-        <span style="color: #f8f8f2">physics</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">applyForce(</span><span style="color: #66d9ef">CGVector</span><span style="color: #f8f8f2">(dx</span><span style="color: #66d9ef">:</span> <span style="color: #ae81ff">20.0</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">dy</span><span style="color: #66d9ef">:</span> <span style="color: #f92672">-</span><span style="color: #ae81ff">30.0</span><span style="color: #f8f8f2">))</span>
-        <span style="color: #f92672">//</span> <span style="color: #f8f8f2">remember</span> <span style="color: #f8f8f2">inverted</span> <span style="color: #f8f8f2">coordinates</span>
-        
-        <span style="color: #f8f8f2">node</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">physicsBody</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">physics</span>
-    <span style="color: #f8f8f2">}</span>
-</pre></div>
 
+ <span class="c1">// Gravity and Inpulses</span>
+    
+    <span class="kd">func</span> <span class="nf">shootNodeWithPhysics</span><span class="p">(</span><span class="n">node</span><span class="p">:</span> <span class="bp">SKSpriteNode</span><span class="p">)</span>  <span class="p">{</span>
+        <span class="kd">let</span> <span class="nv">radius</span> <span class="p">=</span> <span class="n">node</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">width</span> <span class="o">/</span> <span class="mf">2.0</span>
+        <span class="kd">let</span> <span class="nv">physics</span> <span class="p">=</span> <span class="bp">SKPhysicsBody</span><span class="p">(</span><span class="n">circleOfRadius</span><span class="p">:</span> <span class="n">radius</span><span class="p">)</span>
+        <span class="n">physics</span><span class="p">.</span><span class="kr">dynamic</span> <span class="p">=</span> <span class="kc">false</span>
+        <span class="n">physics</span><span class="p">.</span><span class="n">mass</span> <span class="p">=</span> <span class="mf">1.2</span> <span class="c1">// resistence to impulses</span>
+        <span class="n">physics</span><span class="p">.</span><span class="n">density</span> <span class="p">=</span> <span class="mf">1.2</span>
+        
+        <span class="n">physics</span><span class="p">.</span><span class="n">restitution</span> <span class="p">=</span> <span class="mf">0.9</span> <span class="c1">// bouncing</span>
+        <span class="n">physics</span><span class="p">.</span><span class="n">friction</span> <span class="p">=</span> <span class="mf">0.2</span> <span class="c1">// sliding</span>
+        
+        
+        <span class="n">physics</span><span class="p">.</span><span class="n">applyForce</span><span class="p">(</span><span class="bp">CGVector</span><span class="p">(</span><span class="n">dx</span><span class="p">:</span> <span class="mf">20.0</span><span class="p">,</span> <span class="n">dy</span><span class="p">:</span> <span class="o">-</span><span class="mf">30.0</span><span class="p">))</span>
+        <span class="c1">// remember inverted coordinates</span>
+        
+        <span class="n">node</span><span class="p">.</span><span class="n">physicsBody</span> <span class="p">=</span> <span class="n">physics</span>
+    <span class="p">}</span>

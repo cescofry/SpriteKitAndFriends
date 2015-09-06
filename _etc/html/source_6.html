@@ -6,19 +6,17 @@
 }
 </script>
 
-<!--SPEAK: Once node have physics then they can interact with gravity. The gravity of the scene is set as a vector. A node needs to be explicitly set to be affected by gravity.-->
-
-<!-- HTML generated using hilite.me --><div style="background: #272822; overflow:auto;width:auto;padding:.2em .6em; font-size: 150%"><pre style="margin: 0; line-height: 125%">    <span style="color: #f92672">//</span> <span style="color: #66d9ef">Gravity</span>
+    <span class="c1">// Gravity</span>
     
-    <span style="color: #f8f8f2">func</span> <span style="color: #f8f8f2">addGravity(scene</span><span style="color: #66d9ef">:</span> <span style="color: #66d9ef">SKScene</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">node</span><span style="color: #66d9ef">:</span> <span style="color: #66d9ef">SKSpriteNode</span><span style="color: #f8f8f2">)</span>  <span style="color: #f8f8f2">{</span>
-        <span style="color: #f8f8f2">scene</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">physicsWorld</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">gravity</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">CGVector</span><span style="color: #f8f8f2">(dx</span><span style="color: #66d9ef">:</span> <span style="color: #ae81ff">0.0</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">dy</span><span style="color: #66d9ef">:</span> <span style="color: #f92672">-</span><span style="color: #ae81ff">1.0</span><span style="color: #f8f8f2">)</span>
+    <span class="kd">func</span> <span class="nf">addGravity</span><span class="p">(</span><span class="n">scene</span><span class="p">:</span> <span class="bp">SKScene</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="bp">SKSpriteNode</span><span class="p">)</span>  <span class="p">{</span>
+        <span class="n">scene</span><span class="p">.</span><span class="n">physicsWorld</span><span class="p">.</span><span class="n">gravity</span> <span class="p">=</span> <span class="bp">CGVector</span><span class="p">(</span><span class="n">dx</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">dy</span><span class="p">:</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">)</span>
         
-        <span style="color: #66d9ef">let</span> <span style="color: #f8f8f2">radius</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">node</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">size</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">width</span> <span style="color: #f92672">/</span> <span style="color: #ae81ff">2.0</span>
-        <span style="color: #66d9ef">let</span> <span style="color: #f8f8f2">physics</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">SKPhysicsBody</span><span style="color: #f8f8f2">(circleOfRadius</span><span style="color: #66d9ef">:</span> <span style="color: #f8f8f2">radius)</span>
-        <span style="color: #f92672">//...</span>
+        <span class="kd">let</span> <span class="nv">radius</span> <span class="p">=</span> <span class="n">node</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">width</span> <span class="o">/</span> <span class="mf">2.0</span>
+        <span class="kd">let</span> <span class="nv">physics</span> <span class="p">=</span> <span class="bp">SKPhysicsBody</span><span class="p">(</span><span class="n">circleOfRadius</span><span class="p">:</span> <span class="n">radius</span><span class="p">)</span>
+        <span class="c1">//...</span>
         
-        <span style="color: #f8f8f2">physics</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">affectedByGravity</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">true</span>
-        <span style="color: #f8f8f2">physics</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">dynamic</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">true</span>
-    <span style="color: #f8f8f2">}</span>
-</pre></div>
-
+        <span class="n">physics</span><span class="p">.</span><span class="n">affectedByGravity</span> <span class="p">=</span> <span class="kc">true</span>
+        <span class="n">physics</span><span class="p">.</span><span class="kr">dynamic</span> <span class="p">=</span> <span class="kc">true</span>
+    <span class="p">}</span>
+    
+	

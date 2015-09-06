@@ -7,30 +7,32 @@
 </script>
 
 
-<!-- HTML generated using hilite.me --><div style="background: #272822; overflow:auto;width:auto;padding:.2em .6em; font-size: 150%; margin: 0px"><pre style="margin: 0; line-height: 125%">    <span style="color: #f92672">//</span> <span style="color: #66d9ef">SKScene</span> <span style="color: #f8f8f2">and</span> <span style="color: #66d9ef">SKAction</span>
+    <span class="c1">// SKScene and SKNode</span>
     
-    <span style="color: #f8f8f2">override</span> <span style="color: #f8f8f2">func</span> <span style="color: #f8f8f2">viewDidLoad()</span> <span style="color: #f8f8f2">{</span>
-        <span style="color: #f8f8f2">super</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">viewDidLoad()</span>
+    <span class="kr">override</span> <span class="kd">func</span> <span class="nf">viewDidLoad</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kc">super</span><span class="p">.</span><span class="n">viewDidLoad</span><span class="p">()</span>
         
-        <span style="color: #66d9ef">let</span> <span style="color: #f8f8f2">scene</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">SKScene</span><span style="color: #f8f8f2">(size</span><span style="color: #66d9ef">:</span> <span style="color: #f8f8f2">self</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">view</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">bounds</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">size)</span>
+        <span class="kd">let</span> <span class="nv">scene</span> <span class="p">=</span> <span class="bp">SKScene</span><span class="p">(</span><span class="n">size</span><span class="p">:</span> <span class="kc">self</span><span class="p">.</span><span class="n">view</span><span class="p">.</span><span class="n">bounds</span><span class="p">.</span><span class="n">size</span><span class="p">)</span>
         
-        <span style="color: #f92672">//</span> <span style="color: #66d9ef">Not</span> <span style="color: #66d9ef">Needed</span> <span style="color: #66d9ef">if</span> <span style="color: #f8f8f2">from</span> <span style="color: #66d9ef">Storyboard</span>
-        <span style="color: #f8f8f2">self</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">view</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">SKView</span><span style="color: #f8f8f2">(frame</span><span style="color: #66d9ef">:</span> <span style="color: #f8f8f2">self</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">view</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">bounds)</span>
+        <span class="c1">// Not Needed if from Storyboard</span>
+        <span class="kc">self</span><span class="p">.</span><span class="n">view</span> <span class="p">=</span> <span class="bp">SKView</span><span class="p">(</span><span class="n">frame</span><span class="p">:</span> <span class="kc">self</span><span class="p">.</span><span class="n">view</span><span class="p">.</span><span class="n">bounds</span><span class="p">)</span>
 
-        <span style="color: #66d9ef">let</span> <span style="color: #f8f8f2">skView</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">self</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">view</span> <span style="color: #f8f8f2">as</span><span style="color: #f92672">!</span> <span style="color: #66d9ef">SKView</span>
-        <span style="color: #f8f8f2">skView</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">presentScene(scene)</span>
+        <span class="kd">let</span> <span class="nv">skView</span> <span class="p">=</span> <span class="kc">self</span><span class="p">.</span><span class="n">view</span> <span class="kc">as</span><span class="p">!</span> <span class="bp">SKView</span>
+        <span class="n">skView</span><span class="p">.</span><span class="n">presentScene</span><span class="p">(</span><span class="n">scene</span><span class="p">)</span>
         
-        <span style="color: #f8f8f2">addNodeToScene(scene)</span>
-    <span style="color: #f8f8f2">}</span>
+        <span class="n">addNodeToScene</span><span class="p">(</span><span class="n">scene</span><span class="p">)</span>
+    <span class="p">}</span>
+	
+    <span class="kd">func</span> <span class="nf">addNodeToScene</span><span class="p">(</span><span class="n">scene</span> <span class="p">:</span> <span class="bp">SKScene</span><span class="p">)</span> <span class="p">{</span>
+        
+        <span class="c1">// Y Coordinate System inverted</span>
+        <span class="kd">let</span> <span class="nv">size</span> <span class="p">=</span> <span class="bp">CGSize</span><span class="p">(</span><span class="n">width</span><span class="p">:</span> <span class="mf">50.0</span><span class="p">,</span> <span class="n">height</span><span class="p">:</span> <span class="mf">50.0</span><span class="p">)</span>
+        <span class="kd">let</span> <span class="nv">node</span> <span class="p">=</span> <span class="bp">SKSpriteNode</span><span class="p">(</span><span class="n">color</span><span class="p">:</span> <span class="bp">UIColor</span><span class="p">.</span><span class="n">redColor</span><span class="p">(),</span> <span class="n">size</span><span class="p">:</span> <span class="n">size</span><span class="p">)</span>
+        <span class="n">node</span><span class="p">.</span><span class="n">position</span> <span class="p">=</span> <span class="bp">CGPoint</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="mf">100.0</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="mf">100.0</span><span class="p">)</span>
+        
+        <span class="n">scene</span><span class="p">.</span><span class="n">addChild</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+    <span class="p">}</span>
     
-    <span style="color: #f8f8f2">func</span> <span style="color: #f8f8f2">addNodeToScene(scene</span> <span style="color: #66d9ef">:</span> <span style="color: #66d9ef">SKScene</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
-        
-        <span style="color: #f92672">//</span> <span style="color: #66d9ef">Y</span> <span style="color: #66d9ef">Coordinate</span> <span style="color: #66d9ef">System</span> <span style="color: #f8f8f2">inverted</span>
-        <span style="color: #66d9ef">let</span> <span style="color: #f8f8f2">size</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">CGSize</span><span style="color: #f8f8f2">(width</span><span style="color: #66d9ef">:</span> <span style="color: #ae81ff">50.0</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">height</span><span style="color: #66d9ef">:</span> <span style="color: #ae81ff">50.0</span><span style="color: #f8f8f2">)</span>
-        <span style="color: #66d9ef">let</span> <span style="color: #f8f8f2">node</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">SKSpriteNode</span><span style="color: #f8f8f2">(color</span><span style="color: #66d9ef">:</span> <span style="color: #66d9ef">UIColor</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">redColor(),</span> <span style="color: #f8f8f2">size</span><span style="color: #66d9ef">:</span> <span style="color: #f8f8f2">size)</span>
-        <span style="color: #f8f8f2">node</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">position</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">CGPoint</span><span style="color: #f8f8f2">(x</span><span style="color: #66d9ef">:</span> <span style="color: #ae81ff">100.0</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">y</span><span style="color: #66d9ef">:</span> <span style="color: #ae81ff">100.0</span><span style="color: #f8f8f2">)</span>
-        
-        <span style="color: #f8f8f2">scene</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">addChild(node)</span>
-    <span style="color: #f8f8f2">}</span>
-</pre></div>
-
+	
+	
+	

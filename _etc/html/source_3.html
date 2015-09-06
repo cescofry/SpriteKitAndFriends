@@ -6,20 +6,16 @@
 }
 </script>
 
-<!-- HTML generated using hilite.me --><div style="background: #272822; overflow:auto;width:auto;padding:.2em .6em; font-size: 150%"><pre style="margin: 0; line-height: 125%">    <span style="color: #f92672">//</span> <span style="color: #66d9ef">Sprite</span> <span style="color: #f8f8f2">textures</span>
+    <span class="c1">// Sprite textures</span>
     
-    <span style="color: #f8f8f2">func</span> <span style="color: #f8f8f2">addSpritesToNode(node</span><span style="color: #66d9ef">:</span> <span style="color: #66d9ef">SKSpriteNode</span><span style="color: #f8f8f2">)</span> <span style="color: #f8f8f2">{</span>
-        <span style="color: #f8f8f2">var</span> <span style="color: #f8f8f2">textures</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">[</span><span style="color: #66d9ef">SKTexture</span><span style="color: #f8f8f2">]()</span>
-        <span style="color: #f8f8f2">for</span> <span style="color: #f8f8f2">i</span> <span style="color: #66d9ef">in</span> <span style="color: #ae81ff">1</span><span style="color: #f92672">...</span><span style="color: #ae81ff">10</span> <span style="color: #f8f8f2">{</span>
-            <span style="color: #66d9ef">let</span> <span style="color: #f8f8f2">name</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">NSString</span><span style="color: #f8f8f2">(format</span><span style="color: #66d9ef">:</span> <span style="color: #e6db74">&quot;slice%.2d&quot;</span><span style="color: #f8f8f2">,</span> <span style="color: #f8f8f2">i)</span> <span style="color: #f8f8f2">as</span> <span style="color: #66d9ef">String</span>
-            <span style="color: #66d9ef">let</span> <span style="color: #f8f8f2">texture</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">SKTexture</span><span style="color: #f8f8f2">(imageNamed</span><span style="color: #66d9ef">:</span> <span style="color: #f8f8f2">name)</span>
-            <span style="color: #f8f8f2">textures</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">append(texture)</span>
-        <span style="color: #f8f8f2">}</span>
+    <span class="kd">func</span> <span class="nf">addSpritesToNode</span><span class="p">(</span><span class="n">node</span><span class="p">:</span> <span class="bp">SKSpriteNode</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nv">textures</span> <span class="p">=</span> <span class="p">[</span><span class="bp">SKTexture</span><span class="p">]()</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mf">1.</span><span class="p">..</span><span class="mi">10</span> <span class="p">{</span>
+            <span class="kd">let</span> <span class="nv">name</span> <span class="p">=</span> <span class="bp">NSString</span><span class="p">(</span><span class="n">format</span><span class="p">:</span> <span class="s">"slice%.2d"</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="kc">as</span> <span class="nb">String</span>
+            <span class="kd">let</span> <span class="nv">texture</span> <span class="p">=</span> <span class="bp">SKTexture</span><span class="p">(</span><span class="n">imageNamed</span><span class="p">:</span> <span class="n">name</span><span class="p">)</span>
+            <span class="n">textures</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">texture</span><span class="p">)</span>
+        <span class="p">}</span>
         
-        <span style="color: #66d9ef">let</span> <span style="color: #f8f8f2">sprite</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">SKAction</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">animateWithTextures(textures,</span> <span style="color: #f8f8f2">timePerFrame</span><span style="color: #66d9ef">:</span> <span style="color: #ae81ff">0.05</span><span style="color: #f8f8f2">)</span>
-        <span style="color: #f8f8f2">node</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">runAction(</span><span style="color: #66d9ef">SKAction</span><span style="color: #f92672">.</span><span style="color: #f8f8f2">repeatActionForever(sprite))</span>
-    <span style="color: #f8f8f2">}</span>
-</pre></div>
-
-
-
+        <span class="kd">let</span> <span class="nv">sprite</span> <span class="p">=</span> <span class="bp">SKAction</span><span class="p">.</span><span class="n">animateWithTextures</span><span class="p">(</span><span class="n">textures</span><span class="p">,</span> <span class="n">timePerFrame</span><span class="p">:</span> <span class="mf">0.05</span><span class="p">)</span>
+        <span class="n">node</span><span class="p">.</span><span class="n">runAction</span><span class="p">(</span><span class="bp">SKAction</span><span class="p">.</span><span class="n">repeatActionForever</span><span class="p">(</span><span class="n">sprite</span><span class="p">))</span>
+    <span class="p">}</span>
