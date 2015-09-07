@@ -33,7 +33,7 @@ class CodeViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor(red: (39 / 255), green: (40 / 255), blue: (34 / 255), alpha: 1.0)
+        self.view.backgroundColor = UIColor(red: 0.4, green: 0.4, blue: 0.4, alpha: 1.0)
         
         let(_, webViewRect) = self.view.bounds.divide(120, fromEdge: CGRectEdge.MaxYEdge)
         
