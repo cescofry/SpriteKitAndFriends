@@ -5,10 +5,7 @@
 	"code" : "S K Physics Body is the class that describes the physics of a node. All the intializers take a parameter such as a radius or a rect. The parameter is used to describe the node collision path. There is also a way to use the node texture alpha channel to generate the collision path. This method is fairly inexpensive however using complex collision paths will lead to performance issues."
 }
 </script>
-
-
     <span class="c1">// Physics</span>
-    
     <span class="kd">func</span> <span class="nf">addPhysicsToNode</span><span class="p">(</span><span class="n">node</span><span class="p">:</span> <span class="bp">SKSpriteNode</span><span class="p">)</span>  <span class="p">{</span>
         <span class="kd">let</span> <span class="nv">radius</span> <span class="p">=</span> <span class="n">node</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">width</span> <span class="o">/</span> <span class="mf">2.0</span>
         <span class="kd">let</span> <span class="nv">physics</span> <span class="p">=</span> <span class="bp">SKPhysicsBody</span><span class="p">(</span><span class="n">circleOfRadius</span><span class="p">:</span> <span class="n">radius</span><span class="p">)</span>

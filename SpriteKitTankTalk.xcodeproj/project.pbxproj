@@ -250,7 +250,6 @@
 				A594B0991B9C3EB300F89ECE /* css */,
 				A594B0A71B9C3EB400F89ECE /* source_template.html */,
 				A594B09D1B9C3EB400F89ECE /* source_1.html */,
-				A594B09E1B9C3EB400F89ECE /* source_10.html */,
 				A594B09F1B9C3EB400F89ECE /* source_2.html */,
 				A594B0A01B9C3EB400F89ECE /* source_3.html */,
 				A594B0A11B9C3EB400F89ECE /* source_4.html */,
@@ -259,6 +258,7 @@
 				A594B0A41B9C3EB400F89ECE /* source_7.html */,
 				A594B0A51B9C3EB400F89ECE /* source_8.html */,
 				A594B0A61B9C3EB400F89ECE /* source_9.html */,
+				A594B09E1B9C3EB400F89ECE /* source_10.html */,
 			);
 			name = html;
 			path = _etc/html;

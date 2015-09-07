@@ -44,22 +44,26 @@ class GameViewController: UIViewController {
         self.cleanUpScene()
         self.scene = GameSceneGenerator.fromIndex(index)
         
-        if let scene = self.scene  {
-            scene.audioController = self.audioController
-            scene.speakBoxController = self.speakBoxController
-            
-            self.isDebug = Config.sharedConfig().isDebug
- 
-            let skView = self.view as! SKView
-            /* Sprite Kit applies additional optimizations to improve rendering performance */
-            skView.ignoresSiblingOrder = true
-            
-            /* Set the scale mode to scale to fit the window */
-            scene.scaleMode = .AspectFill
-            
-            skView.presentScene(scene)
-            scene.nextScene = nextScene
-        }        
+        guard let scene = scene else {
+            self.dismissViewControllerAnimated(true, completion: nil)
+            return
+        }
+        
+        scene.audioController = self.audioController
+        scene.speakBoxController = self.speakBoxController
+        
+        self.isDebug = Config.sharedConfig().isDebug
+        
+        let skView = self.view as! SKView
+        /* Sprite Kit applies additional optimizations to improve rendering performance */
+        skView.ignoresSiblingOrder = true
+        
+        /* Set the scale mode to scale to fit the window */
+        scene.scaleMode = .AspectFill
+        
+        skView.presentScene(scene)
+        scene.nextScene = nextScene
+   
     }
     
     func cleanUpScene() {
