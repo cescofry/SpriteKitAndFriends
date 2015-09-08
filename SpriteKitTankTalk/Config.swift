@@ -98,8 +98,11 @@ struct SceneDescription {
             else {
                 return nil
         }
-        let code = codeS.componentsSeparatedByString(".")
-        let actions = actionsS.componentsSeparatedByString(".")
+        
+        func isNotEmpty(text : String) -> Bool { return text.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) > 0 }
+        
+        let code = codeS.componentsSeparatedByString(".").filter(isNotEmpty)
+        let actions = actionsS.componentsSeparatedByString(".").filter(isNotEmpty)
         
         return SceneDescription(title: title, codePath: codePath, code: code, actions: actions)
 

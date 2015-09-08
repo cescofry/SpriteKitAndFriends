@@ -29,12 +29,14 @@ class SpeechSynthesizer : NSObject, AVSpeechSynthesizerDelegate {
             }
             return
         }
+                
+        let textAndFullStop = text.hasSuffix(".") ? text : "\(text)."
         
         synth.delegate = self
         self.completion = completion
         self.willStart = willStart
-        let utterance = AVSpeechUtterance(string: text)
-        utterance.rate = 0.45
+        let utterance = AVSpeechUtterance(string: textAndFullStop)
+        utterance.rate = 0.48
         utterance.voice = self.voiceFromLanguage(language)
         
         synth.speakUtterance(utterance)
@@ -107,7 +109,7 @@ extension SpeechSynthesizer {
         entries.append(entryFromString("go down with the tone", pitch: 0.5, rate: nil, language: nil))
         entries.append(entryFromString("and then up again", pitch: 2.0, rate: nil, language: nil))
         entries.append(entryFromString("slowing", pitch: nil, rate: 0.2, language: nil))
-        entries.append(entryFromString("and fast, so fast that you gonna barely understand what I am saying", pitch: nil, rate: 0.7, language: nil))
+        entries.append(entryFromString("and fast, so fast that you can barely understand what I am saying", pitch: nil, rate: 0.7, language: nil))
         entries.append(entryFromString("Wow, that was something. Right!?", pitch: nil, rate: nil, language: nil))
         
         return entries
