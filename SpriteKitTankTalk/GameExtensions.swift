@@ -136,6 +136,7 @@ extension GameScene {
         
         let characterPhysic = self.character.physicsBody!
         characterPhysic.friction = 0.01
+        characterPhysic.mass = 10
         characterPhysic.affectedByGravity = false
         self.character.physicsBody = characterPhysic
     }
