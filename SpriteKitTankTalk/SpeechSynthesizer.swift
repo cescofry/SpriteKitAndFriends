@@ -36,7 +36,7 @@ class SpeechSynthesizer : NSObject, AVSpeechSynthesizerDelegate {
         self.completion = completion
         self.willStart = willStart
         let utterance = AVSpeechUtterance(string: textAndFullStop)
-        utterance.rate = 0.48
+        utterance.rate = 0.5
         utterance.voice = self.voiceFromLanguage(language)
         
         synth.speakUtterance(utterance)
@@ -106,6 +106,7 @@ extension SpeechSynthesizer {
         entries.append(entryFromString("y español también", pitch: nil, rate: nil, language: "es-ES"))
         entries.append(entryFromString("Ordinare una pizza in italiano", pitch: nil, rate: nil, language: "it-IT"))
         entries.append(entryFromString("要求一个中国翻译", pitch: nil, rate: nil, language: "zh-CN"))
+        entries.append(entryFromString("But don't speak Welsh though", pitch: nil, rate: nil, language: nil))
         entries.append(entryFromString("go down with the tone", pitch: 0.5, rate: nil, language: nil))
         entries.append(entryFromString("and then up again", pitch: 2.0, rate: nil, language: nil))
         entries.append(entryFromString("slowing", pitch: nil, rate: 0.2, language: nil))

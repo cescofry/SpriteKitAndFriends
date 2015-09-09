@@ -157,22 +157,23 @@
                                 <rect key="frame" x="150" y="150" width="300" height="300"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jlv-hs-F30">
-                                <rect key="frame" x="283" y="540" width="34" height="30"/>
+                                <rect key="frame" x="278" y="534" width="45" height="36"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                 <state key="normal" title="Start"/>
                                 <connections>
                                     <segue destination="sUT-0p-jWW" kind="show" id="h0x-nd-5ya"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@cescofry" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R2u-dt-cYv">
-                                <rect key="frame" x="252" y="458" width="96" height="24"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="@cescofry" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R2u-dt-cYv">
+                                <rect key="frame" x="228" y="71" width="146" height="36"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="30"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="R2u-dt-cYv" firstAttribute="top" secondItem="a0n-qE-zmL" secondAttribute="bottom" constant="8" id="4uJ-AG-T68"/>
+                            <constraint firstItem="R2u-dt-cYv" firstAttribute="top" secondItem="wHT-8m-tb7" secondAttribute="bottom" constant="8" id="KJr-KH-aYK"/>
                             <constraint firstItem="jlv-hs-F30" firstAttribute="centerX" secondItem="V2W-OU-AAn" secondAttribute="centerX" id="LXv-gZ-ie5"/>
                             <constraint firstItem="wHT-8m-tb7" firstAttribute="centerX" secondItem="V2W-OU-AAn" secondAttribute="centerX" id="Lnr-aI-BXZ"/>
                             <constraint firstItem="aSq-ub-cLC" firstAttribute="top" secondItem="jlv-hs-F30" secondAttribute="bottom" constant="30" id="Nht-QM-hJt"/>
